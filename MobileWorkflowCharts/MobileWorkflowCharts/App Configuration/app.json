@@ -1,0 +1,111 @@
+
+{
+    "id": 258,
+    "name": "Banking",
+    "appleSystemTintColor": "blue",
+    "systemTintColor": "blue",
+    "navigationStyle": "list",
+    "gatherAnalytics": false,
+    "workflows": [
+        {
+            "steps": [
+                {
+                    "optional": false,
+                    "_class": "MobileWorkflowChartStep",
+                    "identifier": "welcome",
+                    "title": "Welcome",
+                    "text": "Please follow these instructions to create an account."
+                },
+                {
+                    "optional": false,
+                    "_class": "ORKQuestionStep",
+                    "identifier": "name",
+                    "title": "Name",
+                    "question": "What is your name?",
+                    "answerFormat": {
+                        "_class": "ORKTextAnswerFormat",
+                        "multipleLines": true
+                    },
+                    "questionItems": [
+                        ""
+                    ],
+                    "questionOtherOption": false,
+                    "questionMultipleAnswers": false
+                },
+                {
+                    "optional": false,
+                    "_class": "ORKInstructionStep",
+                    "identifier": "selfie",
+                    "title": "Selfie",
+                    "text": "Please take a selfie.",
+                    "imageContentMode": 2
+                },
+                {
+                    "optional": false,
+                    "_class": "ORKImageCaptureStep",
+                    "identifier": "selfie2",
+                    "title": "Selfie",
+                    "devicePosition": 2
+                },
+                {
+                    "optional": false,
+                    "_class": "ORKCompletionStep",
+                    "identifier": "thanks2",
+                    "title": "Thanks!",
+                    "text": "Your account will be registered now.",
+                    "imageContentMode": 2
+                }
+            ],
+            "navigationRules": [
+                {
+                    "from": "welcome",
+                    "rules": [
+                        {
+                            "to": "name"
+                        }
+                    ]
+                },
+                {
+                    "from": "name",
+                    "rules": [
+                        {
+                            "to": "selfie"
+                        }
+                    ]
+                },
+                {
+                    "from": "selfie",
+                    "rules": [
+                        {
+                            "to": "selfie2"
+                        }
+                    ]
+                },
+                {
+                    "from": "selfie2",
+                    "rules": [
+                        {
+                            "to": "thanks2"
+                        }
+                    ]
+                },
+                {
+                    "from": "thanks2",
+                    "rules": [
+                        {
+                            "to": "ORKNullStepIdentifier"
+                        }
+                    ]
+                }
+            ],
+            "id": 526,
+            "identifier": "Registration",
+            "name": "Registration",
+            "sfSymbolName": "",
+            "materialIconName": ""
+        }
+    ],
+    "servers": [
+
+    ]
+}

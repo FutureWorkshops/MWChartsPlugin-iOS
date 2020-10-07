@@ -1,14 +1,37 @@
-project 'MobileWorkflowCharts/MobileWorkflowCharts.xcodeproj'
+workspace 'MobileWorkflowCharts'
 platform :ios, '13.0'
 
 inhibit_all_warnings!
 use_frameworks!
 
-target 'MobileWorkflowCharts' do
+project 'MobileWorkflowCharts/MobileWorkflowCharts.xcodeproj'
+project 'MobileWorkflowChartsPlugin/MobileWorkflowChartsPlugin.xcodeproj'
+
+abstract_target 'MWCharts' do
+  pod 'MobileWorkflow'
+  pod 'Charts'
+
+  target 'MobileWorkflowCharts' do
+    project 'MobileWorkflowCharts/MobileWorkflowCharts.xcodeproj'
+
+    target 'MobileWorkflowChartsTests' do
+      inherit! :search_paths
+    end
+  end
+
+  target 'MobileWorkflowChartsPlugin' do
+    project 'MobileWorkflowChartsPlugin/MobileWorkflowChartsPlugin.xcodeproj'
+
+    target 'MobileWorkflowChartsPluginTests' do
+      inherit! :search_paths
+    end
+  end
 end
 
-post_install do | installer |
-    installer.pods_project.build_configurations.each do |config|
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
         config.build_settings['PROVISIONING_PROFILE_SPECIFIER'] = ""
     end
+  end
 end
