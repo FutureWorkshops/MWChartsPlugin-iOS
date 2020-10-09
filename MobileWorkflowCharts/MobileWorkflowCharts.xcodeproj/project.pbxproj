@@ -196,7 +196,6 @@
 			buildConfigurationList = B75028CE1C5A3F94000EB3CF /* Build configuration list for PBXNativeTarget "MobileWorkflowCharts" */;
 			buildPhases = (
 				3D34CF1A2790DCB93F2F9B84 /* [CP] Check Pods Manifest.lock */,
-				E009E3CE2E66F4361B402616 /* [CP] Prepare Artifacts */,
 				B75028AD1C5A3F94000EB3CF /* Sources */,
 				B75028AE1C5A3F94000EB3CF /* Frameworks */,
 				B75028AF1C5A3F94000EB3CF /* Resources */,
@@ -351,35 +350,19 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MWCharts-MobileWorkflowCharts/Pods-MWCharts-MobileWorkflowCharts-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MobileWorkflowCore/MobileWorkflowCore.framework/MobileWorkflowCore",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ResearchKit/ResearchKit.framework/ResearchKit",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MobileWorkflowCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ResearchKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MWCharts-MobileWorkflowCharts/Pods-MWCharts-MobileWorkflowCharts-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E009E3CE2E66F4361B402616 /* [CP] Prepare Artifacts */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MWCharts-MobileWorkflowCharts/Pods-MWCharts-MobileWorkflowCharts-artifacts.sh",
-				"${PODS_ROOT}/MobileWorkflow/MobileWorkflowCore.xcframework",
-				"${PODS_ROOT}/MobileWorkflow/ResearchKit.xcframework",
-			);
-			name = "[CP] Prepare Artifacts";
-			outputPaths = (
-				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MWCharts-MobileWorkflowCharts/Pods-MWCharts-MobileWorkflowCharts-artifacts.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

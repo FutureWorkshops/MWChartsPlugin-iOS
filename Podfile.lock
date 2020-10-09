@@ -2,26 +2,34 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
-  - MobileWorkflow (0.0.9):
-    - MobileWorkflow/Core (= 0.0.9)
-  - MobileWorkflow/Core (0.0.9):
+  - MobileWorkflow (0.0.13):
+    - MobileWorkflow/Core (= 0.0.13)
+  - MobileWorkflow/Core (0.0.13):
     - MobileWorkflow/ResearchKit
-  - MobileWorkflow/ResearchKit (0.0.9)
+  - MobileWorkflow/ResearchKit (0.0.13)
 
 DEPENDENCIES:
   - Charts
-  - MobileWorkflow
+  - MobileWorkflow (from `https://github.com/FutureWorkshops/MobileWorkflowCore-iOS-Distribution.git`, branch `bug/cocoapods_version`)
 
 SPEC REPOS:
-  https://github.com/FutureWorkshops/FWTPodspecs.git:
-    - MobileWorkflow
   trunk:
     - Charts
 
+EXTERNAL SOURCES:
+  MobileWorkflow:
+    :branch: bug/cocoapods_version
+    :git: https://github.com/FutureWorkshops/MobileWorkflowCore-iOS-Distribution.git
+
+CHECKOUT OPTIONS:
+  MobileWorkflow:
+    :commit: ba5b678a3f443bd3b60d20a4b7fac9bed8d533a9
+    :git: https://github.com/FutureWorkshops/MobileWorkflowCore-iOS-Distribution.git
+
 SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
-  MobileWorkflow: c91265b80f1215ad15e5afdc8888ad4012e765eb
+  MobileWorkflow: 745d53e22247eba50c044d59f45f6f7ece0cccad
 
-PODFILE CHECKSUM: 2ef3e3e2b767e0af9394c0fa32c519f56d9cdde6
+PODFILE CHECKSUM: dc61f135e2edba9c2a74649bfdd3180ca5244e9c
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0.rc.1
