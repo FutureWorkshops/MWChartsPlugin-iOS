@@ -1,3 +1,6 @@
+source 'https://cdn.cocoapods.org/'
+source 'https://github.com/FutureWorkshops/FWTPodspecs.git'
+
 workspace 'MobileWorkflowCharts'
 platform :ios, '13.0'
 
