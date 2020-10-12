@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         
         let manager = AppConfigurationManager(
-            withAdditionalSteps: [MobileWorkflowChartStep.self],
+            withAdditionalSteps: [MobileWorkflowPieChartStep.self],
             authRedirectHandler: session.userInfo?[SessionUserInfoKey.authRedirectHandler] as? AuthRedirectHandler
         )
         let preferredConfigurations = self.preferredConfigurations(urlContexts: connectionOptions.urlContexts)
