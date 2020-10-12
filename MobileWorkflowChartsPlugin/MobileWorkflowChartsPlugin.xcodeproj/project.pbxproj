@@ -10,8 +10,8 @@
 		364C74D6252DEE54002BBE8B /* MobileWorkflowChartsPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364C74CC252DEE54002BBE8B /* MobileWorkflowChartsPlugin.framework */; };
 		364C74DB252DEE54002BBE8B /* MobileWorkflowChartsPluginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364C74DA252DEE54002BBE8B /* MobileWorkflowChartsPluginTests.swift */; };
 		364C74DD252DEE54002BBE8B /* MobileWorkflowChartsPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 364C74CF252DEE54002BBE8B /* MobileWorkflowChartsPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		364C7509252DF1CF002BBE8B /* MobileWorkflowChartStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364C7508252DF1CF002BBE8B /* MobileWorkflowChartStep.swift */; };
-		364C751F252E1627002BBE8B /* MobileWorkflowChartStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364C751E252E1627002BBE8B /* MobileWorkflowChartStepViewController.swift */; };
+		364C7509252DF1CF002BBE8B /* MobileWorkflowPieChartStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364C7508252DF1CF002BBE8B /* MobileWorkflowPieChartStep.swift */; };
+		364C751F252E1627002BBE8B /* MobileWorkflowPieChartStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364C751E252E1627002BBE8B /* MobileWorkflowPieChartStepViewController.swift */; };
 		96E1BB2A12843082FDA3CAAF /* Pods_MWCharts_MobileWorkflowChartsPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B23ABF75BFDE69062A65026 /* Pods_MWCharts_MobileWorkflowChartsPlugin.framework */; };
 		CA8FFF772599232E31152B6A /* Pods_MobileWorkflowChartsPluginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B6FE84FAF0677F23EB13DFA /* Pods_MobileWorkflowChartsPluginTests.framework */; };
 /* End PBXBuildFile section */
@@ -37,8 +37,8 @@
 		364C74D5252DEE54002BBE8B /* MobileWorkflowChartsPluginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileWorkflowChartsPluginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		364C74DA252DEE54002BBE8B /* MobileWorkflowChartsPluginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileWorkflowChartsPluginTests.swift; sourceTree = "<group>"; };
 		364C74DC252DEE54002BBE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		364C7508252DF1CF002BBE8B /* MobileWorkflowChartStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileWorkflowChartStep.swift; sourceTree = "<group>"; };
-		364C751E252E1627002BBE8B /* MobileWorkflowChartStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileWorkflowChartStepViewController.swift; sourceTree = "<group>"; };
+		364C7508252DF1CF002BBE8B /* MobileWorkflowPieChartStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileWorkflowPieChartStep.swift; sourceTree = "<group>"; };
+		364C751E252E1627002BBE8B /* MobileWorkflowPieChartStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileWorkflowPieChartStepViewController.swift; sourceTree = "<group>"; };
 		64226C67290C79A140D2FA64 /* Pods-MWCharts-MobileWorkflowChartsPlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWCharts-MobileWorkflowChartsPlugin.release.xcconfig"; path = "Target Support Files/Pods-MWCharts-MobileWorkflowChartsPlugin/Pods-MWCharts-MobileWorkflowChartsPlugin.release.xcconfig"; sourceTree = "<group>"; };
 		74F52AE97D1176CB3A36D6BB /* Pods-MobileWorkflowChartsPluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileWorkflowChartsPluginTests.release.xcconfig"; path = "Target Support Files/Pods-MobileWorkflowChartsPluginTests/Pods-MobileWorkflowChartsPluginTests.release.xcconfig"; sourceTree = "<group>"; };
 		7833FBE42530D0550060EBC7 /* ResearchKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ResearchKit.xcframework; path = "../../../MobileWorkflow-iOS/Build/ResearchKit.xcframework"; sourceTree = "<group>"; };
@@ -135,8 +135,8 @@
 		364C751D252E1604002BBE8B /* ChartStep */ = {
 			isa = PBXGroup;
 			children = (
-				364C7508252DF1CF002BBE8B /* MobileWorkflowChartStep.swift */,
-				364C751E252E1627002BBE8B /* MobileWorkflowChartStepViewController.swift */,
+				364C7508252DF1CF002BBE8B /* MobileWorkflowPieChartStep.swift */,
+				364C751E252E1627002BBE8B /* MobileWorkflowPieChartStepViewController.swift */,
 			);
 			path = ChartStep;
 			sourceTree = "<group>";
@@ -299,8 +299,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				364C751F252E1627002BBE8B /* MobileWorkflowChartStepViewController.swift in Sources */,
-				364C7509252DF1CF002BBE8B /* MobileWorkflowChartStep.swift in Sources */,
+				364C751F252E1627002BBE8B /* MobileWorkflowPieChartStepViewController.swift in Sources */,
+				364C7509252DF1CF002BBE8B /* MobileWorkflowPieChartStep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

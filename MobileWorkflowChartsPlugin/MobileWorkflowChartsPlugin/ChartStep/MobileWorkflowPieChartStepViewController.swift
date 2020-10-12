@@ -10,7 +10,7 @@ import MobileWorkflowCore
 import ResearchKit
 import Charts
 
-public class MobileWorkflowChartStepViewController: ORKStepViewController {
+public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
     
     private var pieChartView: PieChartView!
     
