@@ -11,7 +11,7 @@ project 'MobileWorkflowCharts/MobileWorkflowCharts.xcodeproj'
 project 'MobileWorkflowChartsPlugin/MobileWorkflowChartsPlugin.xcodeproj'
 
 abstract_target 'MWCharts' do
-  pod 'MobileWorkflow', :git => 'https://github.com/FutureWorkshops/MobileWorkflowCore-iOS-Distribution.git', :branch => 'bug/cocoapods_version'
+  pod 'MobileWorkflow'
   pod 'Charts'
 
   target 'MobileWorkflowCharts' do
