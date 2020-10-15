@@ -27,12 +27,10 @@ public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
         
         // need to wait to perform these actions so that ResearchKit can do its own configuration
         self.navigationFooterView?.continueButtonItem = self.continueButtonItem
+        self.navigationFooterView?.continueEnabled = true
         
-        self.updatePieChart(data: [
-            (value: 25, label: "Things"),
-            (value: 50, label: "Widgets"),
-            (value: 100, label: "Objects")
-        ])
+        let items = (self.step as? MobileWorkflowPieChartStep)?.items ?? []
+        self.updatePieChart(items: items)
     }
     
     // MARK: Configuration
@@ -67,14 +65,14 @@ public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    private func updatePieChart(data: [(value: Double, label: String)]) {
-        let entries = data.map {
+    private func updatePieChart(items: [PieChartItem]) {
+        let entries = items.map {
             PieChartDataEntry(value: $0.value, label: $0.label)
         }
-        let dataSet = PieChartDataSet(entries: entries, label: "Quantity Types")
+        let dataSet = PieChartDataSet(entries: entries, label: L10n.PieChart.legendLabel)
         let data = PieChartData(dataSets: [dataSet])
         self.pieChartView.data = data
-        self.pieChartView.chartDescription?.text = "Relative Quantities"
+        self.pieChartView.chartDescription?.text = L10n.PieChart.descriptionLabel
         
         // Colors
         dataSet.colors = ChartColorTemplates.joyful()
