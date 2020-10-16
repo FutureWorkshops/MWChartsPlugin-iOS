@@ -16,7 +16,13 @@ enum L10n {
     }
 }
 
-public enum MobileWorkflowChartStepType: String, MobileWorkflowStepType {
+public struct MobileWorkflowChartsPlugin: MobileWorkflowPlugin {
+    public static var allStepsTypes: [MobileWorkflowStepType] {
+        return MobileWorkflowChartStepType.allCases
+    }
+}
+
+public enum MobileWorkflowChartStepType: String, MobileWorkflowStepType, CaseIterable {
     
     case pieChart = "chartsPieChart"
     
@@ -54,12 +60,15 @@ public class MobileWorkflowPieChartStep: ORKStep {
 
 extension MobileWorkflowPieChartStep: MobileWorkflowStep {
     
-    public static func build(data: StepData, networkManager: NetworkManager, imageLoader: ImageLoader, localizationManager: Localization) throws -> ORKStep {
+    public static func build(data: StepData, context: StepContext, networkManager: NetworkManager, imageLoader: ImageLoader, localizationManager: Localization) throws -> ORKStep {
         
         let itemContent = data.content["items"] as? [[String: Any]] ?? []
-        let items: [PieChartItem] = itemContent.map {
-            guard let label = $0["label"] as? String, let stringValue = $0["value"] as? String, let value = Double(stringValue) else {
-                fatalError()
+        let items: [PieChartItem] = try itemContent.map {
+            guard let label = $0["label"] as? String else {
+                throw ParseError.invalidStepData(cause: "Invalid label for pie chart data item")
+            }
+            guard let stringValue = $0["value"] as? String, let value = Double(stringValue) else {
+                throw ParseError.invalidStepData(cause: "Invalid value for pie chart data item")
             }
             return PieChartItem(label: label, value: value)
         }
