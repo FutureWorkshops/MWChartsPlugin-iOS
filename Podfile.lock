@@ -2,11 +2,11 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
-  - MobileWorkflow (0.0.17):
-    - MobileWorkflow/Core (= 0.0.17)
-  - MobileWorkflow/Core (0.0.17):
+  - MobileWorkflow (0.0.18):
+    - MobileWorkflow/Core (= 0.0.18)
+  - MobileWorkflow/Core (0.0.18):
     - MobileWorkflow/ResearchKit
-  - MobileWorkflow/ResearchKit (0.0.17)
+  - MobileWorkflow/ResearchKit (0.0.18)
 
 DEPENDENCIES:
   - Charts
@@ -20,7 +20,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
-  MobileWorkflow: e95dde1e2c2052c56485bdee2019d5ecaf946b92
+  MobileWorkflow: ed9772743533c4c1955e6240de6dad4d0d9b323a
 
 PODFILE CHECKSUM: 2ef3e3e2b767e0af9394c0fa32c519f56d9cdde6
 
