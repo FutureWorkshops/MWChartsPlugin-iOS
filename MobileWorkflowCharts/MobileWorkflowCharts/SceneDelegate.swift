@@ -16,6 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     var window: UIWindow?
+    private var urlSchemeManagers: [URLSchemeManager] = []
     private var rootViewController: MobileWorkflowRootViewController!
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -35,7 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        guard let context = AppConfigurationContext(from: URLContexts) else { return }
+        guard let context = self.urlSchemeManagers.firstValidConfiguration(from: URLContexts) else { return }
         self.rootViewController.loadAppConfiguration(context)
     }
 }
@@ -46,8 +47,8 @@ extension SceneDelegate {
         
         var preferredConfigurations = [AppConfigurationContext]()
         
-        if let samplePath = Bundle.main.path(forResource: "app", ofType: "json") {
-            preferredConfigurations.append(AppConfigurationContext(with: samplePath, serverId: nil))
+        if let appPath = Bundle.main.path(forResource: "app", ofType: "json") {
+            preferredConfigurations.append(.file(path: appPath, serverId: nil, workflowId: nil, sessionValues: nil))
         }
         
         return preferredConfigurations
