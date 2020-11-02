@@ -7,7 +7,6 @@
 
 import Foundation
 import MobileWorkflowCore
-import ResearchKit
 import Charts
 
 public class MobileWorkflowPieChartStepViewController: ORKStepViewController {

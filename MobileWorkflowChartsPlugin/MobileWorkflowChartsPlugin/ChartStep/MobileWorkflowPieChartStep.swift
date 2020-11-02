@@ -7,7 +7,6 @@
 
 import Foundation
 import MobileWorkflowCore
-import ResearchKit
 
 enum L10n {
     enum PieChart {
