@@ -8,6 +8,7 @@
 import Foundation
 import MobileWorkflowCore
 import Charts
+import Colours
 
 public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
     
@@ -74,9 +75,16 @@ public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
         self.pieChartView.chartDescription?.text = nil
         
         // Colors
-        dataSet.colors = ChartColorTemplates.joyful()
-        dataSet.valueColors = [.black]
-        dataSet.entryLabelColor = .black
+        if let mainView = self.view.window ?? self.view, let tintColor = mainView.tintColor {
+            dataSet.colors = tintColor.colorScheme(ofType: .complementary) as! [UIColor]
+        } else {
+            dataSet.colors = UIColor.blue.colorScheme(ofType: .complementary) as! [UIColor]
+        }
+        
+        dataSet.valueColors = [.white]
+        dataSet.valueFont = .boldSystemFont(ofSize: 12)
+        dataSet.entryLabelColor = .white
+        dataSet.entryLabelFont = .boldSystemFont(ofSize: 12)
         self.pieChartView.drawHoleEnabled = false
         self.pieChartView.legend.enabled = false
         self.pieChartView.rotationEnabled = false
