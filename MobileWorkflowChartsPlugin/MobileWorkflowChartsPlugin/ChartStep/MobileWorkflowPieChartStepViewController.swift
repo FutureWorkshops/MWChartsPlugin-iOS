@@ -75,11 +75,9 @@ public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
         self.pieChartView.chartDescription?.text = nil
         
         // Colors
-        if let mainView = self.view.window ?? self.view, let tintColor = mainView.tintColor {
-            dataSet.colors = tintColor.colorScheme(ofType: .complementary) as! [UIColor]
-        } else {
-            dataSet.colors = UIColor.blue.colorScheme(ofType: .complementary) as! [UIColor]
-        }
+        let mainView = self.view.window ?? self.view
+        let tintColor = mainView?.tintColor ?? .blue
+        dataSet.colors = tintColor.colorScheme(ofType: .complementary) as? [UIColor] ?? dataSet.colors
         
         dataSet.valueColors = [.white]
         dataSet.valueFont = .boldSystemFont(ofSize: 12)
