@@ -8,6 +8,7 @@
 import Foundation
 import MobileWorkflowCore
 import Charts
+import Colours
 
 public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
     
@@ -68,16 +69,23 @@ public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
         let entries = items.map {
             PieChartDataEntry(value: $0.value, label: $0.label)
         }
-        let dataSet = PieChartDataSet(entries: entries, label: L10n.PieChart.legendLabel)
+        let dataSet = PieChartDataSet(entries: entries, label: nil)
         let data = PieChartData(dataSets: [dataSet])
         self.pieChartView.data = data
-        self.pieChartView.chartDescription?.text = L10n.PieChart.descriptionLabel
+        self.pieChartView.chartDescription?.text = nil
         
         // Colors
-        dataSet.colors = ChartColorTemplates.joyful()
-        dataSet.valueColors = [.black]
-        dataSet.entryLabelColor = .black
-        self.pieChartView.holeColor = self.view.backgroundColor
+        let mainView = self.view.window ?? self.view
+        let tintColor = mainView?.tintColor ?? .blue
+        dataSet.colors = tintColor.colorScheme(ofType: .complementary) as? [UIColor] ?? dataSet.colors
+        
+        dataSet.valueColors = [.white]
+        dataSet.valueFont = .boldSystemFont(ofSize: 12)
+        dataSet.entryLabelColor = .white
+        dataSet.entryLabelFont = .boldSystemFont(ofSize: 12)
+        self.pieChartView.drawHoleEnabled = false
+        self.pieChartView.legend.enabled = false
+        self.pieChartView.rotationEnabled = false
         
         self.pieChartView.notifyDataSetChanged()
     }

@@ -13,6 +13,7 @@ project 'MobileWorkflowChartsPlugin/MobileWorkflowChartsPlugin.xcodeproj'
 abstract_target 'MWCharts' do
   pod 'MobileWorkflow'
   pod 'Charts'
+  pod 'Colours'
 
   target 'MobileWorkflowCharts' do
     project 'MobileWorkflowCharts/MobileWorkflowCharts.xcodeproj'

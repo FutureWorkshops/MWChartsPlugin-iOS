@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name                  = 'MobileWorkflowChartsPlugin'
-    s.version               = '0.0.5'
+    s.version               = '0.0.6'
     s.summary               = 'Chart plugin for MobileWorkflow on iOS.'
     s.description           = <<-DESC
     Chart plugin for MobileWorkflow on iOS, based on Charts by Daniel Gindi: https://github.com/danielgindi/Charts
@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
     s.subspec 'Core' do |cs|
 	    cs.dependency            'MobileWorkflow'
 	    cs.dependency            'Charts', '~> 3.6.0'
+	    cs.dependency            'Colours', '~> 5.13.0'
         cs.source_files          = 'MobileWorkflowChartsPlugin/MobileWorkflowChartsPlugin/**/*.swift'
     end
 end
