@@ -42,9 +42,11 @@ struct PieChartItem {
 public class MobileWorkflowPieChartStep: ORKStep {
     
     let items: [PieChartItem]
+    let systemTintColor: UIColor
     
-    init(identifier: String, items: [PieChartItem]) {
+    init(identifier: String, items: [PieChartItem], systemTintColor: UIColor) {
         self.items = items
+        self.systemTintColor = systemTintColor
         super.init(identifier: identifier)
     }
     
@@ -72,6 +74,6 @@ extension MobileWorkflowPieChartStep: MobileWorkflowStep {
             return PieChartItem(label: label, value: value)
         }
         
-        return MobileWorkflowPieChartStep(identifier: data.identifier, items: items)
+        return MobileWorkflowPieChartStep(identifier: data.identifier, items: items, systemTintColor: context.systemTintColor)
     }
 }

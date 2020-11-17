@@ -29,8 +29,7 @@ public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
         self.navigationFooterView?.continueButtonItem = self.continueButtonItem
         self.navigationFooterView?.continueEnabled = true
         
-        let items = (self.step as? MobileWorkflowPieChartStep)?.items ?? []
-        self.updatePieChart(items: items)
+        self.refresh()
     }
     
     // MARK: Configuration
@@ -65,7 +64,12 @@ public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    private func updatePieChart(items: [PieChartItem]) {
+    private func refresh() {
+        guard let pieChartStep = self.step as? MobileWorkflowPieChartStep else { return }
+        self.updatePieChart(items: pieChartStep.items, tintColor: pieChartStep.systemTintColor)
+    }
+    
+    private func updatePieChart(items: [PieChartItem], tintColor: UIColor) {
         let entries = items.map {
             PieChartDataEntry(value: $0.value, label: $0.label)
         }
@@ -75,8 +79,6 @@ public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
         self.pieChartView.chartDescription?.text = nil
         
         // Colors
-        let mainView = self.view.window ?? self.view
-        let tintColor = mainView?.tintColor ?? .blue
         dataSet.colors = tintColor.colorScheme(ofType: .complementary) as? [UIColor] ?? dataSet.colors
         
         dataSet.valueColors = [.white]
