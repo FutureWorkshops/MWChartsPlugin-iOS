@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name                  = 'MobileWorkflowChartsPlugin'
-    s.version               = '0.0.6'
+    s.version               = '0.0.7'
     s.summary               = 'Chart plugin for MobileWorkflow on iOS.'
     s.description           = <<-DESC
     Chart plugin for MobileWorkflow on iOS, based on Charts by Daniel Gindi: https://github.com/danielgindi/Charts
