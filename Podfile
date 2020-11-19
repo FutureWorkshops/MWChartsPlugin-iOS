@@ -8,7 +8,7 @@ inhibit_all_warnings!
 use_frameworks!
 
 project 'MobileWorkflowCharts/MobileWorkflowCharts.xcodeproj'
-project 'MobileWorkflowChartsPlugin/MobileWorkflowChartsPlugin.xcodeproj'
+project 'MWChartsPlugin/MWChartsPlugin.xcodeproj'
 
 abstract_target 'MWCharts' do
   pod 'MobileWorkflow'
@@ -23,10 +23,10 @@ abstract_target 'MWCharts' do
     end
   end
 
-  target 'MobileWorkflowChartsPlugin' do
-    project 'MobileWorkflowChartsPlugin/MobileWorkflowChartsPlugin.xcodeproj'
+  target 'MWChartsPlugin' do
+    project 'MobileWorkflowChartsPlugin/MWChartsPlugin.xcodeproj'
 
-    target 'MobileWorkflowChartsPluginTests' do
+    target 'MWChartsPluginTests' do
       inherit! :search_paths
     end
   end
