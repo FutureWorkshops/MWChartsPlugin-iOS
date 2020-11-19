@@ -1,6 +1,6 @@
 //
 //  MobileWorkflowPieChartStep.swift
-//  MobileWorkflowChartsPlugin
+//  MWChartsPlugin
 //
 //  Created by Jonathan Flintham on 07/10/2020.
 //
@@ -15,13 +15,13 @@ enum L10n {
     }
 }
 
-public struct MobileWorkflowChartsPlugin: MobileWorkflowPlugin {
+public struct MWChartsPlugin: MobileWorkflowPlugin {
     public static var allStepsTypes: [MobileWorkflowStepType] {
-        return MobileWorkflowChartStepType.allCases
+        return MWChartstepType.allCases
     }
 }
 
-public enum MobileWorkflowChartStepType: String, MobileWorkflowStepType, CaseIterable {
+public enum MWChartstepType: String, MobileWorkflowStepType, CaseIterable {
     
     case pieChart = "chartsPieChart"
     

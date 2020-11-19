@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		364C74D6252DEE54002BBE8B /* MobileWorkflowChartsPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364C74CC252DEE54002BBE8B /* MobileWorkflowChartsPlugin.framework */; };
-		364C74DB252DEE54002BBE8B /* MobileWorkflowChartsPluginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364C74DA252DEE54002BBE8B /* MobileWorkflowChartsPluginTests.swift */; };
-		364C74DD252DEE54002BBE8B /* MobileWorkflowChartsPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 364C74CF252DEE54002BBE8B /* MobileWorkflowChartsPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		364C7509252DF1CF002BBE8B /* MobileWorkflowPieChartStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364C7508252DF1CF002BBE8B /* MobileWorkflowPieChartStep.swift */; };
-		364C751F252E1627002BBE8B /* MobileWorkflowPieChartStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364C751E252E1627002BBE8B /* MobileWorkflowPieChartStepViewController.swift */; };
-		96E1BB2A12843082FDA3CAAF /* Pods_MWCharts_MobileWorkflowChartsPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B23ABF75BFDE69062A65026 /* Pods_MWCharts_MobileWorkflowChartsPlugin.framework */; };
-		CA8FFF772599232E31152B6A /* Pods_MobileWorkflowChartsPluginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B6FE84FAF0677F23EB13DFA /* Pods_MobileWorkflowChartsPluginTests.framework */; };
+		364C74D6252DEE54002BBE8B /* MWChartsPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364C74CC252DEE54002BBE8B /* MWChartsPlugin.framework */; };
+		364C74DB252DEE54002BBE8B /* MWChartsPluginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364C74DA252DEE54002BBE8B /* MWChartsPluginTests.swift */; };
+		364C74DD252DEE54002BBE8B /* MWChartsPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 364C74CF252DEE54002BBE8B /* MWChartsPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		364C7509252DF1CF002BBE8B /* MWPieChartStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364C7508252DF1CF002BBE8B /* MWPieChartStep.swift */; };
+		364C751F252E1627002BBE8B /* MWPieChartStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364C751E252E1627002BBE8B /* MWPieChartStepViewController.swift */; };
+		54F225C4C4BDD5066C626622 /* Pods_MWChartsPluginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E108F13F439EDCB3A8F65661 /* Pods_MWChartsPluginTests.framework */; };
+		E6C5DAE667CD0BA082E52FC7 /* Pods_MWCharts_MWChartsPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA93B35BD571FB2FA67ED33E /* Pods_MWCharts_MWChartsPlugin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,23 +28,27 @@
 
 /* Begin PBXFileReference section */
 		11B05CE2A82FFDB77BF4CB00 /* Pods-MobileWorkflowChartsPlugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileWorkflowChartsPlugin.debug.xcconfig"; path = "Target Support Files/Pods-MobileWorkflowChartsPlugin/Pods-MobileWorkflowChartsPlugin.debug.xcconfig"; sourceTree = "<group>"; };
-		1B23ABF75BFDE69062A65026 /* Pods_MWCharts_MobileWorkflowChartsPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MWCharts_MobileWorkflowChartsPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B6FE84FAF0677F23EB13DFA /* Pods_MobileWorkflowChartsPluginTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileWorkflowChartsPluginTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		227B5C3C9036EDD89865D469 /* Pods-MobileWorkflowChartsPlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileWorkflowChartsPlugin.release.xcconfig"; path = "Target Support Files/Pods-MobileWorkflowChartsPlugin/Pods-MobileWorkflowChartsPlugin.release.xcconfig"; sourceTree = "<group>"; };
-		364C74CC252DEE54002BBE8B /* MobileWorkflowChartsPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MobileWorkflowChartsPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		364C74CF252DEE54002BBE8B /* MobileWorkflowChartsPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileWorkflowChartsPlugin.h; sourceTree = "<group>"; };
+		364C74CC252DEE54002BBE8B /* MWChartsPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MWChartsPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		364C74CF252DEE54002BBE8B /* MWChartsPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWChartsPlugin.h; sourceTree = "<group>"; };
 		364C74D0252DEE54002BBE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		364C74D5252DEE54002BBE8B /* MobileWorkflowChartsPluginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileWorkflowChartsPluginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		364C74DA252DEE54002BBE8B /* MobileWorkflowChartsPluginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileWorkflowChartsPluginTests.swift; sourceTree = "<group>"; };
+		364C74D5252DEE54002BBE8B /* MWChartsPluginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MWChartsPluginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		364C74DA252DEE54002BBE8B /* MWChartsPluginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWChartsPluginTests.swift; sourceTree = "<group>"; };
 		364C74DC252DEE54002BBE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		364C7508252DF1CF002BBE8B /* MobileWorkflowPieChartStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileWorkflowPieChartStep.swift; sourceTree = "<group>"; };
-		364C751E252E1627002BBE8B /* MobileWorkflowPieChartStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileWorkflowPieChartStepViewController.swift; sourceTree = "<group>"; };
+		364C7508252DF1CF002BBE8B /* MWPieChartStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWPieChartStep.swift; sourceTree = "<group>"; };
+		364C751E252E1627002BBE8B /* MWPieChartStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWPieChartStepViewController.swift; sourceTree = "<group>"; };
 		64226C67290C79A140D2FA64 /* Pods-MWCharts-MobileWorkflowChartsPlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWCharts-MobileWorkflowChartsPlugin.release.xcconfig"; path = "Target Support Files/Pods-MWCharts-MobileWorkflowChartsPlugin/Pods-MWCharts-MobileWorkflowChartsPlugin.release.xcconfig"; sourceTree = "<group>"; };
 		74F52AE97D1176CB3A36D6BB /* Pods-MobileWorkflowChartsPluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileWorkflowChartsPluginTests.release.xcconfig"; path = "Target Support Files/Pods-MobileWorkflowChartsPluginTests/Pods-MobileWorkflowChartsPluginTests.release.xcconfig"; sourceTree = "<group>"; };
 		7833FBE42530D0550060EBC7 /* ResearchKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ResearchKit.xcframework; path = "../../../MobileWorkflow-iOS/Build/ResearchKit.xcframework"; sourceTree = "<group>"; };
 		7833FBE52530D0550060EBC7 /* MobileWorkflowCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MobileWorkflowCore.xcframework; path = "../../../MobileWorkflow-iOS/Build/MobileWorkflowCore.xcframework"; sourceTree = "<group>"; };
+		7FBF8BFDE7E3C7AAC5CCE180 /* Pods-MWCharts-MWChartsPlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWCharts-MWChartsPlugin.release.xcconfig"; path = "Target Support Files/Pods-MWCharts-MWChartsPlugin/Pods-MWCharts-MWChartsPlugin.release.xcconfig"; sourceTree = "<group>"; };
 		86EB2B2FBBA1B04282855350 /* Pods-MWCharts-MobileWorkflowChartsPlugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWCharts-MobileWorkflowChartsPlugin.debug.xcconfig"; path = "Target Support Files/Pods-MWCharts-MobileWorkflowChartsPlugin/Pods-MWCharts-MobileWorkflowChartsPlugin.debug.xcconfig"; sourceTree = "<group>"; };
+		98D852F790C9EF583E624D02 /* Pods-MWCharts-MWChartsPlugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWCharts-MWChartsPlugin.debug.xcconfig"; path = "Target Support Files/Pods-MWCharts-MWChartsPlugin/Pods-MWCharts-MWChartsPlugin.debug.xcconfig"; sourceTree = "<group>"; };
 		BD86246E7E7620418A6AD48D /* Pods-MobileWorkflowChartsPluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileWorkflowChartsPluginTests.debug.xcconfig"; path = "Target Support Files/Pods-MobileWorkflowChartsPluginTests/Pods-MobileWorkflowChartsPluginTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CF0EC75667953C574592EACD /* Pods-MWChartsPluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWChartsPluginTests.release.xcconfig"; path = "Target Support Files/Pods-MWChartsPluginTests/Pods-MWChartsPluginTests.release.xcconfig"; sourceTree = "<group>"; };
+		DA93B35BD571FB2FA67ED33E /* Pods_MWCharts_MWChartsPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MWCharts_MWChartsPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E108F13F439EDCB3A8F65661 /* Pods_MWChartsPluginTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MWChartsPluginTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8CFA24A9B01995CC13AC190 /* Pods-MWChartsPluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWChartsPluginTests.debug.xcconfig"; path = "Target Support Files/Pods-MWChartsPluginTests/Pods-MWChartsPluginTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96E1BB2A12843082FDA3CAAF /* Pods_MWCharts_MobileWorkflowChartsPlugin.framework in Frameworks */,
+				E6C5DAE667CD0BA082E52FC7 /* Pods_MWCharts_MWChartsPlugin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,8 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				364C74D6252DEE54002BBE8B /* MobileWorkflowChartsPlugin.framework in Frameworks */,
-				CA8FFF772599232E31152B6A /* Pods_MobileWorkflowChartsPluginTests.framework in Frameworks */,
+				364C74D6252DEE54002BBE8B /* MWChartsPlugin.framework in Frameworks */,
+				54F225C4C4BDD5066C626622 /* Pods_MWChartsPluginTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,8 +77,8 @@
 			children = (
 				7833FBE52530D0550060EBC7 /* MobileWorkflowCore.xcframework */,
 				7833FBE42530D0550060EBC7 /* ResearchKit.xcframework */,
-				1B6FE84FAF0677F23EB13DFA /* Pods_MobileWorkflowChartsPluginTests.framework */,
-				1B23ABF75BFDE69062A65026 /* Pods_MWCharts_MobileWorkflowChartsPlugin.framework */,
+				DA93B35BD571FB2FA67ED33E /* Pods_MWCharts_MWChartsPlugin.framework */,
+				E108F13F439EDCB3A8F65661 /* Pods_MWChartsPluginTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -88,6 +92,10 @@
 				74F52AE97D1176CB3A36D6BB /* Pods-MobileWorkflowChartsPluginTests.release.xcconfig */,
 				11B05CE2A82FFDB77BF4CB00 /* Pods-MobileWorkflowChartsPlugin.debug.xcconfig */,
 				227B5C3C9036EDD89865D469 /* Pods-MobileWorkflowChartsPlugin.release.xcconfig */,
+				98D852F790C9EF583E624D02 /* Pods-MWCharts-MWChartsPlugin.debug.xcconfig */,
+				7FBF8BFDE7E3C7AAC5CCE180 /* Pods-MWCharts-MWChartsPlugin.release.xcconfig */,
+				F8CFA24A9B01995CC13AC190 /* Pods-MWChartsPluginTests.debug.xcconfig */,
+				CF0EC75667953C574592EACD /* Pods-MWChartsPluginTests.release.xcconfig */,
 			);
 			name = Pods;
 			path = ../Pods;
@@ -96,8 +104,8 @@
 		364C74C2252DEE54002BBE8B = {
 			isa = PBXGroup;
 			children = (
-				364C74CE252DEE54002BBE8B /* MobileWorkflowChartsPlugin */,
-				364C74D9252DEE54002BBE8B /* MobileWorkflowChartsPluginTests */,
+				364C74CE252DEE54002BBE8B /* MWChartsPlugin */,
+				364C74D9252DEE54002BBE8B /* MWChartsPluginTests */,
 				364C74CD252DEE54002BBE8B /* Products */,
 				1F3F2AF2A1F330930A655C11 /* Pods */,
 				12E25461575527B1F9DECDF3 /* Frameworks */,
@@ -107,36 +115,36 @@
 		364C74CD252DEE54002BBE8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				364C74CC252DEE54002BBE8B /* MobileWorkflowChartsPlugin.framework */,
-				364C74D5252DEE54002BBE8B /* MobileWorkflowChartsPluginTests.xctest */,
+				364C74CC252DEE54002BBE8B /* MWChartsPlugin.framework */,
+				364C74D5252DEE54002BBE8B /* MWChartsPluginTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		364C74CE252DEE54002BBE8B /* MobileWorkflowChartsPlugin */ = {
+		364C74CE252DEE54002BBE8B /* MWChartsPlugin */ = {
 			isa = PBXGroup;
 			children = (
 				364C751D252E1604002BBE8B /* ChartStep */,
-				364C74CF252DEE54002BBE8B /* MobileWorkflowChartsPlugin.h */,
+				364C74CF252DEE54002BBE8B /* MWChartsPlugin.h */,
 				364C74D0252DEE54002BBE8B /* Info.plist */,
 			);
-			path = MobileWorkflowChartsPlugin;
+			path = MWChartsPlugin;
 			sourceTree = "<group>";
 		};
-		364C74D9252DEE54002BBE8B /* MobileWorkflowChartsPluginTests */ = {
+		364C74D9252DEE54002BBE8B /* MWChartsPluginTests */ = {
 			isa = PBXGroup;
 			children = (
-				364C74DA252DEE54002BBE8B /* MobileWorkflowChartsPluginTests.swift */,
+				364C74DA252DEE54002BBE8B /* MWChartsPluginTests.swift */,
 				364C74DC252DEE54002BBE8B /* Info.plist */,
 			);
-			path = MobileWorkflowChartsPluginTests;
+			path = MWChartsPluginTests;
 			sourceTree = "<group>";
 		};
 		364C751D252E1604002BBE8B /* ChartStep */ = {
 			isa = PBXGroup;
 			children = (
-				364C7508252DF1CF002BBE8B /* MobileWorkflowPieChartStep.swift */,
-				364C751E252E1627002BBE8B /* MobileWorkflowPieChartStepViewController.swift */,
+				364C7508252DF1CF002BBE8B /* MWPieChartStep.swift */,
+				364C751E252E1627002BBE8B /* MWPieChartStepViewController.swift */,
 			);
 			path = ChartStep;
 			sourceTree = "<group>";
@@ -148,16 +156,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				364C74DD252DEE54002BBE8B /* MobileWorkflowChartsPlugin.h in Headers */,
+				364C74DD252DEE54002BBE8B /* MWChartsPlugin.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		364C74CB252DEE54002BBE8B /* MobileWorkflowChartsPlugin */ = {
+		364C74CB252DEE54002BBE8B /* MWChartsPlugin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 364C74E0252DEE54002BBE8B /* Build configuration list for PBXNativeTarget "MobileWorkflowChartsPlugin" */;
+			buildConfigurationList = 364C74E0252DEE54002BBE8B /* Build configuration list for PBXNativeTarget "MWChartsPlugin" */;
 			buildPhases = (
 				C35ACC458CDD67A4C00752EE /* [CP] Check Pods Manifest.lock */,
 				364C74C7252DEE54002BBE8B /* Headers */,
@@ -169,14 +177,14 @@
 			);
 			dependencies = (
 			);
-			name = MobileWorkflowChartsPlugin;
+			name = MWChartsPlugin;
 			productName = MobileWorkflowChartsPlugin;
-			productReference = 364C74CC252DEE54002BBE8B /* MobileWorkflowChartsPlugin.framework */;
+			productReference = 364C74CC252DEE54002BBE8B /* MWChartsPlugin.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		364C74D4252DEE54002BBE8B /* MobileWorkflowChartsPluginTests */ = {
+		364C74D4252DEE54002BBE8B /* MWChartsPluginTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 364C74E3252DEE54002BBE8B /* Build configuration list for PBXNativeTarget "MobileWorkflowChartsPluginTests" */;
+			buildConfigurationList = 364C74E3252DEE54002BBE8B /* Build configuration list for PBXNativeTarget "MWChartsPluginTests" */;
 			buildPhases = (
 				08CCE49FBCC6D6D0AEDCD265 /* [CP] Check Pods Manifest.lock */,
 				364C74D1252DEE54002BBE8B /* Sources */,
@@ -188,9 +196,9 @@
 			dependencies = (
 				364C74D8252DEE54002BBE8B /* PBXTargetDependency */,
 			);
-			name = MobileWorkflowChartsPluginTests;
+			name = MWChartsPluginTests;
 			productName = MobileWorkflowChartsPluginTests;
-			productReference = 364C74D5252DEE54002BBE8B /* MobileWorkflowChartsPluginTests.xctest */;
+			productReference = 364C74D5252DEE54002BBE8B /* MWChartsPluginTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -211,7 +219,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 364C74C6252DEE54002BBE8B /* Build configuration list for PBXProject "MobileWorkflowChartsPlugin" */;
+			buildConfigurationList = 364C74C6252DEE54002BBE8B /* Build configuration list for PBXProject "MWChartsPlugin" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -224,8 +232,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				364C74CB252DEE54002BBE8B /* MobileWorkflowChartsPlugin */,
-				364C74D4252DEE54002BBE8B /* MobileWorkflowChartsPluginTests */,
+				364C74CB252DEE54002BBE8B /* MWChartsPlugin */,
+				364C74D4252DEE54002BBE8B /* MWChartsPluginTests */,
 			);
 		};
 /* End PBXProject section */
@@ -263,7 +271,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MobileWorkflowChartsPluginTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MWChartsPluginTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -285,7 +293,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MWCharts-MobileWorkflowChartsPlugin-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MWCharts-MWChartsPlugin-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -299,8 +307,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				364C751F252E1627002BBE8B /* MobileWorkflowPieChartStepViewController.swift in Sources */,
-				364C7509252DF1CF002BBE8B /* MobileWorkflowPieChartStep.swift in Sources */,
+				364C751F252E1627002BBE8B /* MWPieChartStepViewController.swift in Sources */,
+				364C7509252DF1CF002BBE8B /* MWPieChartStep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				364C74DB252DEE54002BBE8B /* MobileWorkflowChartsPluginTests.swift in Sources */,
+				364C74DB252DEE54002BBE8B /* MWChartsPluginTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +325,7 @@
 /* Begin PBXTargetDependency section */
 		364C74D8252DEE54002BBE8B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 364C74CB252DEE54002BBE8B /* MobileWorkflowChartsPlugin */;
+			target = 364C74CB252DEE54002BBE8B /* MWChartsPlugin */;
 			targetProxy = 364C74D7252DEE54002BBE8B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -448,7 +456,7 @@
 		};
 		364C74E1252DEE54002BBE8B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86EB2B2FBBA1B04282855350 /* Pods-MWCharts-MobileWorkflowChartsPlugin.debug.xcconfig */;
+			baseConfigurationReference = 98D852F790C9EF583E624D02 /* Pods-MWCharts-MWChartsPlugin.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
@@ -457,14 +465,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MobileWorkflowChartsPlugin/Info.plist;
+				INFOPLIST_FILE = MWChartsPlugin/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.futureworkshops.MobileWorkflowChartsPlugin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.futureworkshops.MWChartsPlugin;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -478,7 +486,7 @@
 		};
 		364C74E2252DEE54002BBE8B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64226C67290C79A140D2FA64 /* Pods-MWCharts-MobileWorkflowChartsPlugin.release.xcconfig */;
+			baseConfigurationReference = 7FBF8BFDE7E3C7AAC5CCE180 /* Pods-MWCharts-MWChartsPlugin.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
@@ -487,14 +495,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MobileWorkflowChartsPlugin/Info.plist;
+				INFOPLIST_FILE = MWChartsPlugin/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.futureworkshops.MobileWorkflowChartsPlugin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.futureworkshops.MWChartsPlugin;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -507,7 +515,7 @@
 		};
 		364C74E4252DEE54002BBE8B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD86246E7E7620418A6AD48D /* Pods-MobileWorkflowChartsPluginTests.debug.xcconfig */;
+			baseConfigurationReference = F8CFA24A9B01995CC13AC190 /* Pods-MWChartsPluginTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -527,7 +535,7 @@
 		};
 		364C74E5252DEE54002BBE8B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74F52AE97D1176CB3A36D6BB /* Pods-MobileWorkflowChartsPluginTests.release.xcconfig */;
+			baseConfigurationReference = CF0EC75667953C574592EACD /* Pods-MWChartsPluginTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -548,7 +556,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		364C74C6252DEE54002BBE8B /* Build configuration list for PBXProject "MobileWorkflowChartsPlugin" */ = {
+		364C74C6252DEE54002BBE8B /* Build configuration list for PBXProject "MWChartsPlugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				364C74DE252DEE54002BBE8B /* Debug */,
@@ -557,7 +565,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		364C74E0252DEE54002BBE8B /* Build configuration list for PBXNativeTarget "MobileWorkflowChartsPlugin" */ = {
+		364C74E0252DEE54002BBE8B /* Build configuration list for PBXNativeTarget "MWChartsPlugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				364C74E1252DEE54002BBE8B /* Debug */,
@@ -566,7 +574,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		364C74E3252DEE54002BBE8B /* Build configuration list for PBXNativeTarget "MobileWorkflowChartsPluginTests" */ = {
+		364C74E3252DEE54002BBE8B /* Build configuration list for PBXNativeTarget "MWChartsPluginTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				364C74E4252DEE54002BBE8B /* Debug */,

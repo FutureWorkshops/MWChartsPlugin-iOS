@@ -1,6 +1,6 @@
 //
 //  MobileWorkflowChartViewController.swift
-//  MobileWorkflowChartsPlugin
+//  MWChartsPlugin
 //
 //  Created by Jonathan Flintham on 07/10/2020.
 //

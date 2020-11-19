@@ -8,7 +8,7 @@
 
 import UIKit
 import MobileWorkflowCore
-import MobileWorkflowChartsPlugin
+import MWChartsPlugin
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     enum SessionUserInfoKey {
@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         
         let manager = AppConfigurationManager(
-            withPlugins: [MobileWorkflowChartsPlugin.self],
+            withPlugins: [MWChartsPlugin.self],
             fileManager: .default,
             authRedirectHandler: session.userInfo?[SessionUserInfoKey.authRedirectHandler] as? AuthRedirectHandler
         )

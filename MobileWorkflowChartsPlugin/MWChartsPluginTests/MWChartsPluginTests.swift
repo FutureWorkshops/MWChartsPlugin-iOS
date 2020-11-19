@@ -1,14 +1,14 @@
 //
-//  MobileWorkflowChartsPluginTests.swift
-//  MobileWorkflowChartsPluginTests
+//  MWChartsPluginTests.swift
+//  MWChartsPluginTests
 //
 //  Created by Jonathan Flintham on 07/10/2020.
 //
 
 import XCTest
-@testable import MobileWorkflowChartsPlugin
+@testable import MWChartsPlugin
 
-class MobileWorkflowChartsPluginTests: XCTestCase {
+class MWChartsPluginTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
