@@ -61,9 +61,9 @@ public class MobileWorkflowPieChartStep: ORKStep {
 
 extension MobileWorkflowPieChartStep: MobileWorkflowStep {
     
-    public static func build(data: StepData, context: StepContext, networkManager: NetworkManager, imageLoader: ImageLoader, localizationManager: Localization) throws -> ORKStep {
+    public static func build(step: StepInfo, services: MobileWorkflowServices) throws -> ORKStep {
         
-        let itemContent = data.content["items"] as? [[String: Any]] ?? []
+        let itemContent = step.data.content["items"] as? [[String: Any]] ?? []
         let items: [PieChartItem] = try itemContent.map {
             guard let label = $0["label"] as? String else {
                 throw ParseError.invalidStepData(cause: "Invalid label for pie chart data item")
@@ -74,6 +74,6 @@ extension MobileWorkflowPieChartStep: MobileWorkflowStep {
             return PieChartItem(label: label, value: value)
         }
         
-        return MobileWorkflowPieChartStep(identifier: data.identifier, items: items, systemTintColor: context.systemTintColor)
+        return MobileWorkflowPieChartStep(identifier: step.data.identifier, items: items, systemTintColor: step.context.systemTintColor)
     }
 }
