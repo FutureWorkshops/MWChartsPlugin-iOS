@@ -12,11 +12,13 @@ import Colours
 
 public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
     
+    private var titleLabel: ORKTitleLabel!
     private var pieChartView: PieChartView!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupTitle()
         self.setupNavigationFooterView()
         self.setupPieChartView()
         self.setupConstraints()
@@ -34,6 +36,13 @@ public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
     
     // MARK: Configuration
     
+    private func setupTitle() {
+        self.titleLabel = ORKTitleLabel()
+        self.titleLabel.numberOfLines = 0
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.titleLabel)
+    }
+    
     private func setupNavigationFooterView() {
         guard self.navigationFooterView == nil else { return }
         
@@ -50,10 +59,14 @@ public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
     }
     
     private func setupConstraints() {
-        guard let pieChartView = self.pieChartView, let navigationFooterView = self.navigationFooterView else { return }
+        guard let titleLabel = self.titleLabel, let pieChartView = self.pieChartView, let navigationFooterView = self.navigationFooterView else { return }
         
         let constraints = [
-            pieChartView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            titleLabel.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 16),
+            titleLabel.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -16),
+            titleLabel.heightAnchor.constraint(equalToConstant: 45),
+            pieChartView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             pieChartView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
             pieChartView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor),
             pieChartView.bottomAnchor.constraint(equalTo: navigationFooterView.topAnchor),
@@ -66,6 +79,7 @@ public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
     
     private func refresh() {
         guard let pieChartStep = self.step as? MobileWorkflowPieChartStep else { return }
+        self.titleLabel.text = self.step?.title
         self.updatePieChart(items: pieChartStep.items, tintColor: pieChartStep.systemTintColor)
     }
     
