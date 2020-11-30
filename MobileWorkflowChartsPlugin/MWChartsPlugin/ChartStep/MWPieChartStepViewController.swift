@@ -70,9 +70,9 @@ public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
             pieChartView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
             pieChartView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor),
             pieChartView.bottomAnchor.constraint(equalTo: navigationFooterView.topAnchor),
-            navigationFooterView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            navigationFooterView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            navigationFooterView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            navigationFooterView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
+            navigationFooterView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor),
+            navigationFooterView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
