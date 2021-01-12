@@ -10,48 +10,14 @@ import UIKit
 import MobileWorkflowCore
 import MWChartsPlugin
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    enum SessionUserInfoKey {
-        static let authRedirectHandler = "authRedirectHandler"
-    }
+class SceneDelegate: MobileWorkflowSceneDelegate {
     
-    var window: UIWindow?
-    private var urlSchemeManagers: [URLSchemeManager] = []
-    private var rootViewController: MobileWorkflowRootViewController!
-    
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = scene as? UIWindowScene else { return }
+    override func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        let manager = AppConfigurationManager(
-            withPlugins: [MWChartsPlugin.self],
-            fileManager: .default,
-            authRedirectHandler: session.userInfo?[SessionUserInfoKey.authRedirectHandler] as? AuthRedirectHandler
-        )
-        let preferredConfigurations = self.preferredConfigurations(urlContexts: connectionOptions.urlContexts)
-        self.rootViewController = MobileWorkflowRootViewController(manager: manager, preferredConfigurations: preferredConfigurations)
+        self.dependencies.plugins = [
+            MWChartsPlugin.self
+        ]
         
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = self.rootViewController
-        window.makeKeyAndVisible()
-        self.window = window
-    }
-    
-    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        guard let context = self.urlSchemeManagers.firstValidConfiguration(from: URLContexts) else { return }
-        self.rootViewController.loadAppConfiguration(context)
-    }
-}
-
-extension SceneDelegate {
-    
-    private func preferredConfigurations(urlContexts: Set<UIOpenURLContext>) -> [AppConfigurationContext] {
-        
-        var preferredConfigurations = [AppConfigurationContext]()
-        
-        if let appPath = Bundle.main.path(forResource: "app", ofType: "json") {
-            preferredConfigurations.append(.file(path: appPath, serverId: nil, workflowId: nil, sessionValues: nil))
-        }
-        
-        return preferredConfigurations
+        super.scene(scene, willConnectTo: session, options: connectionOptions)
     }
 }
