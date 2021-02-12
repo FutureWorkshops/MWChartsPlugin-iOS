@@ -1,5 +1,5 @@
 //
-//  MobileWorkflowPieChartStep.swift
+//  MWPieChartStep.swift
 //  MWChartsPlugin
 //
 //  Created by Jonathan Flintham on 07/10/2020.
@@ -8,45 +8,47 @@
 import Foundation
 import MobileWorkflowCore
 
-enum L10n {
-    enum PieChart {
-        static let descriptionLabel = "Quantities"
-        static let legendLabel = "Types"
-    }
-}
-
-public struct MWChartsPlugin: MobileWorkflowPlugin {
-    public static var allStepsTypes: [MobileWorkflowStepType] {
-        return MWChartstepType.allCases
-    }
-}
-
-public enum MWChartstepType: String, MobileWorkflowStepType, CaseIterable {
-    
-    case pieChart = "chartsPieChart"
-    
-    public var typeName: String {
-        return self.rawValue
-    }
-    
-    public var stepClass: MobileWorkflowStep.Type {
-        return MobileWorkflowPieChartStep.self
-    }
-}
-
-struct PieChartItem {
+public struct PieChartItem: Codable {
     let label: String
     let value: Double
+    
+    public init(label: String, value: Double) {
+        self.label = label
+        self.value = value
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Self.CodingKeys.self)
+        self.label = try container.decode(String.self, forKey: .label)
+        let stringValue = try container.decode(String.self, forKey: .value)
+        guard let value = Double(stringValue) else {
+            throw ParseError.invalidStepData(cause: "Invalid value for pie chart data item")
+        }
+        self.value = value
+    }
 }
 
-public class MobileWorkflowPieChartStep: ORKStep {
+public protocol PieChartStep: HasSecondaryWorkflows {
+    var stepContext: StepContext { get }
+    var items: [PieChartItem] { get }
+}
+
+public struct NetworkPieChartItemTask: CredentializedAsyncTask, URLAsyncTaskConvertible {
+    public typealias Response = [PieChartItem]
+    public let input: URL
+    public let credential: Credential?
+}
+
+public class MWPieChartStep: ORKStep, PieChartStep {
     
-    let items: [PieChartItem]
-    let systemTintColor: UIColor
+    public let stepContext: StepContext
+    public let secondaryWorkflowIDs: [Int]
+    public let items: [PieChartItem]
     
-    init(identifier: String, items: [PieChartItem], systemTintColor: UIColor) {
+    init(identifier: String, stepContext: StepContext, secondaryWorkflowIDs: [Int], items: [PieChartItem]) {
+        self.stepContext = stepContext
+        self.secondaryWorkflowIDs = secondaryWorkflowIDs
         self.items = items
-        self.systemTintColor = systemTintColor
         super.init(identifier: identifier)
     }
     
@@ -55,11 +57,11 @@ public class MobileWorkflowPieChartStep: ORKStep {
     }
     
     public override func stepViewControllerClass() -> AnyClass {
-        return MobileWorkflowPieChartStepViewController.self
+        return MWPieChartStepViewController.self
     }
 }
 
-extension MobileWorkflowPieChartStep: MobileWorkflowStep {
+extension MWPieChartStep: MobileWorkflowStep {
     
     public static func build(step: StepInfo, services: MobileWorkflowServices) throws -> ORKStep {
         
@@ -74,6 +76,8 @@ extension MobileWorkflowPieChartStep: MobileWorkflowStep {
             return PieChartItem(label: label, value: value)
         }
         
-        return MobileWorkflowPieChartStep(identifier: step.data.identifier, items: items, systemTintColor: step.context.systemTintColor)
+        let secondaryWorkflowIDs: [Int] = (step.data.content["workflows"] as? [[String: Any]])?.compactMap({ $0["id"] as? Int }) ?? []
+        
+        return MWPieChartStep(identifier: step.data.identifier, stepContext: step.context, secondaryWorkflowIDs: secondaryWorkflowIDs, items: items)
     }
 }
