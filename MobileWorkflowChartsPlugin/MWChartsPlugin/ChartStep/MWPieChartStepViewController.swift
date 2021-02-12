@@ -101,7 +101,7 @@ public class MWPieChartStepViewController: ORKStepViewController, HasSecondaryWo
         self.pieChartView.chartDescription?.text = nil
         
         // Colors
-        dataSet.colors = tintColor.colorScheme(ofType: .complementary) as? [UIColor] ?? dataSet.colors
+        dataSet.colors = tintColor.colorScheme(ofType: .analagous) as? [UIColor] ?? dataSet.colors
         
         dataSet.valueColors = [.white]
         dataSet.valueFont = .boldSystemFont(ofSize: 12)
