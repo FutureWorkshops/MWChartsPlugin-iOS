@@ -10,10 +10,18 @@ import MobileWorkflowCore
 import Charts
 import Colours
 
-public class MWPieChartStepViewController: ORKStepViewController {
+public class MWPieChartStepViewController: ORKStepViewController, HasSecondaryWorkflows {
+    
+    public var pieChartStep: PieChartStep {
+        return self.step as! PieChartStep
+    }
     
     private var titleLabel: ORKTitleLabel!
     private(set) var pieChartView: PieChartView!
+    
+    public var secondaryWorkflowIDs: [Int] {
+        return self.pieChartStep.secondaryWorkflowIDs
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
