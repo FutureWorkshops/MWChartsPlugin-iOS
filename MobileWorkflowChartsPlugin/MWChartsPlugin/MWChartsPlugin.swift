@@ -12,6 +12,7 @@ enum L10n {
     enum PieChart {
         static let descriptionLabel = "Quantities"
         static let legendLabel = "Types"
+        static let defaultEmptyText = "No data available"
     }
 }
 

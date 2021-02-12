@@ -13,7 +13,7 @@ import Colours
 public class MWPieChartStepViewController: ORKStepViewController {
     
     private var titleLabel: ORKTitleLabel!
-    private var pieChartView: PieChartView!
+    private(set) var pieChartView: PieChartView!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,12 +78,12 @@ public class MWPieChartStepViewController: ORKStepViewController {
     }
     
     public func refresh() {
-        guard let pieChartStep = self.step as? MWPieChartStep else { return }
+        guard let pieChartStep = self.step as? PieChartStep else { return }
         self.titleLabel.text = self.step?.title
-        self.updatePieChart(items: pieChartStep.items, tintColor: pieChartStep.systemTintColor)
+        self.updatePieChart(items: pieChartStep.items, tintColor: pieChartStep.stepContext.systemTintColor)
     }
     
-    private func updatePieChart(items: [PieChartItem], tintColor: UIColor) {
+    public func updatePieChart(items: [PieChartItem], tintColor: UIColor) {
         let entries = items.map {
             PieChartDataEntry(value: $0.value, label: $0.label)
         }
