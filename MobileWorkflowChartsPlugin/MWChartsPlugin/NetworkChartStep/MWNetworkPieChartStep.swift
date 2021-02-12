@@ -1,23 +1,14 @@
 //
-//  MobileWorkflowPieChartStep.swift
+//  MWNetworkPieChartStep.swift
 //  MWChartsPlugin
 //
-//  Created by Jonathan Flintham on 07/10/2020.
+//  Created by Jonathan Flintham on 12/02/2021.
 //
 
 import Foundation
 import MobileWorkflowCore
 
-struct PieChartItem {
-    let label: String
-    let value: Double
-}
-
-protocol PieChartStep {
-    
-}
-
-public class MWPieChartStep: ORKStep {
+public class MWNetworkPieChartStep: ORKStep {
     
     let items: [PieChartItem]
     let systemTintColor: UIColor
@@ -33,11 +24,11 @@ public class MWPieChartStep: ORKStep {
     }
     
     public override func stepViewControllerClass() -> AnyClass {
-        return MWPieChartStepViewController.self
+        return MWNetworkPieChartStepViewController.self
     }
 }
 
-extension MWPieChartStep: MobileWorkflowStep {
+extension MWNetworkPieChartStep: MobileWorkflowStep {
     
     public static func build(step: StepInfo, services: MobileWorkflowServices) throws -> ORKStep {
         

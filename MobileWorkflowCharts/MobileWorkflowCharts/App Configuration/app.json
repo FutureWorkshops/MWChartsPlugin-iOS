@@ -1,45 +1,33 @@
 {
-    "id": 295,
-    "name": "Dashboard",
-    "appleSystemTintColor": "blue",
-    "systemTintColor": "blue",
-    "navigationStyle": "list",
+    "id": 567,
+    "name": "Expenses",
+    "systemTintColor": "green",
+    "navigationStyle": "tab_bar",
     "gatherAnalytics": false,
     "workflows": [
         {
             "steps": [
                 {
                     "optional": false,
-                    "_class": "MobileWorkflowPieChartStep",
-                    "identifier": "pie_chart",
-                    "title": "Pie Chart",
+                    "_class": "MobileWorkflowDisplayStep",
+                    "identifier": "debug",
+                    "title": "Debug",
                     "items": [
                         {
-                            "label": "Apples",
-                            "value": "10",
-                            "id": "36b134d0-449e-4a8d-8bff-e915505412d0",
-                            "listItemId": 1
-                        },
-                        {
-                            "label": "Oranges",
-                            "value": "20",
-                            "id": "bc238b08-0c1c-4532-9dd9-3badd46f8f14",
-                            "listItemId": 2
-                        },
-                        {
-                            "label": "Bannanas",
-                            "value": "5",
-                            "id": "0306123c-5155-41fd-ba18-f00e428bd208",
-                            "listItemId": 3
+                            "label": "New Expense",
+                            "style": "primary",
+                            "onSuccess": "none",
+                            "type": "button",
+                            "modalWorkflow": "New Expense"
                         }
                     ],
-                    "uuid": "3b055fb5-d56c-4e83-a5a7-cfcd7b9054b3",
-                    "type": "chartsPieChart"
+                    "uuid": "1a70e68e-c19c-4c2b-8517-52433fae6d29",
+                    "type": "display"
                 }
             ],
             "navigationRules": [
                 {
-                    "from": "pie_chart",
+                    "from": "debug",
                     "rules": [
                         {
                             "to": "ORKNullStepIdentifier"
@@ -47,17 +35,363 @@
                     ]
                 }
             ],
-            "id": 590,
-            "identifier": "Pie Chart",
-            "name": "Pie Chart",
+            "id": 1082,
+            "identifier": "_Debug",
+            "name": "_Debug",
+            "sfSymbolName": "ant",
+            "materialIconName": ""
+        },
+        {
+            "steps": [
+                {
+                    "optional": false,
+                    "_class": "ORKInstructionStep",
+                    "identifier": "new_expense",
+                    "title": "New Expense",
+                    "text": "Follow these steps to record an expense.",
+                    "imageURL": "https://source.unsplash.com/UWRqlJcDCXA/800x600",
+                    "imageContentMode": 2,
+                    "uuid": "41feb71d-75bf-4eef-ac07-8be244f934b0",
+                    "type": "instructions"
+                },
+                {
+                    "optional": false,
+                    "_class": "ORKQuestionStep",
+                    "identifier": "personal_expenses",
+                    "title": "Personal Expenses",
+                    "question": "Is the expense a business expense or a personal expense?",
+                    "answerFormat": {
+                        "_class": "ORKTextChoiceAnswerFormat",
+                        "showDontKnowButton": false,
+                        "textChoices": [
+                            {
+                                "_class": "ORKTextChoice",
+                                "exclusive": false,
+                                "value": "Business",
+                                "text": "Business"
+                            },
+                            {
+                                "_class": "ORKTextChoice",
+                                "exclusive": false,
+                                "value": "Personal",
+                                "text": "Personal"
+                            }
+                        ],
+                        "style": "singleChoice"
+                    },
+                    "questionItems": [
+                        "Business",
+                        "Personal"
+                    ],
+                    "questionMultipleAnswers": false,
+                    "uuid": "d45f6ffa-46bd-42fb-b722-cf04a4cd746c",
+                    "type": "question"
+                },
+                {
+                    "optional": false,
+                    "_class": "ORKInstructionStep",
+                    "identifier": "not_applicable",
+                    "title": "Not Applicable",
+                    "text": "You cannot file personal expenses.",
+                    "imageURL": "https://source.unsplash.com/5fNmWej4tAA/800x600",
+                    "imageContentMode": 2,
+                    "uuid": "fbdf0c12-7218-4ffb-ac3f-eab7c0ca2180",
+                    "type": "instructions"
+                },
+                {
+                    "optional": false,
+                    "_class": "ORKInstructionStep",
+                    "identifier": "scan_receipt",
+                    "title": "Scan Receipt",
+                    "text": "Scan your receipt using the camera on your smartphone.",
+                    "imageURL": "https://source.unsplash.com/0qw2vCHj9fw/800x600",
+                    "imageContentMode": 2,
+                    "uuid": "1b8a7989-5d5e-46a1-bee7-fcd92eb1d679",
+                    "type": "instructions"
+                },
+                {
+                    "optional": false,
+                    "_class": "ORKImageCaptureStep",
+                    "identifier": "receipt",
+                    "title": "Receipt",
+                    "devicePosition": 1,
+                    "imageQuality": 0.6,
+                    "uuid": "78c7590e-1471-4f79-bc02-9bdc3703b12d",
+                    "type": "imageCapture"
+                },
+                {
+                    "optional": false,
+                    "_class": "ORKFormStep",
+                    "identifier": "detail",
+                    "title": "Detail",
+                    "formItems": [
+                        {
+                            "identifier": "expense_info",
+                            "_class": "ORKFormItem",
+                            "text": "Expense Info"
+                        },
+                        {
+                            "identifier": "expense_type",
+                            "_class": "ORKFormItem",
+                            "text": "Expense Type",
+                            "optional": false,
+                            "answerFormat": {
+                                "_class": "ORKTextChoiceAnswerFormat",
+                                "showDontKnowButton": false,
+                                "textChoices": [
+                                    {
+                                        "exclusive": false,
+                                        "value": "Travel",
+                                        "text": "Travel",
+                                        "_class": "ORKTextChoice"
+                                    },
+                                    {
+                                        "exclusive": false,
+                                        "value": "Entertainment",
+                                        "text": "Entertainment",
+                                        "_class": "ORKTextChoice"
+                                    },
+                                    {
+                                        "exclusive": false,
+                                        "value": "Stationary",
+                                        "text": "Stationary",
+                                        "_class": "ORKTextChoice"
+                                    },
+                                    {
+                                        "exclusive": false,
+                                        "value": "General",
+                                        "text": "General",
+                                        "_class": "ORKTextChoice"
+                                    }
+                                ],
+                                "style": "singleChoice"
+                            },
+                            "placeholder": ""
+                        },
+                        {
+                            "identifier": "merchant_name",
+                            "_class": "ORKFormItem",
+                            "text": "Merchant Name",
+                            "optional": false,
+                            "answerFormat": {
+                                "_class": "ORKTextAnswerFormat",
+                                "showDontKnowButton": false
+                            },
+                            "placeholder": ""
+                        },
+                        {
+                            "identifier": "cost",
+                            "_class": "ORKFormItem",
+                            "text": "Cost",
+                            "optional": false,
+                            "answerFormat": {
+                                "_class": "ORKCurrencyAnswerFormat",
+                                "showDontKnowButton": false,
+                                "currencyCode": "USD"
+                            },
+                            "placeholder": ""
+                        }
+                    ],
+                    "uuid": "05242be5-4161-4a55-95dc-eb5402855ace",
+                    "type": "form"
+                },
+                {
+                    "optional": false,
+                    "_class": "MobileWorkflowNetworkStep",
+                    "identifier": "uploading",
+                    "title": "Uploading",
+                    "text": "Uploading your expense claim.",
+                    "url": "/expenses",
+                    "requestPropertyIdentifiers": [
+                        "cost.answer",
+                        "expense_type.answer",
+                        "merchant_name.answer",
+                        "receipt.jpg"
+                    ],
+                    "uuid": "9a8adea8-4fe6-4cdf-aa27-c73b3b3a2ef0",
+                    "type": "network"
+                },
+                {
+                    "optional": false,
+                    "_class": "ORKCompletionStep",
+                    "identifier": "completed",
+                    "title": "Completed",
+                    "text": "You will be refunded once your receipt has been reviewed.",
+                    "imageURL": "https://source.unsplash.com/oCdVtGFeDC0/800x600",
+                    "imageContentMode": 2,
+                    "uuid": "caa93a5d-8941-4ae7-955c-3eb0d3c809f9",
+                    "type": "completion"
+                }
+            ],
+            "navigationRules": [
+                {
+                    "from": "new_expense",
+                    "rules": [
+                        {
+                            "to": "personal_expenses"
+                        }
+                    ]
+                },
+                {
+                    "from": "personal_expenses",
+                    "rules": [
+                        {
+                            "to": "not_applicable",
+                            "propertyKeyPath": "personal_expenses.answer",
+                            "operand": "==",
+                            "value": "Personal"
+                        },
+                        {
+                            "to": "scan_receipt"
+                        }
+                    ]
+                },
+                {
+                    "from": "not_applicable",
+                    "rules": [
+                        {
+                            "to": "ORKNullStepIdentifier"
+                        }
+                    ]
+                },
+                {
+                    "from": "scan_receipt",
+                    "rules": [
+                        {
+                            "to": "receipt"
+                        }
+                    ]
+                },
+                {
+                    "from": "receipt",
+                    "rules": [
+                        {
+                            "to": "detail"
+                        }
+                    ]
+                },
+                {
+                    "from": "detail",
+                    "rules": [
+                        {
+                            "to": "uploading"
+                        }
+                    ]
+                },
+                {
+                    "from": "uploading",
+                    "rules": [
+                        {
+                            "to": "completed"
+                        }
+                    ]
+                },
+                {
+                    "from": "completed",
+                    "rules": [
+                        {
+                            "to": "ORKNullStepIdentifier"
+                        }
+                    ]
+                }
+            ],
+            "id": 1079,
+            "identifier": "New Expense",
+            "name": "New Expense",
             "sfSymbolName": "",
+            "materialIconName": ""
+        },
+        {
+            "steps": [
+                {
+                    "optional": false,
+                    "identifier": "expense_summary",
+                    "title": "Expense Summary",
+                    "items": [
+                        {
+                            "label": "Travel",
+                            "value": "30",
+                            "id": "02ff3d79-38a8-4c22-bfa1-84b50ee35367"
+                        },
+                        {
+                            "label": "Entertainment",
+                            "value": "50",
+                            "id": "7cbedec4-ad32-4b55-b293-7d3ae852a004"
+                        },
+                        {
+                            "label": "General",
+                            "value": "20",
+                            "id": "986e6282-cdba-48c7-927a-a86035a8f844"
+                        }
+                    ],
+                    "workflows": [
+                        {
+                            "id": 1079
+                        }
+                    ],
+                    "uuid": "99309d93-7833-4029-adb8-2ea97db2f78d",
+                    "type": "chartsPieChart"
+                }
+            ],
+            "navigationRules": [
+                {
+                    "from": "expense_summary",
+                    "rules": [
+                        {
+                            "to": "ORKNullStepIdentifier"
+                        }
+                    ]
+                }
+            ],
+            "id": 1080,
+            "identifier": "Summary",
+            "name": "Summary",
+            "sfSymbolName": "chart.pie",
+            "materialIconName": ""
+        },
+        {
+            "steps": [
+                {
+                    "optional": false,
+                    "identifier": "expenses_summary",
+                    "title": "Expenses Summary",
+                    "workflows": [
+                        {
+                            "id": 1079
+                        }
+                    ],
+                    "url": "/expenses/pie_chart",
+                    "uuid": "24d6d4b2-5cf8-4b12-81fa-73180e6910b7",
+                    "type": "io.mobileworkflow.NetworkPieChart"
+                }
+            ],
+            "navigationRules": [
+                {
+                    "from": "expenses_summary",
+                    "rules": [
+                        {
+                            "to": "ORKNullStepIdentifier"
+                        }
+                    ]
+                }
+            ],
+            "id": 1081,
+            "identifier": "Summary 2",
+            "name": "Summary 2",
+            "sfSymbolName": "wifi",
             "materialIconName": ""
         }
     ],
     "servers": [
-
+        {
+            "id": 155,
+            "url": "https://mw-expenses-dev1.herokuapp.com"
+        }
     ],
     "locales": [
 
-    ]
+    ],
+    "navigationWorkflow1Id": 1080,
+    "navigationWorkflow2Id": 1081,
+    "navigationWorkflow3Id": 1082
 }

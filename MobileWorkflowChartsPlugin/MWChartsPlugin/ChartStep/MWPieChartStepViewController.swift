@@ -10,7 +10,7 @@ import MobileWorkflowCore
 import Charts
 import Colours
 
-public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
+public class MWPieChartStepViewController: ORKStepViewController {
     
     private var titleLabel: ORKTitleLabel!
     private var pieChartView: PieChartView!
@@ -77,8 +77,8 @@ public class MobileWorkflowPieChartStepViewController: ORKStepViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    private func refresh() {
-        guard let pieChartStep = self.step as? MobileWorkflowPieChartStep else { return }
+    public func refresh() {
+        guard let pieChartStep = self.step as? MWPieChartStep else { return }
         self.titleLabel.text = self.step?.title
         self.updatePieChart(items: pieChartStep.items, tintColor: pieChartStep.systemTintColor)
     }
