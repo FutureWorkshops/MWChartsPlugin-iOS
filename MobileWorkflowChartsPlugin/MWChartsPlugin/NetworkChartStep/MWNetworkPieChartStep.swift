@@ -15,13 +15,13 @@ public class MWNetworkPieChartStep: ORKStep, PieChartStep, RemoteContentStep, Sy
     public let stepContext: StepContext
     public let session: Session
     public let services: MobileWorkflowServices
-    public let secondaryWorkflowIDs: [Int]
+    public let secondaryWorkflowIDs: [String]
     public var contentURL: String?
     public let emptyText: String?
     public var resolvedURL: URL?
     public var items: [PieChartItem] = []
     
-    init(identifier: String, stepContext: StepContext, session: Session, services: MobileWorkflowServices, secondaryWorkflowIDs: [Int], url: String?, emptyText: String?) {
+    init(identifier: String, stepContext: StepContext, session: Session, services: MobileWorkflowServices, secondaryWorkflowIDs: [String], url: String?, emptyText: String?) {
         self.stepContext = stepContext
         self.session = session
         self.services = services
@@ -62,7 +62,7 @@ extension MWNetworkPieChartStep: MobileWorkflowStep {
         
         let url = step.data.content["url"] as? String
         let emptyText = services.localizationService.translate(step.data.content["emptyText"] as? String)
-        let secondaryWorkflowIDs: [Int] = (step.data.content["workflows"] as? [[String: Any]])?.compactMap({ $0["id"] as? Int }) ?? []
+        let secondaryWorkflowIDs: [String] = (step.data.content["workflows"] as? [[String: Any]])?.compactMap({ $0.getString(key: "id") }) ?? []
         
         return MWNetworkPieChartStep(identifier: step.data.identifier, stepContext: step.context, session: step.session, services: services, secondaryWorkflowIDs: secondaryWorkflowIDs, url: url, emptyText: emptyText)
     }
