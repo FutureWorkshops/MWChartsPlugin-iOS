@@ -42,10 +42,10 @@ public struct NetworkPieChartItemTask: CredentializedAsyncTask, URLAsyncTaskConv
 public class MWPieChartStep: ORKStep, PieChartStep {
     
     public let stepContext: StepContext
-    public let secondaryWorkflowIDs: [Int]
+    public let secondaryWorkflowIDs: [String]
     public let items: [PieChartItem]
     
-    init(identifier: String, stepContext: StepContext, secondaryWorkflowIDs: [Int], items: [PieChartItem]) {
+    init(identifier: String, stepContext: StepContext, secondaryWorkflowIDs: [String], items: [PieChartItem]) {
         self.stepContext = stepContext
         self.secondaryWorkflowIDs = secondaryWorkflowIDs
         self.items = items
@@ -76,7 +76,7 @@ extension MWPieChartStep: MobileWorkflowStep {
             return PieChartItem(label: label, value: value)
         }
         
-        let secondaryWorkflowIDs: [Int] = (step.data.content["workflows"] as? [[String: Any]])?.compactMap({ $0["id"] as? Int }) ?? []
+        let secondaryWorkflowIDs: [String] = (step.data.content["workflows"] as? [[String: Any]])?.compactMap({ $0.getString(key: "id") }) ?? []
         
         return MWPieChartStep(identifier: step.data.identifier, stepContext: step.context, secondaryWorkflowIDs: secondaryWorkflowIDs, items: items)
     }

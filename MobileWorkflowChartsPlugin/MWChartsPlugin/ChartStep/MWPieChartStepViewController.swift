@@ -19,7 +19,7 @@ public class MWPieChartStepViewController: ORKStepViewController, HasSecondaryWo
     private var titleLabel: ORKTitleLabel!
     private(set) var pieChartView: PieChartView!
     
-    public var secondaryWorkflowIDs: [Int] {
+    public var secondaryWorkflowIDs: [String] {
         return self.pieChartStep.secondaryWorkflowIDs
     }
     
