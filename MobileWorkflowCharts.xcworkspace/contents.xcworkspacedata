@@ -5,12 +5,9 @@
       location = "group:MobileWorkflowCharts/MobileWorkflowCharts.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/jonathanflintham/Projects/MobileWorkflowCharts-iOS/MobileWorkflowChartsPlugin/MWChartsPlugin.xcodeproj">
+      location = "group:MobileWorkflowChartsPlugin/MWChartsPlugin.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:MobileWorkflowChartsPlugin/MWChartsPlugin.xcodeproj">
    </FileRef>
 </Workspace>
