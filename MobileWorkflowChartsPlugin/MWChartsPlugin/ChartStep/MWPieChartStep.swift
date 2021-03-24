@@ -63,9 +63,9 @@ public class MWPieChartStep: ORKStep, PieChartStep {
 
 extension MWPieChartStep: MobileWorkflowStep {
     
-    public static func build(step: StepInfo, services: MobileWorkflowServices) throws -> ORKStep {
+    public static func build(stepInfo: StepInfo, services: MobileWorkflowServices) throws -> Step {
         
-        let itemContent = step.data.content["items"] as? [[String: Any]] ?? []
+        let itemContent = stepInfo.data.content["items"] as? [[String: Any]] ?? []
         let items: [PieChartItem] = try itemContent.map {
             guard let label = $0["label"] as? String else {
                 throw ParseError.invalidStepData(cause: "Invalid label for pie chart data item")
@@ -76,8 +76,8 @@ extension MWPieChartStep: MobileWorkflowStep {
             return PieChartItem(label: label, value: value)
         }
         
-        let secondaryWorkflowIDs: [String] = (step.data.content["workflows"] as? [[String: Any]])?.compactMap({ $0.getString(key: "id") }) ?? []
+        let secondaryWorkflowIDs: [String] = (stepInfo.data.content["workflows"] as? [[String: Any]])?.compactMap({ $0.getString(key: "id") }) ?? []
         
-        return MWPieChartStep(identifier: step.data.identifier, stepContext: step.context, secondaryWorkflowIDs: secondaryWorkflowIDs, items: items)
+        return MWPieChartStep(identifier: stepInfo.data.identifier, stepContext: stepInfo.context, secondaryWorkflowIDs: secondaryWorkflowIDs, items: items)
     }
 }
