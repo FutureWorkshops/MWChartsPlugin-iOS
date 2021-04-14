@@ -8,7 +8,7 @@
 import Foundation
 import MobileWorkflowCore
 
-public class MWNetworkPieChartStep: ORKStep, PieChartStep, RemoteContentStep, SyncableContentSource {
+public class MWNetworkPieChartStep: MWStep, PieChartStep, RemoteContentStep, SyncableContentSource {
    
     public typealias ResponseType = [PieChartItem]
     
@@ -35,8 +35,8 @@ public class MWNetworkPieChartStep: ORKStep, PieChartStep, RemoteContentStep, Sy
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func stepViewControllerClass() -> AnyClass {
-        return MWNetworkPieChartStepViewController.self
+    public override func instantiateViewController() -> StepViewController {
+        MWNetworkPieChartStepViewController(step: self)
     }
     
     public func loadContent(completion: @escaping (Result<[PieChartItem], Error>) -> Void) {

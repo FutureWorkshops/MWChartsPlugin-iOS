@@ -39,7 +39,7 @@ public struct NetworkPieChartItemTask: CredentializedAsyncTask, URLAsyncTaskConv
     public let credential: Credential?
 }
 
-public class MWPieChartStep: ORKStep, PieChartStep {
+public class MWPieChartStep: MWStep, PieChartStep {
     
     public let stepContext: StepContext
     public let secondaryWorkflowIDs: [String]
@@ -56,8 +56,8 @@ public class MWPieChartStep: ORKStep, PieChartStep {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func stepViewControllerClass() -> AnyClass {
-        return MWPieChartStepViewController.self
+    public override func instantiateViewController() -> StepViewController {
+        MWPieChartStepViewController(step: self)
     }
 }
 

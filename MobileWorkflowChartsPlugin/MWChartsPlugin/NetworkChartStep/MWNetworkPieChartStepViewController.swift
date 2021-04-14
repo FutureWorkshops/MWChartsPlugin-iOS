@@ -12,7 +12,7 @@ public class MWNetworkPieChartStepViewController: MWPieChartStepViewController, 
 
     weak public var workflowPresentationDelegate: WorkflowPresentationDelegate?
     
-    public var remoteContentStep: MWNetworkPieChartStep! { self.step as? MWNetworkPieChartStep }
+    public var remoteContentStep: MWNetworkPieChartStep! { self.mwStep as? MWNetworkPieChartStep }
     
     private lazy var stateView = {
         StateView(frame: .zero)
@@ -62,14 +62,12 @@ public class MWNetworkPieChartStepViewController: MWPieChartStepViewController, 
             self.stateView.configure(isLoading: true)
             self.stateView.isHidden = false
         }
-        self.navigationFooterView?.continueEnabled = false
-        self.navigationFooterView?.updateContinueAndSkipEnabled()
+        self.navigationFooterView.config.primaryButton.isEnabled = false
     }
     
     public func hideLoading() {
         self.stateView.configure(isLoading: false)
         self.stateView.isHidden = true
-        self.navigationFooterView?.continueEnabled = true
-        self.navigationFooterView?.updateContinueAndSkipEnabled()
+        self.navigationFooterView.config.primaryButton.isEnabled = true
     }
 }
