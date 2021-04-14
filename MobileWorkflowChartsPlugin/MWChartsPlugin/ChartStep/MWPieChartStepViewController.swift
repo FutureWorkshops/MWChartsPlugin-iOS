@@ -16,7 +16,7 @@ public class MWPieChartStepViewController: ORKStepViewController, HasSecondaryWo
         return self.step as! PieChartStep
     }
     
-    private var titleLabel: ORKTitleLabel!
+    private var titleLabel: StepTitleLabel!
     private(set) var pieChartView: PieChartView!
     
     public var secondaryWorkflowIDs: [String] {
@@ -45,7 +45,7 @@ public class MWPieChartStepViewController: ORKStepViewController, HasSecondaryWo
     // MARK: Configuration
     
     private func setupTitle() {
-        self.titleLabel = ORKTitleLabel()
+        self.titleLabel = StepTitleLabel()
         self.titleLabel.numberOfLines = 0
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.titleLabel)
