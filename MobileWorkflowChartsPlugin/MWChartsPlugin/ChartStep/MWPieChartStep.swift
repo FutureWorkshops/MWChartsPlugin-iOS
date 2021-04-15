@@ -63,7 +63,7 @@ public class MWPieChartStep: MWStep, PieChartStep {
 
 extension MWPieChartStep: MobileWorkflowStep {
     
-    public static func build(stepInfo: StepInfo, services: MobileWorkflowServices) throws -> Step {
+    public static func build(stepInfo: StepInfo, services: StepServices) throws -> Step {
         
         let itemContent = stepInfo.data.content["items"] as? [[String: Any]] ?? []
         let items: [PieChartItem] = try itemContent.map {

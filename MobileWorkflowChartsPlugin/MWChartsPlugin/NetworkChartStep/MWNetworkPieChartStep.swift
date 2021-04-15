@@ -14,14 +14,14 @@ public class MWNetworkPieChartStep: MWStep, PieChartStep, RemoteContentStep, Syn
     
     public let stepContext: StepContext
     public let session: Session
-    public let services: MobileWorkflowServices
+    public let services: StepServices
     public let secondaryWorkflowIDs: [String]
     public var contentURL: String?
     public let emptyText: String?
     public var resolvedURL: URL?
     public var items: [PieChartItem] = []
     
-    init(identifier: String, stepContext: StepContext, session: Session, services: MobileWorkflowServices, secondaryWorkflowIDs: [String], url: String?, emptyText: String?) {
+    init(identifier: String, stepContext: StepContext, session: Session, services: StepServices, secondaryWorkflowIDs: [String], url: String?, emptyText: String?) {
         self.stepContext = stepContext
         self.session = session
         self.services = services
@@ -58,7 +58,7 @@ public class MWNetworkPieChartStep: MWStep, PieChartStep, RemoteContentStep, Syn
 
 extension MWNetworkPieChartStep: MobileWorkflowStep {
     
-    public static func build(stepInfo: StepInfo, services: MobileWorkflowServices) throws -> Step {
+    public static func build(stepInfo: StepInfo, services: StepServices) throws -> Step {
         
         let url = stepInfo.data.content["url"] as? String
         let emptyText = services.localizationService.translate(stepInfo.data.content["emptyText"] as? String)
