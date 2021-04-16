@@ -56,7 +56,7 @@ public class MWNetworkPieChartStep: MWStep, PieChartStep, RemoteContentStep, Syn
     }
 }
 
-extension MWNetworkPieChartStep: MobileWorkflowStep {
+extension MWNetworkPieChartStep: BuildableStep {
     
     public static func build(stepInfo: StepInfo, services: StepServices) throws -> Step {
         

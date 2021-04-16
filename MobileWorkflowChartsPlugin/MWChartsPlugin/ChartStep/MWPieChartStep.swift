@@ -61,7 +61,7 @@ public class MWPieChartStep: MWStep, PieChartStep {
     }
 }
 
-extension MWPieChartStep: MobileWorkflowStep {
+extension MWPieChartStep: BuildableStep {
     
     public static func build(stepInfo: StepInfo, services: StepServices) throws -> Step {
         

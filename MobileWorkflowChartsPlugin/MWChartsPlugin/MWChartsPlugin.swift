@@ -31,7 +31,7 @@ public enum MWChartstepType: String, StepType, CaseIterable {
         return self.rawValue
     }
     
-    public var stepClass: MobileWorkflowStep.Type {
+    public var stepClass: BuildableStep.Type {
         switch self {
         case .pieChart:
             return MWPieChartStep.self
