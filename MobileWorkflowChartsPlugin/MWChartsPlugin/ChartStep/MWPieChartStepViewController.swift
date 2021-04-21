@@ -16,7 +16,6 @@ public class MWPieChartStepViewController: MWContentStepViewController, HasSecon
         return self.mwStep as! PieChartStep
     }
     
-    private var titleLabel: StepTitleLabel!
     private(set) var pieChartView: PieChartView!
     
     public var secondaryWorkflowIDs: [String] {
@@ -26,7 +25,6 @@ public class MWPieChartStepViewController: MWContentStepViewController, HasSecon
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupTitle()
         self.setupPieChartView()
         self.setupConstraints()
     }
@@ -39,13 +37,6 @@ public class MWPieChartStepViewController: MWContentStepViewController, HasSecon
     
     // MARK: Configuration
     
-    private func setupTitle() {
-        self.titleLabel = StepTitleLabel()
-        self.titleLabel.numberOfLines = 0
-        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.titleLabel)
-    }
-    
     private func setupPieChartView() {
         self.pieChartView = PieChartView()
         self.pieChartView.translatesAutoresizingMaskIntoConstraints = false
@@ -53,14 +44,10 @@ public class MWPieChartStepViewController: MWContentStepViewController, HasSecon
     }
     
     private func setupConstraints() {
-        guard let titleLabel = self.titleLabel, let pieChartView = self.pieChartView else { return }
+        guard let pieChartView = self.pieChartView else { return }
         
         let constraints = [
-            titleLabel.topAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.topAnchor, constant: 16),
-            titleLabel.leftAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.leftAnchor, constant: 16),
-            titleLabel.rightAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.rightAnchor, constant: -16),
-            titleLabel.heightAnchor.constraint(equalToConstant: 45),
-            pieChartView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            pieChartView.topAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.topAnchor),
             pieChartView.leftAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.leftAnchor),
             pieChartView.rightAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.rightAnchor),
             pieChartView.bottomAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.bottomAnchor)
@@ -70,7 +57,6 @@ public class MWPieChartStepViewController: MWContentStepViewController, HasSecon
     
     public func refresh() {
         guard let pieChartStep = self.mwStep as? PieChartStep else { return }
-        self.titleLabel.text = self.mwStep.title
         self.updatePieChart(items: pieChartStep.items, tintColor: pieChartStep.stepContext.systemTintColor)
     }
     
