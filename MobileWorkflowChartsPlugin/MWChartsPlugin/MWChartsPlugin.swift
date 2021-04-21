@@ -16,13 +16,13 @@ enum L10n {
     }
 }
 
-public struct MWChartsPlugin: MobileWorkflowPlugin {
-    public static var allStepsTypes: [MobileWorkflowStepType] {
+public struct MWChartsPlugin: Plugin {
+    public static var allStepsTypes: [StepType] {
         return MWChartstepType.allCases
     }
 }
 
-public enum MWChartstepType: String, MobileWorkflowStepType, CaseIterable {
+public enum MWChartstepType: String, StepType, CaseIterable {
     
     case pieChart = "chartsPieChart" // legacy naming convention
     case networkPieChart = "io.mobileworkflow.NetworkPieChart"
@@ -31,7 +31,7 @@ public enum MWChartstepType: String, MobileWorkflowStepType, CaseIterable {
         return self.rawValue
     }
     
-    public var stepClass: MobileWorkflowStep.Type {
+    public var stepClass: BuildableStep.Type {
         switch self {
         case .pieChart:
             return MWPieChartStep.self

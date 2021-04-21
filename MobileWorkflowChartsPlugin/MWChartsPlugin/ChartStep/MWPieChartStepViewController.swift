@@ -10,13 +10,13 @@ import MobileWorkflowCore
 import Charts
 import Colours
 
-public class MWPieChartStepViewController: ORKStepViewController, HasSecondaryWorkflows {
+public class MWPieChartStepViewController: MWContentStepViewController, HasSecondaryWorkflows {
     
     public var pieChartStep: PieChartStep {
-        return self.step as! PieChartStep
+        return self.mwStep as! PieChartStep
     }
     
-    private var titleLabel: ORKTitleLabel!
+    private var titleLabel: StepTitleLabel!
     private(set) var pieChartView: PieChartView!
     
     public var secondaryWorkflowIDs: [String] {
@@ -27,7 +27,6 @@ public class MWPieChartStepViewController: ORKStepViewController, HasSecondaryWo
         super.viewDidLoad()
         
         self.setupTitle()
-        self.setupNavigationFooterView()
         self.setupPieChartView()
         self.setupConstraints()
     }
@@ -35,29 +34,16 @@ public class MWPieChartStepViewController: ORKStepViewController, HasSecondaryWo
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // need to wait to perform these actions so that ResearchKit can do its own configuration
-        self.navigationFooterView?.continueButtonItem = self.continueButtonItem
-        self.navigationFooterView?.continueEnabled = true
-        
         self.refresh()
     }
     
     // MARK: Configuration
     
     private func setupTitle() {
-        self.titleLabel = ORKTitleLabel()
+        self.titleLabel = StepTitleLabel()
         self.titleLabel.numberOfLines = 0
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.titleLabel)
-    }
-    
-    private func setupNavigationFooterView() {
-        guard self.navigationFooterView == nil else { return }
-        
-        let navigationFooterView = ORKNavigationContainerView()
-        navigationFooterView.translatesAutoresizingMaskIntoConstraints = false
-        self.navigationFooterView = navigationFooterView
-        self.view.addSubview(navigationFooterView)
     }
     
     private func setupPieChartView() {
@@ -67,27 +53,24 @@ public class MWPieChartStepViewController: ORKStepViewController, HasSecondaryWo
     }
     
     private func setupConstraints() {
-        guard let titleLabel = self.titleLabel, let pieChartView = self.pieChartView, let navigationFooterView = self.navigationFooterView else { return }
+        guard let titleLabel = self.titleLabel, let pieChartView = self.pieChartView else { return }
         
         let constraints = [
-            titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            titleLabel.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 16),
-            titleLabel.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -16),
+            titleLabel.topAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.topAnchor, constant: 16),
+            titleLabel.leftAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.leftAnchor, constant: 16),
+            titleLabel.rightAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.rightAnchor, constant: -16),
             titleLabel.heightAnchor.constraint(equalToConstant: 45),
             pieChartView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            pieChartView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
-            pieChartView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor),
-            pieChartView.bottomAnchor.constraint(equalTo: navigationFooterView.topAnchor),
-            navigationFooterView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
-            navigationFooterView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor),
-            navigationFooterView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+            pieChartView.leftAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.leftAnchor),
+            pieChartView.rightAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.rightAnchor),
+            pieChartView.bottomAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
     
     public func refresh() {
-        guard let pieChartStep = self.step as? PieChartStep else { return }
-        self.titleLabel.text = self.step?.title
+        guard let pieChartStep = self.mwStep as? PieChartStep else { return }
+        self.titleLabel.text = self.mwStep.title
         self.updatePieChart(items: pieChartStep.items, tintColor: pieChartStep.stepContext.systemTintColor)
     }
     
