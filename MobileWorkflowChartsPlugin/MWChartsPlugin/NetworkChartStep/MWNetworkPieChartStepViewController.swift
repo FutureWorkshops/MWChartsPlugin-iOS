@@ -10,7 +10,7 @@ import MobileWorkflowCore
 
 public class MWNetworkPieChartStepViewController: MWPieChartStepViewController, RemoteContentStepViewController, ContentClearable {
 
-    weak public var workflowPresentationDelegate: WorkflowPresentationDelegate?
+    weak public var presentationDelegate: PresentationDelegate?
     
     public var remoteContentStep: MWNetworkPieChartStep! { self.mwStep as? MWNetworkPieChartStep }
     

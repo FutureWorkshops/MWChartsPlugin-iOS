@@ -28,7 +28,7 @@ public struct PieChartItem: Codable {
     }
 }
 
-public protocol PieChartStep: HasSecondaryWorkflows {
+public protocol PieChartStep {
     var stepContext: StepContext { get }
     var items: [PieChartItem] { get }
 }
@@ -42,12 +42,10 @@ public struct NetworkPieChartItemTask: CredentializedAsyncTask, URLAsyncTaskConv
 public class MWPieChartStep: MWStep, PieChartStep {
     
     public let stepContext: StepContext
-    public let secondaryWorkflowIDs: [String]
     public let items: [PieChartItem]
     
-    init(identifier: String, stepContext: StepContext, secondaryWorkflowIDs: [String], items: [PieChartItem]) {
+    init(identifier: String, stepContext: StepContext, items: [PieChartItem]) {
         self.stepContext = stepContext
-        self.secondaryWorkflowIDs = secondaryWorkflowIDs
         self.items = items
         super.init(identifier: identifier)
     }
@@ -75,9 +73,7 @@ extension MWPieChartStep: BuildableStep {
             }
             return PieChartItem(label: label, value: value)
         }
-        
-        let secondaryWorkflowIDs: [String] = (stepInfo.data.content["workflows"] as? [[String: Any]])?.compactMap({ $0.getString(key: "id") }) ?? []
-        
-        return MWPieChartStep(identifier: stepInfo.data.identifier, stepContext: stepInfo.context, secondaryWorkflowIDs: secondaryWorkflowIDs, items: items)
+
+        return MWPieChartStep(identifier: stepInfo.data.identifier, stepContext: stepInfo.context, items: items)
     }
 }
