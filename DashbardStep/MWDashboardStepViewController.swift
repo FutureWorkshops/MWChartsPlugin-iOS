@@ -15,6 +15,6 @@ class MWDashboardStepViewController: MWStepViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.dashboardStep)
+        dump(self.dashboardStep)
     }
 }
