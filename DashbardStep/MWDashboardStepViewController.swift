@@ -46,7 +46,10 @@ extension MWDashboardStepViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseIdentifier", for: indexPath) as? MWDashboardStepViewControllerCell else { fatalError("Invalid cell.") }
+        let item = self.dashboardStep.items[indexPath.row]
+        cell.configure(with: item)
+        return cell
     }
 }
 
