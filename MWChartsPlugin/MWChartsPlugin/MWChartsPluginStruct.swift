@@ -26,6 +26,7 @@ public enum MWChartstepType: String, StepType, CaseIterable {
     
     case pieChart = "chartsPieChart" // legacy naming convention
     case networkPieChart = "io.mobileworkflow.NetworkPieChart"
+    case dashboard = "io.mobileworkflow.Dashboard"
     
     public var typeName: String {
         return self.rawValue
@@ -37,6 +38,8 @@ public enum MWChartstepType: String, StepType, CaseIterable {
             return MWPieChartStep.self
         case .networkPieChart:
             return MWNetworkPieChartStep.self
+        case .dashboard:
+            return MWDashboardStep.self
         }
     }
 }
