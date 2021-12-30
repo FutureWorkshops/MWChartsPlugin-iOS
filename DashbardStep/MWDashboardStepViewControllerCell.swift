@@ -10,6 +10,10 @@ import Foundation
 class MWDashboardStepViewControllerCell: UICollectionViewCell {
     
     let titleLabel = UILabel()
+    var stackView: UIStackView?
+    var subtitleLabel: UILabel?
+    var graphContainerView: UIView?
+    var footerLabel: UILabel?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,6 +36,22 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // Clear title for the next cell
+        self.titleLabel.text = nil
+        
+        // Remove from superview
+        [stackView, subtitleLabel, graphContainerView, footerLabel].forEach {
+            $0?.removeFromSuperview()
+        }
+        // Nullify references to free resources
+        self.stackView = nil
+        self.subtitleLabel = nil
+        self.graphContainerView = nil
+        self.footerLabel = nil
     }
     
     func configure(with item: DashboardItem) {
