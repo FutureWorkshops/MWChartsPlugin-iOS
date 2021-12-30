@@ -50,6 +50,19 @@ extension MWDashboardStepViewController: UICollectionViewDataSource {
     }
 }
 
-extension MWDashboardStepViewController: UICollectionViewDelegate {
-    
+extension MWDashboardStepViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return .zero }
+        
+        // Remove the section insets on both sides
+        var width = collectionView.frame.width - (flowLayout.sectionInset.left * 2)
+        // Remove the inter item spacing horizontally
+        width = width - flowLayout.minimumInteritemSpacing
+        // Make sure that we can fit two cells in each row
+        width = width / 2
+        
+        
+        //TODO: Calculate the height for each cell
+        return CGSize(width: width, height: 200)
+    }
 }
