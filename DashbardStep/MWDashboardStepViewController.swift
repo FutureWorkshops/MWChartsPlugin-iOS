@@ -18,15 +18,16 @@ class MWDashboardStepViewController: MWStepViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = .systemGroupedBackground
+        
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 100, height: 100)
+        layout.itemSize = CGSize(width: 150, height: 200)
         layout.sectionInset = .init(top: spacing, left: spacing, bottom: spacing, right: spacing)
         layout.minimumInteritemSpacing = spacing
         layout.minimumLineSpacing = spacing
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(collectionView)
-        collectionView.backgroundColor = .red
         
         collectionView.register(MWDashboardStepViewControllerCell.self, forCellWithReuseIdentifier: "reuseIdentifier")
         collectionView.delegate = self
