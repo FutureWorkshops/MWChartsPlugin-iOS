@@ -12,9 +12,43 @@ import MobileWorkflowCore
 class MWDashboardStepViewController: MWStepViewController {
     
     var dashboardStep: MWDashboardStep { self.mwStep as! MWDashboardStep }
+    var collectionView: UICollectionView!
+    let spacing: CGFloat = 16.0
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        dump(self.dashboardStep)
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 100, height: 100)
+        layout.sectionInset = .init(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.minimumInteritemSpacing = spacing
+        layout.minimumLineSpacing = spacing
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.addSubview(collectionView)
+        collectionView.backgroundColor = .red
+        
+        collectionView.register(MWDashboardStepViewControllerCell.self, forCellWithReuseIdentifier: "reuseIdentifier")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.reloadData()
     }
+}
+
+extension MWDashboardStepViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.dashboardStep.items.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "reuseIdentifier", for: indexPath)
+    }
+}
+
+extension MWDashboardStepViewController: UICollectionViewDelegate {
+    
 }
