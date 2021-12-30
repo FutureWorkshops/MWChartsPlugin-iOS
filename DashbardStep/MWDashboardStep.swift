@@ -10,6 +10,7 @@ import MobileWorkflowCore
 
 struct DashboardItem: Codable {
     enum ChartType: String, Codable {
+        case none
         case pie
         case line
         case bar
@@ -17,7 +18,7 @@ struct DashboardItem: Codable {
     
     let title: String
     let subtitle: String?
-    let chartType: ChartType?
+    let chartType: ChartType
     let footer: String?
 }
 
