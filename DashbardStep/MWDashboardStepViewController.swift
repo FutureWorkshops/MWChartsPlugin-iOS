@@ -27,6 +27,12 @@ class MWDashboardStepViewController: MWStepViewController {
         self.collectionView.register(MWDashboardStepViewControllerCell.self, forCellWithReuseIdentifier: "reuseIdentifier")
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        self.collectionView.backgroundColor = .clear
+    }
+    
+    override func configureNavigationBar(_ navigationBar: UINavigationBar) {
+        navigationItem.largeTitleDisplayMode = .automatic
+        navigationBar.prefersLargeTitles = true
     }
     
     private func createLayout() -> UICollectionViewLayout {
@@ -42,7 +48,7 @@ class MWDashboardStepViewController: MWStepViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = spacing
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
