@@ -20,13 +20,17 @@ class MWDashboardStepViewController: MWStepViewController {
         
         self.view.backgroundColor = .systemGroupedBackground
         
-        let layout = PinterestLayout()
-        layout.delegate = self
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 150, height: 200)
+        layout.sectionInset = .init(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.minimumInteritemSpacing = spacing
+        layout.minimumLineSpacing = spacing
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(collectionView)
         
         collectionView.register(MWDashboardStepViewControllerCell.self, forCellWithReuseIdentifier: "reuseIdentifier")
+        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.reloadData()
     }
@@ -49,9 +53,19 @@ extension MWDashboardStepViewController: UICollectionViewDataSource {
     }
 }
 
-extension MWDashboardStepViewController: PinterestLayoutDelegate {
-    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        //TODO: Find a way to calculate the correct height!
-        return [150, 200].randomElement()!
+extension MWDashboardStepViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return .zero }
+        
+        // Remove the section insets on both sides
+        var width = collectionView.frame.width - (flowLayout.sectionInset.left * 2)
+        // Remove the inter item spacing horizontally
+        width = width - flowLayout.minimumInteritemSpacing
+        // Make sure that we can fit two cells in each row
+        width = width / 2
+        
+        
+        //TODO: Calculate the height for each cell
+        return CGSize(width: width, height: 200)
     }
 }
