@@ -9,28 +9,42 @@ import Foundation
 
 class MWDashboardStepViewControllerCell: UICollectionViewCell {
     
-    let titleLabel = UILabel()
-    var stackView: UIStackView?
-    var subtitleLabel: UILabel?
-    var graphContainerView: UIView?
-    var footerLabel: UILabel?
+    //MARK: UIViews
+    private let titleLabel = UILabel()
+    private let stackView = UIStackView()
+    private var subtitleLabel: UILabel?
+    private var graphContainerView: UIView?
+    private var footerLabel: UILabel?
     
+    //MARK: Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.backgroundColor = .secondarySystemGroupedBackground
-        contentView.layer.cornerRadius = 10
-        contentView.layer.masksToBounds = true
+        self.contentView.backgroundColor = .secondarySystemGroupedBackground
+        self.contentView.layer.cornerRadius = 10
+        self.contentView.layer.masksToBounds = true
         
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.numberOfLines = 0
-        self.titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        self.titleLabel.font = UIFont.systemFont(ofSize: 15)
+        self.titleLabel.textColor = .secondaryLabel
+        
+        self.stackView.translatesAutoresizingMaskIntoConstraints = false
+        self.stackView.axis = .vertical
+        self.stackView.spacing = 16
+        self.stackView.alignment = .leading
+        self.stackView.distribution = .fill
+        
         self.contentView.addSubview(self.titleLabel)
+        self.contentView.addSubview(self.stackView)
         NSLayoutConstraint.activate([
             self.titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             self.titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             self.titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            self.titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+            self.stackView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16),
+            self.stackView.leadingAnchor.constraint(equalTo: self.titleLabel.leadingAnchor),
+            self.stackView.trailingAnchor.constraint(equalTo: self.titleLabel.trailingAnchor),
+            self.stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -16)
         ])
     }
     
@@ -43,17 +57,21 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
         // Clear title for the next cell
         self.titleLabel.text = nil
         
-        // Remove from superview
-        [stackView, subtitleLabel, graphContainerView, footerLabel].forEach {
-            $0?.removeFromSuperview()
+        // Remove from the stack view if present
+        [self.subtitleLabel, self.graphContainerView, self.footerLabel].forEach {
+            if let subview = $0 {
+                stackView.removeArrangedSubview(subview)
+                subview.removeFromSuperview()
+            }
         }
+        
         // Nullify references to free resources
-        self.stackView = nil
         self.subtitleLabel = nil
         self.graphContainerView = nil
         self.footerLabel = nil
     }
     
+    //MARK: Configuration
     func configure(with item: DashboardItem) {
         self.titleLabel.text = item.title
     }
