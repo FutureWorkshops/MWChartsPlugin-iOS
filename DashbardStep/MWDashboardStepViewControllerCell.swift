@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Charts
 
 class MWDashboardStepViewControllerCell: UICollectionViewCell {
     
@@ -91,16 +92,38 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
         if item.chartType != .none {
             self.graphContainerView = UIView()
             self.graphContainerView?.translatesAutoresizingMaskIntoConstraints = false
-            self.graphContainerView?.backgroundColor = .systemBlue
             self.stackView.addArrangedSubview(self.graphContainerView!)
 
             switch item.chartType {
             case .bar, .line:
                 // Height is 0.6 times the width
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
+                self.graphContainerView?.backgroundColor = .systemBlue
             case .pie:
                 // Square
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+                let pieChartView = PieChartView()
+                pieChartView.translatesAutoresizingMaskIntoConstraints = false
+                self.graphContainerView?.addPinnedSubview(pieChartView)
+                
+                #warning("Hardcoded values")
+                let entries = [
+                    PieChartDataEntry(value: 10),
+                    PieChartDataEntry(value: 30),
+                    PieChartDataEntry(value: 60)
+                ]
+                let dataSet = PieChartDataSet(entries: entries, label: nil)
+                dataSet.drawValuesEnabled = false
+                let data = PieChartData(dataSets: [dataSet])
+                pieChartView.data = data
+                pieChartView.chartDescription?.text = nil
+                
+                // Colors
+                dataSet.colors = tintColor.colorScheme(ofType: .analagous) as? [UIColor] ?? dataSet.colors
+                pieChartView.drawHoleEnabled = false
+                pieChartView.legend.enabled = false
+                pieChartView.rotationEnabled = false
+                pieChartView.notifyDataSetChanged()
             case .none:
                 break
             }
