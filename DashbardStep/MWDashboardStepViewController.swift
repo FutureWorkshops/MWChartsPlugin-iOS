@@ -19,13 +19,8 @@ class MWDashboardStepViewController: MWStepViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = .systemGroupedBackground
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 150, height: 200)
-        layout.sectionInset = .init(top: spacing, left: spacing, bottom: spacing, right: spacing)
-        layout.minimumInteritemSpacing = spacing
-        layout.minimumLineSpacing = spacing
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+    
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(collectionView)
         
@@ -33,6 +28,27 @@ class MWDashboardStepViewController: MWStepViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.reloadData()
+    }
+    
+    private func createLayout() -> UICollectionViewLayout {
+        
+        let estimatedHeight: CGFloat = 50
+
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(estimatedHeight))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(estimatedHeight))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        let spacing = CGFloat(16)
+        group.interItemSpacing = .fixed(spacing)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = spacing
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
 }
 
