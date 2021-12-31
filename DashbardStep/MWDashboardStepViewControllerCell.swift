@@ -28,22 +28,25 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
         self.titleLabel.numberOfLines = 0
         self.titleLabel.font = UIFont.systemFont(ofSize: 15)
         self.titleLabel.textColor = .secondaryLabel
+        self.titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        self.titleLabel.setContentHuggingPriority(.required, for: .vertical)
         
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         self.stackView.axis = .vertical
         self.stackView.spacing = 16
-        self.stackView.alignment = .leading
+        self.stackView.alignment = .fill
         self.stackView.distribution = .fill
         
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.stackView)
         NSLayoutConstraint.activate([
-            self.titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            self.titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            self.titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
+            
             self.stackView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16),
-            self.stackView.leadingAnchor.constraint(equalTo: self.titleLabel.leadingAnchor),
-            self.stackView.trailingAnchor.constraint(equalTo: self.titleLabel.trailingAnchor),
+            self.stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
+            self.stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
             self.stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -16)
         ])
     }
@@ -74,6 +77,44 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
     //MARK: Configuration
     func configure(with item: DashboardItem) {
         self.titleLabel.text = item.title
+        
+        if let subtitle = item.subtitle {
+            self.subtitleLabel = UILabel()
+            self.subtitleLabel?.translatesAutoresizingMaskIntoConstraints = false
+            self.subtitleLabel?.numberOfLines = 0
+            self.subtitleLabel?.font = UIFont.systemFont(ofSize: 34, weight: .medium)
+            self.subtitleLabel?.textColor = .label
+            self.subtitleLabel?.text = subtitle
+            self.stackView.addArrangedSubview(self.subtitleLabel!)
+        }
+        
+        if item.chartType != .none {
+            self.graphContainerView = UIView()
+            self.graphContainerView?.translatesAutoresizingMaskIntoConstraints = false
+            self.graphContainerView?.backgroundColor = .systemBlue
+            self.stackView.addArrangedSubview(self.graphContainerView!)
+
+            switch item.chartType {
+            case .bar, .line:
+                // Height is 0.6 times the width
+                self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
+            case .pie:
+                // Square
+                self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
+            case .none:
+                break
+            }
+        }
+        
+        if let footer = item.footer {
+            self.footerLabel = UILabel()
+            self.footerLabel?.translatesAutoresizingMaskIntoConstraints = false
+            self.footerLabel?.numberOfLines = 0
+            self.footerLabel?.font = UIFont.systemFont(ofSize: 15)
+            self.footerLabel?.textColor = .secondaryLabel
+            self.footerLabel?.text = footer
+            self.stackView.addArrangedSubview(self.footerLabel!)
+        }
     }
     
 }
