@@ -98,6 +98,41 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
             case .bar:
                 // Height is 0.6 times the width
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
+                
+                #warning("Hardcoded values")
+                let entries = [
+                    BarChartDataEntry(x: 0, y: 4),
+                    BarChartDataEntry(x: 1, y: 10),
+                    BarChartDataEntry(x: 2, y: 7),
+                    BarChartDataEntry(x: 3, y: 4),
+                    BarChartDataEntry(x: 4, y: 7),
+                    BarChartDataEntry(x: 5, y: 3),
+                    BarChartDataEntry(x: 6, y: 10)
+                ]
+                
+                let dataSet = BarChartDataSet(entries: entries)
+                dataSet.drawValuesEnabled = false
+                dataSet.drawIconsEnabled = false
+                dataSet.colors = [self.tintColor]
+                
+                let chart = BarChartView()
+                chart.translatesAutoresizingMaskIntoConstraints = false
+                chart.isUserInteractionEnabled = false
+                chart.drawGridBackgroundEnabled = false
+                chart.drawMarkers = false
+                chart.drawBordersEnabled = false
+                chart.pinchZoomEnabled = false
+                chart.doubleTapToZoomEnabled = false
+                chart.rightAxis.enabled = false
+                chart.leftAxis.enabled = false
+                chart.xAxis.drawAxisLineEnabled = false
+                chart.xAxis.drawLabelsEnabled = false
+                chart.xAxis.drawGridLinesEnabled = false
+                chart.legend.enabled = false
+                chart.data = BarChartData(dataSet: dataSet)
+                chart.notifyDataSetChanged()
+                
+                self.graphContainerView?.addPinnedSubview(chart)
             case .line:
                 // Height is 0.6 times the width
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
