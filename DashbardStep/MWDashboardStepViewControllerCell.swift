@@ -95,16 +95,53 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
             self.stackView.addArrangedSubview(self.graphContainerView!)
 
             switch item.chartType {
-            case .bar, .line:
+            case .bar:
                 // Height is 0.6 times the width
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
-                self.graphContainerView?.backgroundColor = .systemBlue
+            case .line:
+                // Height is 0.6 times the width
+                self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
+                
+                #warning("Hardcoded values")
+                let entries = [
+                    ChartDataEntry(x: 0, y: 5),
+                    ChartDataEntry(x: 1, y: 10),
+                    ChartDataEntry(x: 2, y: 0),
+                    ChartDataEntry(x: 3, y: 2),
+                    ChartDataEntry(x: 4, y: 0)
+                ]
+                
+                let dataSet = LineChartDataSet(entries: entries)
+                dataSet.drawValuesEnabled = false
+                dataSet.drawCirclesEnabled = false
+                dataSet.drawFilledEnabled = false
+                dataSet.drawIconsEnabled = false
+                dataSet.drawVerticalHighlightIndicatorEnabled = false
+                dataSet.drawHorizontalHighlightIndicatorEnabled = false
+                dataSet.lineWidth = 2
+                dataSet.colors = [self.tintColor]
+                
+                let chart = LineChartView()
+                chart.translatesAutoresizingMaskIntoConstraints = false
+                chart.isUserInteractionEnabled = false
+                chart.drawGridBackgroundEnabled = false
+                chart.drawMarkers = false
+                chart.drawBordersEnabled = false
+                chart.pinchZoomEnabled = false
+                chart.doubleTapToZoomEnabled = false
+                chart.rightAxis.enabled = false
+                chart.leftAxis.enabled = false
+                chart.xAxis.drawAxisLineEnabled = false
+                chart.xAxis.drawLabelsEnabled = false
+                chart.xAxis.drawGridLinesEnabled = false
+                chart.legend.enabled = false
+                chart.data = LineChartData(dataSet: dataSet)
+                chart.notifyDataSetChanged()
+                
+                self.graphContainerView?.addPinnedSubview(chart)
             case .pie:
                 // Square
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
-                let pieChartView = PieChartView()
-                pieChartView.translatesAutoresizingMaskIntoConstraints = false
-                self.graphContainerView?.addPinnedSubview(pieChartView)
                 
                 #warning("Hardcoded values")
                 let entries = [
@@ -114,16 +151,19 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 ]
                 let dataSet = PieChartDataSet(entries: entries, label: nil)
                 dataSet.drawValuesEnabled = false
-                let data = PieChartData(dataSets: [dataSet])
-                pieChartView.data = data
-                pieChartView.chartDescription?.text = nil
-                
-                // Colors
                 dataSet.colors = tintColor.colorScheme(ofType: .analagous) as? [UIColor] ?? dataSet.colors
+                
+                let pieChartView = PieChartView()
+                pieChartView.translatesAutoresizingMaskIntoConstraints = false
+                pieChartView.isUserInteractionEnabled = false
+                pieChartView.chartDescription?.text = nil
                 pieChartView.drawHoleEnabled = false
                 pieChartView.legend.enabled = false
                 pieChartView.rotationEnabled = false
+                pieChartView.data = PieChartData(dataSet: dataSet)
                 pieChartView.notifyDataSetChanged()
+                
+                self.graphContainerView?.addPinnedSubview(pieChartView)
             case .none:
                 break
             }
