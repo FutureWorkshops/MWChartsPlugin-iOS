@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		217594364D16897CCA75CE0D /* MWPieChartStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87005925C18F67514C28830 /* MWPieChartStepViewController.swift */; };
 		364C74D6252DEE54002BBE8B /* MWChartsPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364C74CC252DEE54002BBE8B /* MWChartsPlugin.framework */; };
 		364C74DB252DEE54002BBE8B /* MWChartsPluginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364C74DA252DEE54002BBE8B /* MWChartsPluginTests.swift */; };
 		364C74DD252DEE54002BBE8B /* BuildFile in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Public, ); }; };
-		3FE1E1460B5E8ABEB8AD96CB /* MWPieChartStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D4C7FFD6F0A47797EF79A7 /* MWPieChartStep.swift */; };
-		533002B5586B196CF91D9313 /* MWChartsPluginStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F994FC2F451738FB9BF4E /* MWChartsPluginStruct.swift */; };
+		41AAAC93F2EEFFBA45293512 /* MWPieChartStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661204718A57FBE58070684C /* MWPieChartStep.swift */; };
 		54F225C4C4BDD5066C626622 /* Pods_MWChartsPluginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E108F13F439EDCB3A8F65661 /* Pods_MWChartsPluginTests.framework */; };
-		5D1D52EDC429D3A3982BD226 /* MWNetworkPieChartStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A980FE00B57AC5710F7153 /* MWNetworkPieChartStepViewController.swift */; };
-		BF55770227B65FFBF4899E90 /* MWPieChartStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7306DC6957B567DCEEC770 /* MWPieChartStepViewController.swift */; };
-		D6E7E311861023A81E9A8E65 /* MWNetworkPieChartStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BC14DF23459A9FBCC4E020 /* MWNetworkPieChartStep.swift */; };
+		6CAB3124727100B1D7DE8838 /* MWNetworkPieChartStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E164A36CBF259F5061203BA1 /* MWNetworkPieChartStep.swift */; };
+		9FAC344444B71A2456DF3B15 /* MWChartsPluginStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F6466D1C885C568050785 /* MWChartsPluginStruct.swift */; };
 		E6C5DAE667CD0BA082E52FC7 /* Pods_MWCharts_MWChartsPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA93B35BD571FB2FA67ED33E /* Pods_MWCharts_MWChartsPlugin.framework */; };
+		FB6612F40F54A9AEF6814344 /* MWNetworkPieChartStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96B39629496840D926EF49 /* MWNetworkPieChartStepViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,20 +35,20 @@
 		364C74D5252DEE54002BBE8B /* MWChartsPluginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MWChartsPluginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		364C74DA252DEE54002BBE8B /* MWChartsPluginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWChartsPluginTests.swift; sourceTree = "<group>"; };
 		364C74DC252DEE54002BBE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		42D4C7FFD6F0A47797EF79A7 /* MWPieChartStep.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MWPieChartStep.swift; sourceTree = "<group>"; };
-		5C7306DC6957B567DCEEC770 /* MWPieChartStepViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MWPieChartStepViewController.swift; sourceTree = "<group>"; };
-		5D495C6AAC8EE4727A067669 /* MWChartsPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MWChartsPlugin.h; sourceTree = "<group>"; };
+		53740D1E3BEF0BD153098D39 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A4ADE911E2BE650CC2AAB06 /* MWChartsPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MWChartsPlugin.h; sourceTree = "<group>"; };
+		661204718A57FBE58070684C /* MWPieChartStep.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MWPieChartStep.swift; sourceTree = "<group>"; };
 		66F677600C7014DAF00FFC84 /* Pods-MWChartsPluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWChartsPluginTests.debug.xcconfig"; path = "Target Support Files/Pods-MWChartsPluginTests/Pods-MWChartsPluginTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7833FBE42530D0550060EBC7 /* ResearchKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ResearchKit.xcframework; path = "../../../MobileWorkflow-iOS/Build/ResearchKit.xcframework"; sourceTree = "<group>"; };
 		7833FBE52530D0550060EBC7 /* MobileWorkflowCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MobileWorkflowCore.xcframework; path = "../../../MobileWorkflow-iOS/Build/MobileWorkflowCore.xcframework"; sourceTree = "<group>"; };
+		961F6466D1C885C568050785 /* MWChartsPluginStruct.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MWChartsPluginStruct.swift; sourceTree = "<group>"; };
 		A2571B0EA9DF016E1F450DE6 /* Pods-MWChartsPluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWChartsPluginTests.release.xcconfig"; path = "Target Support Files/Pods-MWChartsPluginTests/Pods-MWChartsPluginTests.release.xcconfig"; sourceTree = "<group>"; };
-		AFCA18474AF46B5FF92AD9F9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6A980FE00B57AC5710F7153 /* MWNetworkPieChartStepViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MWNetworkPieChartStepViewController.swift; sourceTree = "<group>"; };
+		BD96B39629496840D926EF49 /* MWNetworkPieChartStepViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MWNetworkPieChartStepViewController.swift; sourceTree = "<group>"; };
 		C9E6A6A38000FC0BA86E4D5B /* Pods-MWCharts-MWChartsPlugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWCharts-MWChartsPlugin.debug.xcconfig"; path = "Target Support Files/Pods-MWCharts-MWChartsPlugin/Pods-MWCharts-MWChartsPlugin.debug.xcconfig"; sourceTree = "<group>"; };
 		DA93B35BD571FB2FA67ED33E /* Pods_MWCharts_MWChartsPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MWCharts_MWChartsPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E108F13F439EDCB3A8F65661 /* Pods_MWChartsPluginTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MWChartsPluginTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E79F994FC2F451738FB9BF4E /* MWChartsPluginStruct.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MWChartsPluginStruct.swift; sourceTree = "<group>"; };
-		F1BC14DF23459A9FBCC4E020 /* MWNetworkPieChartStep.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MWNetworkPieChartStep.swift; sourceTree = "<group>"; };
+		E164A36CBF259F5061203BA1 /* MWNetworkPieChartStep.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MWNetworkPieChartStep.swift; sourceTree = "<group>"; };
+		F87005925C18F67514C28830 /* MWPieChartStepViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MWPieChartStepViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,16 +95,6 @@
 			path = ../Pods;
 			sourceTree = "<group>";
 		};
-		2C3F8D768FBD5A0EA09E9D01 /* NetworkChartStep */ = {
-			isa = PBXGroup;
-			children = (
-				F1BC14DF23459A9FBCC4E020 /* MWNetworkPieChartStep.swift */,
-				C6A980FE00B57AC5710F7153 /* MWNetworkPieChartStepViewController.swift */,
-			);
-			name = NetworkChartStep;
-			path = NetworkChartStep;
-			sourceTree = "<group>";
-		};
 		364C74C2252DEE54002BBE8B = {
 			isa = PBXGroup;
 			children = (
@@ -128,11 +118,11 @@
 		364C74CE252DEE54002BBE8B /* MWChartsPlugin */ = {
 			isa = PBXGroup;
 			children = (
-				454581F894C6AB7A57AE1D4B /* ChartStep */,
-				2C3F8D768FBD5A0EA09E9D01 /* NetworkChartStep */,
-				5D495C6AAC8EE4727A067669 /* MWChartsPlugin.h */,
-				E79F994FC2F451738FB9BF4E /* MWChartsPluginStruct.swift */,
-				AFCA18474AF46B5FF92AD9F9 /* Info.plist */,
+				C25C8A8BE5734103A3DACB48 /* ChartStep */,
+				647AF180F05B6862DDC67C04 /* NetworkChartStep */,
+				5A4ADE911E2BE650CC2AAB06 /* MWChartsPlugin.h */,
+				961F6466D1C885C568050785 /* MWChartsPluginStruct.swift */,
+				53740D1E3BEF0BD153098D39 /* Info.plist */,
 			);
 			path = MWChartsPlugin;
 			sourceTree = "<group>";
@@ -146,11 +136,21 @@
 			path = MWChartsPluginTests;
 			sourceTree = "<group>";
 		};
-		454581F894C6AB7A57AE1D4B /* ChartStep */ = {
+		647AF180F05B6862DDC67C04 /* NetworkChartStep */ = {
 			isa = PBXGroup;
 			children = (
-				5C7306DC6957B567DCEEC770 /* MWPieChartStepViewController.swift */,
-				42D4C7FFD6F0A47797EF79A7 /* MWPieChartStep.swift */,
+				E164A36CBF259F5061203BA1 /* MWNetworkPieChartStep.swift */,
+				BD96B39629496840D926EF49 /* MWNetworkPieChartStepViewController.swift */,
+			);
+			name = NetworkChartStep;
+			path = NetworkChartStep;
+			sourceTree = "<group>";
+		};
+		C25C8A8BE5734103A3DACB48 /* ChartStep */ = {
+			isa = PBXGroup;
+			children = (
+				F87005925C18F67514C28830 /* MWPieChartStepViewController.swift */,
+				661204718A57FBE58070684C /* MWPieChartStep.swift */,
 			);
 			name = ChartStep;
 			path = ChartStep;
@@ -314,11 +314,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF55770227B65FFBF4899E90 /* MWPieChartStepViewController.swift in Sources */,
-				3FE1E1460B5E8ABEB8AD96CB /* MWPieChartStep.swift in Sources */,
-				D6E7E311861023A81E9A8E65 /* MWNetworkPieChartStep.swift in Sources */,
-				5D1D52EDC429D3A3982BD226 /* MWNetworkPieChartStepViewController.swift in Sources */,
-				533002B5586B196CF91D9313 /* MWChartsPluginStruct.swift in Sources */,
+				217594364D16897CCA75CE0D /* MWPieChartStepViewController.swift in Sources */,
+				41AAAC93F2EEFFBA45293512 /* MWPieChartStep.swift in Sources */,
+				6CAB3124727100B1D7DE8838 /* MWNetworkPieChartStep.swift in Sources */,
+				FB6612F40F54A9AEF6814344 /* MWNetworkPieChartStepViewController.swift in Sources */,
+				9FAC344444B71A2456DF3B15 /* MWChartsPluginStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
