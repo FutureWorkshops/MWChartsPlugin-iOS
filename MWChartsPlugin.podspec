@@ -18,6 +18,6 @@ Pod::Spec.new do |s|
         cs.dependency            'MobileWorkflow', '~> 2.0.0'
 	    cs.dependency            'Charts', '~> 3.6.0'
 	    cs.dependency            'Colours', '~> 5.13.0'
-        cs.source_files          = 'MobileWorkflowChartsPlugin/MWChartsPlugin/**/*.swift'
+        cs.source_files          = 'MWChartsPlugin/MWChartsPlugin/**/*.swift'
     end
 end
