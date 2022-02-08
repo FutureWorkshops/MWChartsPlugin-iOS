@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:MobileWorkflowCharts/MobileWorkflowCharts.xcodeproj">
+      location = "group:MWCharts/MWCharts.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:MobileWorkflowChartsPlugin/MWChartsPlugin.xcodeproj">
+      location = "group:MWChartsPlugin/MWChartsPlugin.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

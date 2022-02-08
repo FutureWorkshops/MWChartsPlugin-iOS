@@ -1,13 +1,13 @@
 source 'https://cdn.cocoapods.org/'
 source 'https://github.com/FutureWorkshops/MWPodspecs.git'
 
-workspace 'MobileWorkflowCharts'
+workspace 'MWCharts'
 platform :ios, '13.0'
 
 inhibit_all_warnings!
 use_frameworks!
 
-project 'MobileWorkflowCharts/MobileWorkflowCharts.xcodeproj'
+project 'MWCharts/MWCharts.xcodeproj'
 project 'MWChartsPlugin/MWChartsPlugin.xcodeproj'
 
 abstract_target 'MWCharts' do
@@ -15,16 +15,16 @@ abstract_target 'MWCharts' do
   pod 'Charts'
   pod 'Colours'
 
-  target 'MobileWorkflowCharts' do
-    project 'MobileWorkflowCharts/MobileWorkflowCharts.xcodeproj'
+  target 'MWCharts' do
+    project 'MWCharts/MWCharts.xcodeproj'
 
-    target 'MobileWorkflowChartsTests' do
+    target 'MWChartsTests' do
       inherit! :search_paths
     end
   end
 
   target 'MWChartsPlugin' do
-    project 'MobileWorkflowChartsPlugin/MWChartsPlugin.xcodeproj'
+    project 'MWChartsPlugin/MWChartsPlugin.xcodeproj'
 
     target 'MWChartsPluginTests' do
       inherit! :search_paths

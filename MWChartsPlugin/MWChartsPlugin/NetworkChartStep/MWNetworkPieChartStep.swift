@@ -15,17 +15,15 @@ public class MWNetworkPieChartStep: MWStep, PieChartStep, RemoteContentStep, Syn
     public let stepContext: StepContext
     public let session: Session
     public let services: StepServices
-    public let secondaryWorkflowIDs: [String]
     public var contentURL: String?
     public let emptyText: String?
     public var resolvedURL: URL?
     public var items: [PieChartItem] = []
     
-    init(identifier: String, stepContext: StepContext, session: Session, services: StepServices, secondaryWorkflowIDs: [String], url: String?, emptyText: String?) {
+    init(identifier: String, stepContext: StepContext, session: Session, services: StepServices, url: String?, emptyText: String?) {
         self.stepContext = stepContext
         self.session = session
         self.services = services
-        self.secondaryWorkflowIDs = secondaryWorkflowIDs
         self.contentURL = url
         self.emptyText = emptyText
         super.init(identifier: identifier)
@@ -62,8 +60,7 @@ extension MWNetworkPieChartStep: BuildableStep {
         
         let url = stepInfo.data.content["url"] as? String
         let emptyText = services.localizationService.translate(stepInfo.data.content["emptyText"] as? String)
-        let secondaryWorkflowIDs: [String] = (stepInfo.data.content["workflows"] as? [[String: Any]])?.compactMap({ $0.getString(key: "id") }) ?? []
-        
-        return MWNetworkPieChartStep(identifier: stepInfo.data.identifier, stepContext: stepInfo.context, session: stepInfo.session, services: services, secondaryWorkflowIDs: secondaryWorkflowIDs, url: url, emptyText: emptyText)
+
+        return MWNetworkPieChartStep(identifier: stepInfo.data.identifier, stepContext: stepInfo.context, session: stepInfo.session, services: services, url: url, emptyText: emptyText)
     }
 }

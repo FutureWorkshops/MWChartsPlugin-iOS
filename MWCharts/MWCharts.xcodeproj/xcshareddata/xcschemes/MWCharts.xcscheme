@@ -64,11 +64,20 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B75028B01C5A3F94000EB3CF"
+            BuildableName = "MWCharts.app"
+            BlueprintName = "MWCharts"
+            ReferencedContainer = "container:MWCharts.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "B75028B01C5A3F94000EB3CF"
             BuildableName = "MobileWorkflowCharts.app"
             BlueprintName = "MobileWorkflowCharts"
             ReferencedContainer = "container:MobileWorkflowCharts.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

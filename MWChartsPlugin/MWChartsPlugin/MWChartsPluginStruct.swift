@@ -16,7 +16,7 @@ enum L10n {
     }
 }
 
-public struct MWChartsPlugin: Plugin {
+public struct MWChartsPluginStruct: Plugin {
     public static var allStepsTypes: [StepType] {
         return MWChartstepType.allCases
     }
