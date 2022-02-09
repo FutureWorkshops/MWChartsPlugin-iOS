@@ -59,7 +59,33 @@ public class MWPieChartStep: MWStep, PieChartStep {
     }
 }
 
+extension String {
+    func toDouble() -> Double? {
+        return Double(self)
+    }
+}
+
 extension MWPieChartStep: BuildableStep {
+    
+    
+    /// This method helps with supporting against changes in the Json of type between string and double
+    /// - Parameter rawValue: Value as it comes in the Json file
+    /// - Returns: Value decoded as Double (if present)
+    private static func extractValue(from rawValue: Any) -> Double? {
+        if let value = rawValue as? Double {
+            return value
+        }
+        
+        if let value = (rawValue as? String)?.toDouble() {
+            return value
+        }
+        
+        if let value = (rawValue as? NSNumber)?.doubleValue {
+            return value
+        }
+        
+        return nil
+    }
     
     public static func build(stepInfo: StepInfo, services: StepServices) throws -> Step {
         
@@ -68,7 +94,7 @@ extension MWPieChartStep: BuildableStep {
             guard let label = $0["label"] as? String else {
                 throw ParseError.invalidStepData(cause: "Invalid label for pie chart data item")
             }
-            guard let stringValue = $0["value"] as? String, let value = Double(stringValue) else {
+            guard let value = extractValue(from: $0["value"]) else {
                 throw ParseError.invalidStepData(cause: "Invalid value for pie chart data item")
             }
             return PieChartItem(label: label, value: value)
