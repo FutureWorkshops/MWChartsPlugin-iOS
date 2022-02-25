@@ -44,7 +44,7 @@ extension MWDashboardStep: BuildableStep {
     static func build(stepInfo: StepInfo, services: StepServices) throws -> Step {
         let json = stepInfo.data.content
         guard let title = json["title"] as? String else {
-            throw ParseError.invalidWorkflowData(cause: "Missing title for the dashboard item.")
+            throw ParseError.invalidStepData(cause: "Missing title for the dashboard item.")
         }
         let rawItems = json["items"] as? Array<[String:Any]> ?? []
         let data = try JSONSerialization.data(withJSONObject: rawItems, options: [])

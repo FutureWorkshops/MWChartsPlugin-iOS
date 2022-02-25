@@ -10,7 +10,10 @@
 		217594364D16897CCA75CE0D /* MWPieChartStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87005925C18F67514C28830 /* MWPieChartStepViewController.swift */; };
 		364C74D6252DEE54002BBE8B /* MWChartsPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364C74CC252DEE54002BBE8B /* MWChartsPlugin.framework */; };
 		364C74DB252DEE54002BBE8B /* MWChartsPluginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364C74DA252DEE54002BBE8B /* MWChartsPluginTests.swift */; };
-		364C74DD252DEE54002BBE8B /* BuildFile in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Public, ); }; };
+		364C74DD252DEE54002BBE8B /* (null) in Headers */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Public, ); }; };
+		36C873FB27C8F06500316CBB /* MWDashboardStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C873F827C8F06500316CBB /* MWDashboardStepViewController.swift */; };
+		36C873FC27C8F06500316CBB /* MWDashboardStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C873F927C8F06500316CBB /* MWDashboardStep.swift */; };
+		36C873FD27C8F06500316CBB /* MWDashboardStepViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C873FA27C8F06500316CBB /* MWDashboardStepViewControllerCell.swift */; };
 		41AAAC93F2EEFFBA45293512 /* MWPieChartStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661204718A57FBE58070684C /* MWPieChartStep.swift */; };
 		54F225C4C4BDD5066C626622 /* Pods_MWChartsPluginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E108F13F439EDCB3A8F65661 /* Pods_MWChartsPluginTests.framework */; };
 		6CAB3124727100B1D7DE8838 /* MWNetworkPieChartStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E164A36CBF259F5061203BA1 /* MWNetworkPieChartStep.swift */; };
@@ -35,6 +38,9 @@
 		364C74D5252DEE54002BBE8B /* MWChartsPluginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MWChartsPluginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		364C74DA252DEE54002BBE8B /* MWChartsPluginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWChartsPluginTests.swift; sourceTree = "<group>"; };
 		364C74DC252DEE54002BBE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36C873F827C8F06500316CBB /* MWDashboardStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWDashboardStepViewController.swift; sourceTree = "<group>"; };
+		36C873F927C8F06500316CBB /* MWDashboardStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWDashboardStep.swift; sourceTree = "<group>"; };
+		36C873FA27C8F06500316CBB /* MWDashboardStepViewControllerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MWDashboardStepViewControllerCell.swift; sourceTree = "<group>"; };
 		53740D1E3BEF0BD153098D39 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A4ADE911E2BE650CC2AAB06 /* MWChartsPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MWChartsPlugin.h; sourceTree = "<group>"; };
 		661204718A57FBE58070684C /* MWPieChartStep.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MWPieChartStep.swift; sourceTree = "<group>"; };
@@ -120,6 +126,7 @@
 			children = (
 				C25C8A8BE5734103A3DACB48 /* ChartStep */,
 				647AF180F05B6862DDC67C04 /* NetworkChartStep */,
+				36C873F727C8F06500316CBB /* DashboardStep */,
 				5A4ADE911E2BE650CC2AAB06 /* MWChartsPlugin.h */,
 				961F6466D1C885C568050785 /* MWChartsPluginStruct.swift */,
 				53740D1E3BEF0BD153098D39 /* Info.plist */,
@@ -136,13 +143,22 @@
 			path = MWChartsPluginTests;
 			sourceTree = "<group>";
 		};
+		36C873F727C8F06500316CBB /* DashboardStep */ = {
+			isa = PBXGroup;
+			children = (
+				36C873F927C8F06500316CBB /* MWDashboardStep.swift */,
+				36C873F827C8F06500316CBB /* MWDashboardStepViewController.swift */,
+				36C873FA27C8F06500316CBB /* MWDashboardStepViewControllerCell.swift */,
+			);
+			path = DashboardStep;
+			sourceTree = "<group>";
+		};
 		647AF180F05B6862DDC67C04 /* NetworkChartStep */ = {
 			isa = PBXGroup;
 			children = (
 				E164A36CBF259F5061203BA1 /* MWNetworkPieChartStep.swift */,
 				BD96B39629496840D926EF49 /* MWNetworkPieChartStepViewController.swift */,
 			);
-			name = NetworkChartStep;
 			path = NetworkChartStep;
 			sourceTree = "<group>";
 		};
@@ -152,7 +168,6 @@
 				F87005925C18F67514C28830 /* MWPieChartStepViewController.swift */,
 				661204718A57FBE58070684C /* MWPieChartStep.swift */,
 			);
-			name = ChartStep;
 			path = ChartStep;
 			sourceTree = "<group>";
 		};
@@ -163,7 +178,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				364C74DD252DEE54002BBE8B /* BuildFile in Headers */,
+				364C74DD252DEE54002BBE8B /* (null) in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,10 +330,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				217594364D16897CCA75CE0D /* MWPieChartStepViewController.swift in Sources */,
+				36C873FD27C8F06500316CBB /* MWDashboardStepViewControllerCell.swift in Sources */,
 				41AAAC93F2EEFFBA45293512 /* MWPieChartStep.swift in Sources */,
 				6CAB3124727100B1D7DE8838 /* MWNetworkPieChartStep.swift in Sources */,
 				FB6612F40F54A9AEF6814344 /* MWNetworkPieChartStepViewController.swift in Sources */,
 				9FAC344444B71A2456DF3B15 /* MWChartsPluginStruct.swift in Sources */,
+				36C873FC27C8F06500316CBB /* MWDashboardStep.swift in Sources */,
+				36C873FB27C8F06500316CBB /* MWDashboardStepViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
