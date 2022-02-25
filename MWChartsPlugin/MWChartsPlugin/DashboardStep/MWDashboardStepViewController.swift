@@ -15,6 +15,8 @@ class MWDashboardStepViewController: MWStepViewController {
     var collectionView: UICollectionView!
     let spacing: CGFloat = 16.0
     
+    var heightWorkerCell: MWDashboardStepViewControllerCell!
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +30,8 @@ class MWDashboardStepViewController: MWStepViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.backgroundColor = .clear
+        
+        self.heightWorkerCell = MWDashboardStepViewControllerCell(frame: .zero)
     }
     
     override func configureNavigationBar(_ navigationBar: UINavigationBar) {
@@ -36,21 +40,11 @@ class MWDashboardStepViewController: MWStepViewController {
     }
     
     private func createLayout() -> UICollectionViewLayout {
-        
-        let estimatedHeight: CGFloat = 50
-        
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .estimated(estimatedHeight))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(estimatedHeight))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
-        group.interItemSpacing = .fixed(16)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = spacing
-        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
-        
-        let layout = UICollectionViewCompositionalLayout(section: section)
+        let layout = PinterestLayout()
+        layout.numberOfColumns = 2
+        layout.cellPadding = 6
+        layout.contentInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.heightDataSource = self
         return layout
     }
 }
@@ -72,19 +66,19 @@ extension MWDashboardStepViewController: UICollectionViewDataSource {
     }
 }
 
-extension MWDashboardStepViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return .zero }
+extension MWDashboardStepViewController: PinterestLayoutHeightDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, heightForCellAtIndexPath indexPath: IndexPath, withWidth: CGFloat) -> CGFloat {
+        let item = self.dashboardStep.items[indexPath.row]
         
-        // Remove the section insets on both sides
-        var width = collectionView.frame.width - (flowLayout.sectionInset.left * 2)
-        // Remove the inter item spacing horizontally
-        width = width - flowLayout.minimumInteritemSpacing
-        // Make sure that we can fit two cells in each row
-        width = width / 2
+        self.heightWorkerCell.prepareForReuse()
+        self.heightWorkerCell.configure(with: item)
+        let size = self.heightWorkerCell.layoutSizeFittingWidth(width: withWidth)
         
-        
-        //TODO: Calculate the height for each cell
-        return CGSize(width: width, height: 200)
+        return size.height
     }
+}
+
+extension MWDashboardStepViewController: UICollectionViewDelegate {
+    
 }

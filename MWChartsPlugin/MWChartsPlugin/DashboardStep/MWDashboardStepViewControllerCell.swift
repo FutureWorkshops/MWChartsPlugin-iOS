@@ -7,8 +7,11 @@
 
 import Foundation
 import Charts
+import MobileWorkflowCore
 
 class MWDashboardStepViewControllerCell: UICollectionViewCell {
+    
+    private let stackViewInset: CGFloat = 16
     
     //MARK: UIViews
     private let titleLabel = UILabel()
@@ -25,30 +28,26 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
         self.contentView.layer.cornerRadius = 10
         self.contentView.layer.masksToBounds = true
         
-        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.titleLabel.numberOfLines = 0
-        self.titleLabel.font = UIFont.systemFont(ofSize: 15)
-        self.titleLabel.textColor = .secondaryLabel
-        self.titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        self.titleLabel.setContentHuggingPriority(.required, for: .vertical)
-        
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         self.stackView.axis = .vertical
         self.stackView.spacing = 16
         self.stackView.alignment = .fill
         self.stackView.distribution = .fill
         
-        self.contentView.addSubview(self.titleLabel)
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.titleLabel.numberOfLines = 0
+        self.titleLabel.font = UIFont.systemFont(ofSize: 15) // TODO: support dynamic type?
+        self.titleLabel.textColor = .secondaryLabel
+        self.titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        self.titleLabel.setContentHuggingPriority(.required, for: .vertical)
+        self.stackView.addArrangedSubview(self.titleLabel)
+        
         self.contentView.addSubview(self.stackView)
         NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
-            self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
-            
-            self.stackView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16),
-            self.stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
-            self.stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
-            self.stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -16)
+            self.stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: self.stackViewInset),
+            self.stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: self.stackViewInset),
+            self.stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -self.stackViewInset),
+            self.stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -self.stackViewInset)
         ])
     }
     
@@ -83,9 +82,11 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
             self.subtitleLabel = UILabel()
             self.subtitleLabel?.translatesAutoresizingMaskIntoConstraints = false
             self.subtitleLabel?.numberOfLines = 0
-            self.subtitleLabel?.font = UIFont.systemFont(ofSize: 34, weight: .medium)
+            self.subtitleLabel?.font = UIFont.systemFont(ofSize: 34, weight: .medium) // TODO: support dynamic type?
             self.subtitleLabel?.textColor = .label
             self.subtitleLabel?.text = subtitle
+            self.subtitleLabel?.setContentCompressionResistancePriority(.required, for: .vertical)
+            self.subtitleLabel?.setContentHuggingPriority(.required, for: .vertical)
             self.stackView.addArrangedSubview(self.subtitleLabel!)
         }
         
@@ -211,8 +212,18 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
             self.footerLabel?.font = UIFont.systemFont(ofSize: 15)
             self.footerLabel?.textColor = .secondaryLabel
             self.footerLabel?.text = footer
+            self.footerLabel?.setContentCompressionResistancePriority(.required, for: .vertical)
+            self.footerLabel?.setContentHuggingPriority(.required, for: .vertical)
             self.stackView.addArrangedSubview(self.footerLabel!)
         }
     }
     
+    //MARK: Layout helper
+    func layoutSizeFittingWidth(width: CGFloat) -> CGSize {
+        let widthConstraint = self.stackView.widthAnchor.constraint(equalToConstant: width - (2 * self.stackViewInset))
+        widthConstraint.isActive = true
+        let size = self.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        widthConstraint.isActive = false
+        return size
+    }
 }
