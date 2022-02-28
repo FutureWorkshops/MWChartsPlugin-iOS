@@ -5,9 +5,8 @@
 //  Created by Jonathan Flintham on 12/02/2021.
 //
 
-import Foundation
-import MobileWorkflowCore
 import UIKit
+import MobileWorkflowCore
 
 public class MWNetworkPieChartStepViewController: MWPieChartStepViewController, RemoteContentStepViewController, ContentClearable {
 

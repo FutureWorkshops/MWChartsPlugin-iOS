@@ -14,6 +14,10 @@ enum L10n {
         static let legendLabel = "Types"
         static let defaultEmptyText = "No data available"
     }
+    
+    enum Dashboard {
+        static let defaultEmptyText = "No data available"
+    }
 }
 
 public struct MWChartsPluginStruct: Plugin {
@@ -27,6 +31,7 @@ public enum MWChartstepType: String, StepType, CaseIterable {
     case pieChart = "chartsPieChart" // legacy naming convention
     case networkPieChart = "io.mobileworkflow.NetworkPieChart"
     case dashboard = "io.mobileworkflow.Dashboard"
+    case networkDashboard = "io.app-rail.charts.network-dashboard"
     
     public var typeName: String {
         return self.rawValue
@@ -40,6 +45,8 @@ public enum MWChartstepType: String, StepType, CaseIterable {
             return MWNetworkPieChartStep.self
         case .dashboard:
             return MWDashboardStep.self
+        case .networkDashboard:
+            return MWNetworkDashboardStep.self
         }
     }
 }

@@ -8,35 +8,9 @@
 import Foundation
 import MobileWorkflowCore
 
-public struct PieChartItem: Codable {
-    let label: String
-    let value: Double
-    
-    public init(label: String, value: Double) {
-        self.label = label
-        self.value = value
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: Self.CodingKeys.self)
-        self.label = try container.decode(String.self, forKey: .label)
-        let stringValue = try container.decode(String.self, forKey: .value)
-        guard let value = Double(stringValue) else {
-            throw ParseError.invalidStepData(cause: "Invalid value for pie chart data item")
-        }
-        self.value = value
-    }
-}
-
 public protocol PieChartStep {
     var stepContext: StepContext { get }
     var items: [PieChartItem] { get }
-}
-
-public struct NetworkPieChartItemTask: CredentializedAsyncTask, URLAsyncTaskConvertible {
-    public typealias Response = [PieChartItem]
-    public let input: URL
-    public let credential: Credential?
 }
 
 public class MWPieChartStep: MWStep, PieChartStep {
