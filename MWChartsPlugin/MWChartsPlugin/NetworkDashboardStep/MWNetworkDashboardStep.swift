@@ -8,15 +8,15 @@
 import Foundation
 import MobileWorkflowCore
 
-public struct NetworkDashboardItemTask: CredentializedAsyncTask, URLAsyncTaskConvertible {
-    public typealias Response = [DashboardItem]
+public struct NetworkDashboardStepItemTask: CredentializedAsyncTask, URLAsyncTaskConvertible {
+    public typealias Response = [DashboardStepItem]
     public let input: URL
     public let credential: Credential?
 }
 
 public class MWNetworkDashboardStep: MWStep, DashboardStep, RemoteContentStep, SyncableContentSource {
    
-    public typealias ResponseType = [DashboardItem]
+    public typealias ResponseType = [DashboardStepItem]
     
     public let stepContext: StepContext
     public let session: Session
@@ -25,7 +25,7 @@ public class MWNetworkDashboardStep: MWStep, DashboardStep, RemoteContentStep, S
     public let emptyText: String?
     public let numberOfColumns: Int
     public var resolvedURL: URL?
-    public var items: [DashboardItem] = []
+    public var items: [DashboardStepItem] = []
     
     init(identifier: String, stepContext: StepContext, session: Session, services: StepServices, url: String?, emptyText: String?, numberOfColumns: Int) {
         self.stepContext = stepContext
@@ -45,7 +45,7 @@ public class MWNetworkDashboardStep: MWStep, DashboardStep, RemoteContentStep, S
         MWNetworkDashboardStepViewController(step: self)
     }
     
-    public func loadContent(completion: @escaping (Result<[DashboardItem], Error>) -> Void) {
+    public func loadContent(completion: @escaping (Result<[DashboardStepItem], Error>) -> Void) {
         guard let contentURL = self.contentURL else {
             return completion(.failure(URLError(.badURL)))
         }
@@ -54,7 +54,7 @@ public class MWNetworkDashboardStep: MWStep, DashboardStep, RemoteContentStep, S
         }
         do {
             let credential = try self.services.credentialStore.retrieveCredential(.token, isRequired: false).get()
-            let task = NetworkDashboardItemTask(input: url, credential: credential)
+            let task = NetworkDashboardStepItemTask(input: url, credential: credential)
             self.services.perform(task: task, session: session, completion: completion)
         } catch (let error) {
             completion(.failure(error))

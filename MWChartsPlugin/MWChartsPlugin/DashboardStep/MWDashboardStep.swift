@@ -11,16 +11,16 @@ import MobileWorkflowCore
 public protocol DashboardStep {
     var stepContext: StepContext { get }
     var numberOfColumns: Int { get }
-    var items: [DashboardItem] { get }
+    var items: [DashboardStepItem] { get }
 }
 
 public class MWDashboardStep: MWStep, DashboardStep {
     
     public let stepContext: StepContext
     public let numberOfColumns = 2 // TODO: add to static step config and parse
-    public let items: [DashboardItem]
+    public let items: [DashboardStepItem]
     
-    init(identifier: String, stepContext: StepContext, items: [DashboardItem]) {
+    init(identifier: String, stepContext: StepContext, items: [DashboardStepItem]) {
         self.stepContext = stepContext
         self.items = items
         super.init(identifier: identifier)
@@ -41,9 +41,35 @@ extension MWDashboardStep: BuildableStep {
         guard let title = json["title"] as? String else {
             throw ParseError.invalidStepData(cause: "Missing title for the dashboard item.")
         }
-        let rawItems = json["items"] as? Array<[String: Any]> ?? []
-        let data = try JSONSerialization.data(withJSONObject: rawItems, options: [])
-        let items = try JSONDecoder().decode([DashboardItem].self, from: data)
+        let contentItems = stepInfo.data.content["items"] as? [[String: Any]] ?? []
+        let items: [DashboardStepItem] = try contentItems.compactMap {
+            guard let id = $0.getString(key: "listItemId") else {
+                throw ParseError.invalidStepData(cause: "Dashboard item is missing required 'id' property")
+            }
+            guard let title = services.localizationService.translate($0["title"] as? String) else {
+                throw ParseError.invalidStepData(cause: "Dashboard item is missing required 'title' property")
+            }
+            guard let chartTypeString = $0["chartType"] as? String else {
+                throw ParseError.invalidStepData(cause: "Dashboard item is missing required 'chartType' property")
+            }
+            guard let chartType = DashboardStepItem.ChartType(rawValue: chartTypeString) else {
+                throw ParseError.invalidStepData(cause: "Dashboard item has unsupported chartType: \(chartTypeString)")
+            }
+            var values: [Double]?
+            if let valuesString = $0["values"] as? String {
+                values = valuesString.components(separatedBy: ",").compactMap {
+                    $0.trimmingCharacters(in: .whitespacesAndNewlines).toDouble()
+                }
+            }
+            return DashboardStepItem(
+                id: id,
+                title: title,
+                subtitle: services.localizationService.translate($0["subtitle"] as? String),
+                footer: services.localizationService.translate($0["footer"] as? String),
+                chartType: chartType,
+                values: values ?? []
+            )
+        }
         
         return MWDashboardStep(identifier: stepInfo.data.identifier, stepContext: stepInfo.context, items: items)
     }

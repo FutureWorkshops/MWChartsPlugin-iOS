@@ -20,13 +20,15 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
     private var graphContainerView: UIView?
     private var footerLabel: UILabel?
     
+    var theme: Theme = .current {
+        didSet {
+            self.configureStyle(theme: self.theme)
+        }
+    }
+    
     //MARK: Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.contentView.backgroundColor = .secondarySystemGroupedBackground
-        self.contentView.layer.cornerRadius = 10
-        self.contentView.layer.masksToBounds = true
         
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         self.stackView.axis = .vertical
@@ -37,7 +39,6 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.numberOfLines = 0
         self.titleLabel.font = UIFont.systemFont(ofSize: 15) // TODO: support dynamic type?
-        self.titleLabel.textColor = .secondaryLabel
         self.titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         self.titleLabel.setContentHuggingPriority(.required, for: .vertical)
         self.stackView.addArrangedSubview(self.titleLabel)
@@ -74,8 +75,30 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
         self.footerLabel = nil
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        self.configureStyle(theme: self.theme)
+    }
+    
     //MARK: Configuration
-    func configure(with item: DashboardItem) {
+    func configureStyle(theme: Theme) {
+        
+        let backgroundView = UIView(frame: self.bounds)
+        backgroundView.backgroundColor = theme.groupedCellBackgroundColor
+        backgroundView.layer.cornerRadius = 10
+        self.backgroundView = backgroundView
+        
+        let selectedBackgroundView = UIView(frame: self.bounds)
+        selectedBackgroundView.backgroundColor = theme.groupedCellBackgroundColor.darken(0.2)
+        selectedBackgroundView.layer.cornerRadius = 10
+        self.selectedBackgroundView = selectedBackgroundView
+        
+        self.titleLabel.textColor = theme.secondaryTextColor
+        self.subtitleLabel?.textColor = theme.primaryTextColor
+        self.footerLabel?.textColor = theme.secondaryTextColor
+    }
+    
+    func configure(with item: DashboardStepItem, theme: Theme) {
+        
         self.titleLabel.text = item.title
         
         if let subtitle = item.subtitle {
@@ -83,7 +106,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
             self.subtitleLabel?.translatesAutoresizingMaskIntoConstraints = false
             self.subtitleLabel?.numberOfLines = 0
             self.subtitleLabel?.font = UIFont.systemFont(ofSize: 34, weight: .medium) // TODO: support dynamic type?
-            self.subtitleLabel?.textColor = .label
+            
             self.subtitleLabel?.text = subtitle
             self.subtitleLabel?.setContentCompressionResistancePriority(.required, for: .vertical)
             self.subtitleLabel?.setContentHuggingPriority(.required, for: .vertical)
@@ -100,16 +123,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 // Height is 0.6 times the width
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
                 
-                #warning("Hardcoded values")
-                let entries = [
-                    BarChartDataEntry(x: 0, y: 4),
-                    BarChartDataEntry(x: 1, y: 10),
-                    BarChartDataEntry(x: 2, y: 7),
-                    BarChartDataEntry(x: 3, y: 4),
-                    BarChartDataEntry(x: 4, y: 7),
-                    BarChartDataEntry(x: 5, y: 3),
-                    BarChartDataEntry(x: 6, y: 10)
-                ]
+                let entries = item.values.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: $0.element) }
                 
                 let dataSet = BarChartDataSet(entries: entries)
                 dataSet.drawValuesEnabled = false
@@ -138,14 +152,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 // Height is 0.6 times the width
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
                 
-                #warning("Hardcoded values")
-                let entries = [
-                    ChartDataEntry(x: 0, y: 5),
-                    ChartDataEntry(x: 1, y: 10),
-                    ChartDataEntry(x: 2, y: 0),
-                    ChartDataEntry(x: 3, y: 2),
-                    ChartDataEntry(x: 4, y: 0)
-                ]
+                let entries = item.values.enumerated().map { ChartDataEntry(x: Double($0.offset), y: $0.element) }
                 
                 let dataSet = LineChartDataSet(entries: entries)
                 dataSet.drawValuesEnabled = false
@@ -179,12 +186,8 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 // Square
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
                 
-                #warning("Hardcoded values")
-                let entries = [
-                    PieChartDataEntry(value: 10),
-                    PieChartDataEntry(value: 30),
-                    PieChartDataEntry(value: 60)
-                ]
+                let entries = item.values.map { PieChartDataEntry(value: $0) }
+                
                 let dataSet = PieChartDataSet(entries: entries, label: nil)
                 dataSet.drawValuesEnabled = false
                 dataSet.colors = tintColor.colorScheme(ofType: .analagous) as? [UIColor] ?? dataSet.colors
@@ -203,6 +206,8 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
             case .none:
                 break
             }
+            
+            self.theme = theme // will trigger configureStyle
         }
         
         if let footer = item.footer {
@@ -210,7 +215,6 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
             self.footerLabel?.translatesAutoresizingMaskIntoConstraints = false
             self.footerLabel?.numberOfLines = 0
             self.footerLabel?.font = UIFont.systemFont(ofSize: 15)
-            self.footerLabel?.textColor = .secondaryLabel
             self.footerLabel?.text = footer
             self.footerLabel?.setContentCompressionResistancePriority(.required, for: .vertical)
             self.footerLabel?.setContentHuggingPriority(.required, for: .vertical)

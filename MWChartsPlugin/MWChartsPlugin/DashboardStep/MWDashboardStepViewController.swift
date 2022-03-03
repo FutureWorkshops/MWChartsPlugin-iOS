@@ -19,7 +19,7 @@ public class MWDashboardStepViewController: MWStepViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .systemGroupedBackground
+        self.view.backgroundColor = self.step.theme.groupedBackgroundColor
     
         self.collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         self.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -59,7 +59,7 @@ extension MWDashboardStepViewController: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = self.dashboardStep.items[indexPath.row]
         let cell: MWDashboardStepViewControllerCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-        cell.configure(with: item)
+        cell.configure(with: item, theme: self.step.theme)
         return cell
     }
 }
@@ -70,7 +70,7 @@ extension MWDashboardStepViewController: PinterestLayoutHeightDataSource {
         let item = self.dashboardStep.items[indexPath.row]
         
         self.heightWorkerCell.prepareForReuse()
-        self.heightWorkerCell.configure(with: item)
+        self.heightWorkerCell.configure(with: item, theme: self.step.theme)
         let size = self.heightWorkerCell.layoutSizeFittingWidth(width: withWidth)
         
         return size.height
@@ -79,4 +79,11 @@ extension MWDashboardStepViewController: PinterestLayoutHeightDataSource {
 
 extension MWDashboardStepViewController: UICollectionViewDelegate {
     
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let selected = self.dashboardStep.items[safe: indexPath.row]
+        let result = DashboardStepResult(identifier: self.step.identifier, selected: selected)
+        self.addStepResult(result)
+        self.goForward()
+    }
 }

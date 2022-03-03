@@ -40,7 +40,7 @@ public class MWNetworkDashboardStepViewController: MWDashboardStepViewController
         self.update(content: [])
     }
     
-    public func update(content: [DashboardItem]) {
+    public func update(content: [DashboardStepItem]) {
         self.remoteContentStep.items = content
         self.refresh()
         
