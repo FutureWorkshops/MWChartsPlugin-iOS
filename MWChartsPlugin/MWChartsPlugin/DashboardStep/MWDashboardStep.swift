@@ -10,12 +10,14 @@ import MobileWorkflowCore
 
 public protocol DashboardStep {
     var stepContext: StepContext { get }
+    var numberOfColumns: Int { get }
     var items: [DashboardItem] { get }
 }
 
 public class MWDashboardStep: MWStep, DashboardStep {
     
     public let stepContext: StepContext
+    public let numberOfColumns = 2 // TODO: add to static step config and parse
     public let items: [DashboardItem]
     
     init(identifier: String, stepContext: StepContext, items: [DashboardItem]) {

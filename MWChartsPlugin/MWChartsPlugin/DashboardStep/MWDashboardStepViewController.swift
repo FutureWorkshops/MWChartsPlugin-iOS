@@ -35,7 +35,7 @@ public class MWDashboardStepViewController: MWStepViewController {
     
     private func createLayout() -> UICollectionViewLayout {
         let layout = PinterestLayout()
-        layout.numberOfColumns = 2
+        layout.numberOfColumns = self.dashboardStep.numberOfColumns
         layout.cellPadding = 6
         layout.contentInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.heightDataSource = self

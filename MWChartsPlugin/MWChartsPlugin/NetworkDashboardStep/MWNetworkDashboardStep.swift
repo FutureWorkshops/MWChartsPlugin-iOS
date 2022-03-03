@@ -23,15 +23,17 @@ public class MWNetworkDashboardStep: MWStep, DashboardStep, RemoteContentStep, S
     public let services: StepServices
     public var contentURL: String?
     public let emptyText: String?
+    public let numberOfColumns: Int
     public var resolvedURL: URL?
     public var items: [DashboardItem] = []
     
-    init(identifier: String, stepContext: StepContext, session: Session, services: StepServices, url: String?, emptyText: String?) {
+    init(identifier: String, stepContext: StepContext, session: Session, services: StepServices, url: String?, emptyText: String?, numberOfColumns: Int) {
         self.stepContext = stepContext
         self.session = session
         self.services = services
         self.contentURL = url
         self.emptyText = emptyText
+        self.numberOfColumns = numberOfColumns
         super.init(identifier: identifier)
     }
     
@@ -60,13 +62,20 @@ public class MWNetworkDashboardStep: MWStep, DashboardStep, RemoteContentStep, S
     }
 }
 
+extension String {
+    func toInt() -> Int? {
+        return Int(self)
+    }
+}
+
 extension MWNetworkDashboardStep: BuildableStep {
     
     public static func build(stepInfo: StepInfo, services: StepServices) throws -> Step {
         
         let url = stepInfo.data.content["url"] as? String
         let emptyText = services.localizationService.translate(stepInfo.data.content["emptyText"] as? String)
+        let numberOfColumns = (stepInfo.data.content["numberOfColumns"] as? String)?.toInt() ?? 2 // default to 2 columns
 
-        return MWNetworkDashboardStep(identifier: stepInfo.data.identifier, stepContext: stepInfo.context, session: stepInfo.session, services: services, url: url, emptyText: emptyText)
+        return MWNetworkDashboardStep(identifier: stepInfo.data.identifier, stepContext: stepInfo.context, session: stepInfo.session, services: services, url: url, emptyText: emptyText, numberOfColumns: numberOfColumns)
     }
 }
