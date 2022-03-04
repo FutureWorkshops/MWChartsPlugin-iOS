@@ -9,9 +9,7 @@ import Foundation
 import MobileWorkflowCore
 
 enum L10n {
-    enum PieChart {
-        static let descriptionLabel = "Quantities"
-        static let legendLabel = "Types"
+    enum Dashboard {
         static let defaultEmptyText = "No data available"
     }
 }
@@ -24,8 +22,8 @@ public struct MWChartsPluginStruct: Plugin {
 
 public enum MWChartstepType: String, StepType, CaseIterable {
     
-    case pieChart = "chartsPieChart" // legacy naming convention
-    case networkPieChart = "io.mobileworkflow.NetworkPieChart"
+    case dashboard = "io.mobileworkflow.Dashboard" // legacy name
+    case networkDashboard = "io.app-rail.charts.network-dashboard"
     
     public var typeName: String {
         return self.rawValue
@@ -33,10 +31,10 @@ public enum MWChartstepType: String, StepType, CaseIterable {
     
     public var stepClass: BuildableStep.Type {
         switch self {
-        case .pieChart:
-            return MWPieChartStep.self
-        case .networkPieChart:
-            return MWNetworkPieChartStep.self
+        case .dashboard:
+            return MWDashboardStep.self
+        case .networkDashboard:
+            return MWNetworkDashboardStep.self
         }
     }
 }

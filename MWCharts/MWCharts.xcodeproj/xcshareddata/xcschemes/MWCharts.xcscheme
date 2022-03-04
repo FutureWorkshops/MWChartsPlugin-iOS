@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B75028B01C5A3F94000EB3CF"
-               BuildableName = "MobileWorkflowCharts.app"
-               BlueprintName = "MobileWorkflowCharts"
-               ReferencedContainer = "container:MobileWorkflowCharts.xcodeproj">
+               BlueprintIdentifier = "B75028C41C5A3F94000EB3CF"
+               BuildableName = "MWChartsTests.xctest"
+               BlueprintName = "MWChartsTests"
+               ReferencedContainer = "container:MWCharts.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -37,16 +37,6 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B75028C41C5A3F94000EB3CF"
-               BuildableName = "MobileWorkflowChartsTests.xctest"
-               BlueprintName = "MobileWorkflowChartsTests"
-               ReferencedContainer = "container:MobileWorkflowCharts.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -69,15 +59,6 @@
             ReferencedContainer = "container:MWCharts.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B75028B01C5A3F94000EB3CF"
-            BuildableName = "MobileWorkflowCharts.app"
-            BlueprintName = "MobileWorkflowCharts"
-            ReferencedContainer = "container:MobileWorkflowCharts.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -85,16 +66,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B75028B01C5A3F94000EB3CF"
-            BuildableName = "MobileWorkflowCharts.app"
-            BlueprintName = "MobileWorkflowCharts"
-            ReferencedContainer = "container:MobileWorkflowCharts.xcodeproj">
+            BuildableName = "MWCharts.app"
+            BlueprintName = "MWCharts"
+            ReferencedContainer = "container:MWCharts.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

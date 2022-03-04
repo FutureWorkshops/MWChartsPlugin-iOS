@@ -6,9 +6,9 @@
 //
 
 import XCTest
-@testable import MobileWorkflowCharts
+@testable import MWCharts
 
-class MobileWorkflowChartsTests: XCTestCase {
+class MWChartsTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
