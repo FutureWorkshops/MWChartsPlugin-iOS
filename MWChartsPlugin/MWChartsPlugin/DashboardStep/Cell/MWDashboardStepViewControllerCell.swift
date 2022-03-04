@@ -92,7 +92,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
         self.backgroundView = backgroundView
         
         let selectedBackgroundView = UIView(frame: self.bounds)
-        selectedBackgroundView.backgroundColor = theme.groupedCellBackgroundColor.darken(0.2)
+        selectedBackgroundView.backgroundColor = theme.groupedCellBackgroundColor.darken(0.2) // 'darken' is provided by Colours subdependency of Charts pod - we might want to add this functionality to the core at some point
         selectedBackgroundView.layer.cornerRadius = 10
         self.selectedBackgroundView = selectedBackgroundView
         

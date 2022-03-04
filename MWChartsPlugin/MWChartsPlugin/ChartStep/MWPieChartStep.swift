@@ -68,7 +68,7 @@ extension MWPieChartStep: BuildableStep {
             guard let label = $0["label"] as? String else {
                 throw ParseError.invalidStepData(cause: "Invalid label for pie chart data item")
             }
-            guard let value = extractValue(from: $0["value"]) else {
+            guard let value = extractValue(from: $0["value"] as Any) else {
                 throw ParseError.invalidStepData(cause: "Invalid value for pie chart data item")
             }
             return PieChartItem(label: label, value: value)

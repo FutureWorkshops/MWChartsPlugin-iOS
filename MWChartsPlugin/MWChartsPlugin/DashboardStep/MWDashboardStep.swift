@@ -37,10 +37,6 @@ public class MWDashboardStep: MWStep, DashboardStep {
 
 extension MWDashboardStep: BuildableStep {
     public static func build(stepInfo: StepInfo, services: StepServices) throws -> Step {
-        let json = stepInfo.data.content
-        guard let title = json["title"] as? String else {
-            throw ParseError.invalidStepData(cause: "Missing title for the dashboard item.")
-        }
         let contentItems = stepInfo.data.content["items"] as? [[String: Any]] ?? []
         let items: [DashboardStepItem] = try contentItems.compactMap {
             guard let id = $0.getString(key: "listItemId") else {
