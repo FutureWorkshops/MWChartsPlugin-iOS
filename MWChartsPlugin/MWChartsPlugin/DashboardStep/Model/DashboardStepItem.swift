@@ -21,9 +21,9 @@ public struct DashboardStepItem: Codable {
     let subtitle: String?
     let footer: String?
     let chartType: ChartType
-    let values: [Double]
+    let values: [Double]?
     
-    public init(id: String, title: String, subtitle: String?, footer: String?, chartType: ChartType, values: [Double]) {
+    public init(id: String, title: String, subtitle: String?, footer: String?, chartType: ChartType, values: [Double]?) {
         self.id = id
         self.title = title
         self.subtitle = subtitle

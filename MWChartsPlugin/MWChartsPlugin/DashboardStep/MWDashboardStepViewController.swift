@@ -23,7 +23,7 @@ public class MWDashboardStepViewController: MWStepViewController {
     
         self.collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         self.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.collectionView.showsVerticalScrollIndicator = false
+        self.collectionView.alwaysBounceVertical = true
         self.view.addSubview(self.collectionView)
         self.collectionView.register(MWDashboardStepViewControllerCell.self)
         self.collectionView.delegate = self
@@ -31,6 +31,12 @@ public class MWDashboardStepViewController: MWStepViewController {
         self.collectionView.backgroundColor = .clear
         
         self.heightWorkerCell = MWDashboardStepViewControllerCell(frame: .zero)
+    }
+    
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if previousTraitCollection?.preferredContentSizeCategory != self.traitCollection.preferredContentSizeCategory {
+            self.refresh()
+        }
     }
     
     private func createLayout() -> UICollectionViewLayout {
@@ -73,7 +79,7 @@ extension MWDashboardStepViewController: PinterestLayoutHeightDataSource {
         self.heightWorkerCell.configure(with: item, theme: self.step.theme)
         let size = self.heightWorkerCell.layoutSizeFittingWidth(width: withWidth)
         
-        return size.height
+        return size.height + 5 // add a bit extra to compensate for some dynamic type anomolies
     }
 }
 

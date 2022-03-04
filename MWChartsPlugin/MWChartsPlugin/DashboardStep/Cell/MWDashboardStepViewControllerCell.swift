@@ -32,13 +32,13 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
         
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         self.stackView.axis = .vertical
-        self.stackView.spacing = 16
+        self.stackView.spacing = 2
         self.stackView.alignment = .fill
         self.stackView.distribution = .fill
         
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.numberOfLines = 0
-        self.titleLabel.font = UIFont.systemFont(ofSize: 15) // TODO: support dynamic type?
+        self.titleLabel.adjustsFontForContentSizeCategory = true
         self.titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         self.titleLabel.setContentHuggingPriority(.required, for: .vertical)
         self.stackView.addArrangedSubview(self.titleLabel)
@@ -82,6 +82,10 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
     //MARK: Configuration
     func configureStyle(theme: Theme) {
         
+        self.titleLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        self.subtitleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
+        self.footerLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+        
         let backgroundView = UIView(frame: self.bounds)
         backgroundView.backgroundColor = theme.groupedCellBackgroundColor
         backgroundView.layer.cornerRadius = 10
@@ -105,7 +109,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
             self.subtitleLabel = UILabel()
             self.subtitleLabel?.translatesAutoresizingMaskIntoConstraints = false
             self.subtitleLabel?.numberOfLines = 0
-            self.subtitleLabel?.font = UIFont.systemFont(ofSize: 34, weight: .medium) // TODO: support dynamic type?
+            self.subtitleLabel?.adjustsFontForContentSizeCategory = true
             
             self.subtitleLabel?.text = subtitle
             self.subtitleLabel?.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -123,7 +127,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 // Height is 0.6 times the width
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
                 
-                let entries = item.values.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: $0.element) }
+                let entries = item.values?.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: $0.element) }
                 
                 let dataSet = BarChartDataSet(entries: entries)
                 dataSet.drawValuesEnabled = false
@@ -152,7 +156,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 // Height is 0.6 times the width
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
                 
-                let entries = item.values.enumerated().map { ChartDataEntry(x: Double($0.offset), y: $0.element) }
+                let entries = item.values?.enumerated().map { ChartDataEntry(x: Double($0.offset), y: $0.element) }
                 
                 let dataSet = LineChartDataSet(entries: entries)
                 dataSet.drawValuesEnabled = false
@@ -186,7 +190,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 // Square
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
                 
-                let entries = item.values.map { PieChartDataEntry(value: $0) }
+                let entries = item.values?.map { PieChartDataEntry(value: $0) }
                 
                 let dataSet = PieChartDataSet(entries: entries, label: nil)
                 dataSet.drawValuesEnabled = false
@@ -206,20 +210,20 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
             case .none:
                 break
             }
-            
-            self.theme = theme // will trigger configureStyle
         }
         
         if let footer = item.footer {
             self.footerLabel = UILabel()
             self.footerLabel?.translatesAutoresizingMaskIntoConstraints = false
             self.footerLabel?.numberOfLines = 0
-            self.footerLabel?.font = UIFont.systemFont(ofSize: 15)
+            self.footerLabel?.adjustsFontForContentSizeCategory = true
             self.footerLabel?.text = footer
             self.footerLabel?.setContentCompressionResistancePriority(.required, for: .vertical)
             self.footerLabel?.setContentHuggingPriority(.required, for: .vertical)
             self.stackView.addArrangedSubview(self.footerLabel!)
         }
+        
+        self.theme = theme // will trigger configureStyle
     }
     
     //MARK: Layout helper
