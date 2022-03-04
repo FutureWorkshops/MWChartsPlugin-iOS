@@ -63,6 +63,12 @@ public class MWNetworkDashboardStep: MWStep, DashboardStep, RemoteContentStep, S
 }
 
 extension String {
+    func toDouble() -> Double? {
+        return Double(self)
+    }
+}
+
+extension String {
     func toInt() -> Int? {
         return Int(self)
     }
