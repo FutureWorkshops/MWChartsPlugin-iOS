@@ -10,7 +10,7 @@ import MobileWorkflowCore
 
 public struct DashboardStepItem: Codable {
     public enum ChartType: String, Codable {
-        case none
+        case statistic
         case pie
         case line
         case bar
@@ -18,18 +18,18 @@ public struct DashboardStepItem: Codable {
     
     let id: String
     let title: String
-    let subtitle: String?
+    let text: String?
     let footer: String?
     let chartType: ChartType
-    let values: [Double]?
+    let chartValues: [Double]?
     
-    public init(id: String, title: String, subtitle: String?, footer: String?, chartType: ChartType, values: [Double]?) {
+    public init(id: String, title: String, text: String?, footer: String?, chartType: ChartType, chartValues: [Double]?) {
         self.id = id
         self.title = title
-        self.subtitle = subtitle
+        self.text = text
         self.footer = footer
         self.chartType = chartType
-        self.values = values
+        self.chartValues = chartValues
     }
 }
 
@@ -37,10 +37,10 @@ extension DashboardStepItem: ValueProvider {
     public func fetchValue(for path: String) -> Any? {
         if path == CodingKeys.id.stringValue { return self.id }
         if path == CodingKeys.title.stringValue { return self.title }
-        if path == CodingKeys.subtitle.stringValue { return self.subtitle }
+        if path == CodingKeys.text.stringValue { return self.text }
         if path == CodingKeys.footer.stringValue { return self.footer }
         if path == CodingKeys.chartType.stringValue { return self.chartType }
-        if path == CodingKeys.values.stringValue { return self.values }
+        if path == CodingKeys.chartValues.stringValue { return self.chartValues }
         return nil
     }
     

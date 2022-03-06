@@ -106,19 +106,19 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
         
         self.titleLabel.text = item.title
         
-        if let subtitle = item.subtitle {
+        if let text = item.text {
             self.subtitleLabel = UILabel()
             self.subtitleLabel?.translatesAutoresizingMaskIntoConstraints = false
             self.subtitleLabel?.numberOfLines = 0
             self.subtitleLabel?.adjustsFontForContentSizeCategory = true
             
-            self.subtitleLabel?.text = subtitle
+            self.subtitleLabel?.text = text
             self.subtitleLabel?.setContentCompressionResistancePriority(.required, for: .vertical)
             self.subtitleLabel?.setContentHuggingPriority(.required, for: .vertical)
             self.stackView.addArrangedSubview(self.subtitleLabel!)
         }
         
-        if item.chartType != .none {
+        if item.chartType != .statistic {
             self.graphContainerView = UIView()
             self.graphContainerView?.translatesAutoresizingMaskIntoConstraints = false
             self.stackView.addArrangedSubview(self.graphContainerView!)
@@ -128,12 +128,12 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 // Height is 0.6 times the width
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
                 
-                let entries = item.values?.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: $0.element) }
+                let entries = item.chartValues?.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: $0.element) }
                 
                 let dataSet = BarChartDataSet(entries: entries)
                 dataSet.drawValuesEnabled = false
                 dataSet.drawIconsEnabled = false
-                dataSet.colors = [self.tintColor]
+                dataSet.colors = [theme.primaryTintColor]
                 
                 let chart = BarChartView()
                 chart.translatesAutoresizingMaskIntoConstraints = false
@@ -157,7 +157,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 // Height is 0.6 times the width
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
                 
-                let entries = item.values?.enumerated().map { ChartDataEntry(x: Double($0.offset), y: $0.element) }
+                let entries = item.chartValues?.enumerated().map { ChartDataEntry(x: Double($0.offset), y: $0.element) }
                 
                 let dataSet = LineChartDataSet(entries: entries)
                 dataSet.drawValuesEnabled = false
@@ -167,7 +167,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 dataSet.drawVerticalHighlightIndicatorEnabled = false
                 dataSet.drawHorizontalHighlightIndicatorEnabled = false
                 dataSet.lineWidth = 2
-                dataSet.colors = [self.tintColor]
+                dataSet.colors = [theme.primaryTintColor]
                 
                 let chart = LineChartView()
                 chart.translatesAutoresizingMaskIntoConstraints = false
@@ -191,11 +191,11 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 // Square
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
                 
-                let entries = item.values?.map { PieChartDataEntry(value: $0) }
+                let entries = item.chartValues?.map { PieChartDataEntry(value: $0) }
                 
                 let dataSet = PieChartDataSet(entries: entries, label: nil)
                 dataSet.drawValuesEnabled = false
-                dataSet.colors = tintColor.colorScheme(ofType: .analagous) as? [UIColor] ?? dataSet.colors
+                dataSet.colors = theme.primaryTintColor.colorScheme(ofType: .analagous) as? [UIColor] ?? dataSet.colors
                 
                 let pieChartView = PieChartView()
                 pieChartView.translatesAutoresizingMaskIntoConstraints = false
@@ -208,7 +208,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 pieChartView.notifyDataSetChanged()
                 
                 self.graphContainerView?.addPinnedSubview(pieChartView)
-            case .none:
+            case .statistic:
                 break
             }
         }
