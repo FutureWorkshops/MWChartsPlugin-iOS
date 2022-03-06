@@ -80,7 +80,7 @@ extension MWNetworkDashboardStep: BuildableStep {
         
         let url = stepInfo.data.content["url"] as? String
         let emptyText = services.localizationService.translate(stepInfo.data.content["emptyText"] as? String)
-        let numberOfColumns = (stepInfo.data.content["numberOfColumns"] as? String)?.toInt() ?? 2 // default to 2 columns
+        let numberOfColumns = (stepInfo.data.content["numberOfColumns"] as? String)?.toInt() ?? 1 // default to 1 column
 
         return MWNetworkDashboardStep(identifier: stepInfo.data.identifier, stepContext: stepInfo.context, session: stepInfo.session, services: services, url: url, emptyText: emptyText, numberOfColumns: numberOfColumns)
     }

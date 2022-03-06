@@ -17,11 +17,12 @@ public protocol DashboardStep {
 public class MWDashboardStep: MWStep, DashboardStep {
     
     public let stepContext: StepContext
-    public let numberOfColumns = 2 // TODO: add to static step config and parse
+    public let numberOfColumns: Int
     public let items: [DashboardStepItem]
     
-    init(identifier: String, stepContext: StepContext, items: [DashboardStepItem]) {
+    init(identifier: String, stepContext: StepContext,  numberOfColumns: Int, items: [DashboardStepItem]) {
         self.stepContext = stepContext
+        self.numberOfColumns = numberOfColumns
         self.items = items
         super.init(identifier: identifier)
     }
@@ -37,6 +38,7 @@ public class MWDashboardStep: MWStep, DashboardStep {
 
 extension MWDashboardStep: BuildableStep {
     public static func build(stepInfo: StepInfo, services: StepServices) throws -> Step {
+        
         let contentItems = stepInfo.data.content["items"] as? [[String: Any]] ?? []
         let items: [DashboardStepItem] = try contentItems.compactMap {
             guard let id = $0.getString(key: "listItemId") else {
@@ -51,22 +53,24 @@ extension MWDashboardStep: BuildableStep {
             guard let chartType = DashboardStepItem.ChartType(rawValue: chartTypeString) else {
                 throw ParseError.invalidStepData(cause: "Dashboard item has unsupported chartType: \(chartTypeString)")
             }
-            var values: [Double]?
-            if let valuesString = $0["values"] as? String {
-                values = valuesString.components(separatedBy: ",").compactMap {
+            var chartValues: [Double]?
+            if let valuesString = $0["chartValues"] as? String {
+                chartValues = valuesString.components(separatedBy: ",").compactMap {
                     $0.trimmingCharacters(in: .whitespacesAndNewlines).toDouble()
                 }
             }
             return DashboardStepItem(
                 id: id,
                 title: title,
-                subtitle: services.localizationService.translate($0["subtitle"] as? String),
+                text: services.localizationService.translate($0["text"] as? String),
                 footer: services.localizationService.translate($0["footer"] as? String),
                 chartType: chartType,
-                values: values ?? []
+                chartValues: chartValues ?? []
             )
         }
         
-        return MWDashboardStep(identifier: stepInfo.data.identifier, stepContext: stepInfo.context, items: items)
+        let numberOfColumns = (stepInfo.data.content["numberOfColumns"] as? String)?.toInt() ?? 1 // default to 1 column
+        
+        return MWDashboardStep(identifier: stepInfo.data.identifier, stepContext: stepInfo.context, numberOfColumns: numberOfColumns, items: items)
     }
 }
