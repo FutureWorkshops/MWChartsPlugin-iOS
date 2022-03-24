@@ -10,7 +10,7 @@ import MobileWorkflowCore
 
 extension DashboardStepItem: SelectionItem {
     public var resultKey: String? {
-        return self.id
+        return self.title
     }
 }
 
