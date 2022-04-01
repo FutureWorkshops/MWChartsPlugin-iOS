@@ -37,6 +37,11 @@ public class MWDashboardStep: MWStep, DashboardStep {
 }
 
 extension MWDashboardStep: BuildableStep {
+    
+    public static var mandatoryCodingPaths: [CodingKey] {
+        [["items": ["listItemId", "title", "chartType"]]]
+    }
+    
     public static func build(stepInfo: StepInfo, services: StepServices) throws -> Step {
         
         let contentItems = stepInfo.data.content["items"] as? [[String: Any]] ?? []
