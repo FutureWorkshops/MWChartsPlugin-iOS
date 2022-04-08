@@ -59,13 +59,27 @@ extension MWDashboardStep: BuildableStep {
                     $0.trimmingCharacters(in: .whitespacesAndNewlines).toDouble()
                 }
             }
+            var chartColors: [String]?
+            if let valuesString = $0["chartColors"] as? String {
+                chartColors = valuesString.components(separatedBy: ",").compactMap {
+                    $0.trimmingCharacters(in: .whitespacesAndNewlines)
+                }
+            }
+            var chartColorsDark: [String]?
+            if let valuesString = $0["chartColorsDark"] as? String {
+                chartColors = valuesString.components(separatedBy: ",").compactMap {
+                    $0.trimmingCharacters(in: .whitespacesAndNewlines)
+                }
+            }
             return DashboardStepItem(
                 id: id,
                 title: title,
                 text: services.localizationService.translate($0["text"] as? String),
                 footer: services.localizationService.translate($0["footer"] as? String),
                 chartType: chartType,
-                chartValues: chartValues ?? []
+                chartValues: chartValues,
+                chartColors: chartColors,
+                chartColorsDark: chartColorsDark
             )
         }
         

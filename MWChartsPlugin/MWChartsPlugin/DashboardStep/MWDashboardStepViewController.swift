@@ -21,9 +21,10 @@ public class MWDashboardStepViewController: MWStepViewController {
         
         self.view.backgroundColor = self.step.theme.groupedBackgroundColor
     
-        self.collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
+        self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: createLayout())
         self.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.collectionView.alwaysBounceVertical = true
+        self.collectionView.isPrefetchingEnabled = false // if enabled, causes 'juddering' when scrolling to top
         self.view.addSubview(self.collectionView)
         self.collectionView.register(MWDashboardStepViewControllerCell.self)
         self.collectionView.delegate = self

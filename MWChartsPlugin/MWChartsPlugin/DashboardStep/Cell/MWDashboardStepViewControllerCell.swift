@@ -133,8 +133,8 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 let dataSet = BarChartDataSet(entries: entries)
                 dataSet.drawValuesEnabled = false
                 dataSet.drawIconsEnabled = false
-                dataSet.colors = [theme.primaryTintColor]
-                
+                dataSet.colors = item.colors ?? [theme.primaryTextColor]
+
                 let chart = BarChartView()
                 chart.translatesAutoresizingMaskIntoConstraints = false
                 chart.isUserInteractionEnabled = false
@@ -167,7 +167,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 dataSet.drawVerticalHighlightIndicatorEnabled = false
                 dataSet.drawHorizontalHighlightIndicatorEnabled = false
                 dataSet.lineWidth = 2
-                dataSet.colors = [theme.primaryTintColor]
+                dataSet.colors = item.colors ?? [theme.primaryTextColor]
                 
                 let chart = LineChartView()
                 chart.translatesAutoresizingMaskIntoConstraints = false
@@ -195,7 +195,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 
                 let dataSet = PieChartDataSet(entries: entries, label: nil)
                 dataSet.drawValuesEnabled = false
-                dataSet.colors = theme.primaryTintColor.colorScheme(ofType: .analagous) as? [UIColor] ?? dataSet.colors
+                dataSet.colors = item.colors ?? theme.primaryTintColor.colorScheme(ofType: .analagous) as? [UIColor] ?? dataSet.colors
                 
                 let pieChartView = PieChartView()
                 pieChartView.translatesAutoresizingMaskIntoConstraints = false
