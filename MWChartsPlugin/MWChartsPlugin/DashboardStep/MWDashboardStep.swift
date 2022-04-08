@@ -67,7 +67,7 @@ extension MWDashboardStep: BuildableStep {
             }
             var chartColorsDark: [String]?
             if let valuesString = $0["chartColorsDark"] as? String {
-                chartColors = valuesString.components(separatedBy: ",").compactMap {
+                chartColorsDark = valuesString.components(separatedBy: ",").compactMap {
                     $0.trimmingCharacters(in: .whitespacesAndNewlines)
                 }
             }
