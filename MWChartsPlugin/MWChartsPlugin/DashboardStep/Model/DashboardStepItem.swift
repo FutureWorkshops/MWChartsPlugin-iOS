@@ -22,14 +22,16 @@ public struct DashboardStepItem: Codable {
     let footer: String?
     let chartType: ChartType
     let chartValues: [Double]?
+    let chartColors: [String]?
     
-    public init(id: String, title: String, text: String?, footer: String?, chartType: ChartType, chartValues: [Double]?) {
+    public init(id: String, title: String, text: String?, footer: String?, chartType: ChartType, chartValues: [Double]?, chartColors: [String]?) {
         self.id = id
         self.title = title
         self.text = text
         self.footer = footer
         self.chartType = chartType
         self.chartValues = chartValues
+        self.chartColors = chartColors
     }
 }
 
@@ -41,6 +43,7 @@ extension DashboardStepItem: ValueProvider {
         if path == CodingKeys.footer.stringValue { return self.footer }
         if path == CodingKeys.chartType.stringValue { return self.chartType }
         if path == CodingKeys.chartValues.stringValue { return self.chartValues }
+        if path == CodingKeys.chartColors.stringValue { return self.chartColors }
         return nil
     }
     
