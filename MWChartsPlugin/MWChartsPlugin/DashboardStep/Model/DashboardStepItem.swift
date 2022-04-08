@@ -5,7 +5,7 @@
 //  Created by Jonathan Flintham on 28/02/2022.
 //
 
-import Foundation
+import UIKit
 import MobileWorkflowCore
 
 public struct DashboardStepItem: Codable {
