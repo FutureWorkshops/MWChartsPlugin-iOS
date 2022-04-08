@@ -133,11 +133,8 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 let dataSet = BarChartDataSet(entries: entries)
                 dataSet.drawValuesEnabled = false
                 dataSet.drawIconsEnabled = false
-                if let colors = item.chartColors?.compactMap({ UIColor(hex: $0) }), !colors.isEmpty {
-                    dataSet.colors = colors
-                } else {
-                    dataSet.colors = [theme.primaryTintColor]
-                }
+                dataSet.colors = item.colors ?? [theme.primaryTextColor]
+
                 let chart = BarChartView()
                 chart.translatesAutoresizingMaskIntoConstraints = false
                 chart.isUserInteractionEnabled = false
@@ -170,11 +167,8 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 dataSet.drawVerticalHighlightIndicatorEnabled = false
                 dataSet.drawHorizontalHighlightIndicatorEnabled = false
                 dataSet.lineWidth = 2
-                if let colors = item.chartColors?.compactMap({ UIColor(hex: $0) }), !colors.isEmpty {
-                    dataSet.colors = colors
-                } else {
-                    dataSet.colors = [theme.primaryTintColor]
-                }
+                dataSet.colors = item.colors ?? [theme.primaryTextColor]
+                
                 let chart = LineChartView()
                 chart.translatesAutoresizingMaskIntoConstraints = false
                 chart.isUserInteractionEnabled = false
@@ -201,11 +195,8 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 
                 let dataSet = PieChartDataSet(entries: entries, label: nil)
                 dataSet.drawValuesEnabled = false
-                if let colors = item.chartColors?.compactMap({ UIColor(hex: $0) }), !colors.isEmpty {
-                    dataSet.colors = colors
-                } else {
-                    dataSet.colors = theme.primaryTintColor.colorScheme(ofType: .analagous) as? [UIColor] ?? dataSet.colors
-                }
+                dataSet.colors = item.colors ?? theme.primaryTintColor.colorScheme(ofType: .analagous) as? [UIColor] ?? dataSet.colors
+                
                 let pieChartView = PieChartView()
                 pieChartView.translatesAutoresizingMaskIntoConstraints = false
                 pieChartView.isUserInteractionEnabled = false

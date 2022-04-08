@@ -23,8 +23,18 @@ public struct DashboardStepItem: Codable {
     let chartType: ChartType
     let chartValues: [Double]?
     let chartColors: [String]?
+    let chartColorsDark: [String]?
     
-    public init(id: String, title: String, text: String?, footer: String?, chartType: ChartType, chartValues: [Double]?, chartColors: [String]?) {
+    public init(
+        id: String,
+        title: String,
+        text: String?,
+        footer: String?,
+        chartType: ChartType,
+        chartValues: [Double]?,
+        chartColors: [String]?,
+        chartColorsDark: [String]?
+    ) {
         self.id = id
         self.title = title
         self.text = text
@@ -32,6 +42,20 @@ public struct DashboardStepItem: Codable {
         self.chartType = chartType
         self.chartValues = chartValues
         self.chartColors = chartColors
+        self.chartColorsDark = chartColorsDark
+    }
+    
+    var colors: [UIColor]? {
+        guard let chartColors = self.chartColors?.compactMap({ UIColor(hex: $0) }),
+              !chartColors.isEmpty else {
+            return nil // dark colors ignored if no light ones provided
+        }
+        if let chartColorsDark = self.chartColorsDark?.compactMap({ UIColor(hex: $0) }),
+           chartColorsDark.count == chartColors.count {
+            return zip(chartColors, chartColorsDark).map { UIColor(light: $0, dark: $1) }
+        } else {
+            return chartColors // dark colors ignored unless same number of light ones provided
+        }
     }
 }
 
@@ -44,6 +68,7 @@ extension DashboardStepItem: ValueProvider {
         if path == CodingKeys.chartType.stringValue { return self.chartType }
         if path == CodingKeys.chartValues.stringValue { return self.chartValues }
         if path == CodingKeys.chartColors.stringValue { return self.chartColors }
+        if path == CodingKeys.chartColorsDark.stringValue { return self.chartColorsDark }
         return nil
     }
     
