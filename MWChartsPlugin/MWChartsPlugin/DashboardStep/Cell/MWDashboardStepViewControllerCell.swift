@@ -133,7 +133,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 let dataSet = BarChartDataSet(entries: entries)
                 dataSet.drawValuesEnabled = false
                 dataSet.drawIconsEnabled = false
-                dataSet.colors = item.colors ?? [theme.primaryTextColor]
+                dataSet.colors = item.colors ?? [theme.primaryTintColor]
 
                 let chart = BarChartView()
                 chart.translatesAutoresizingMaskIntoConstraints = false
@@ -167,7 +167,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 dataSet.drawVerticalHighlightIndicatorEnabled = false
                 dataSet.drawHorizontalHighlightIndicatorEnabled = false
                 dataSet.lineWidth = 2
-                dataSet.colors = item.colors ?? [theme.primaryTextColor]
+                dataSet.colors = item.colors ?? [theme.primaryTintColor]
                 
                 let chart = LineChartView()
                 chart.translatesAutoresizingMaskIntoConstraints = false
