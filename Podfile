@@ -12,8 +12,8 @@ project 'MWChartsPlugin/MWChartsPlugin.xcodeproj'
 
 abstract_target 'MWCharts' do
   pod 'MobileWorkflow'
-  pod 'Charts'
-  pod 'Colours'
+  pod 'Charts', '~> 3.6.0'
+  pod 'Colours', '~> 5.13.0'
 
   target 'MWCharts' do
     project 'MWCharts/MWCharts.xcodeproj'
