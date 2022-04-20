@@ -5,13 +5,13 @@ PODS:
   - Colours (5.13.0):
     - Colours/ObjC (= 5.13.0)
   - Colours/ObjC (5.13.0)
-  - MobileWorkflow (2.0.1):
-    - MobileWorkflow/Core (= 2.0.1)
-  - MobileWorkflow/Core (2.0.1)
+  - MobileWorkflow (2.0.3):
+    - MobileWorkflow/Core (= 2.0.3)
+  - MobileWorkflow/Core (2.0.3)
 
 DEPENDENCIES:
-  - Charts
-  - Colours
+  - Charts (~> 3.6.0)
+  - Colours (~> 5.13.0)
   - MobileWorkflow
 
 SPEC REPOS:
@@ -24,8 +24,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Colours: f24220c38f13deac88612667e9b4a7fb96b871d4
-  MobileWorkflow: a58d46cb9d98ab5486fa363aa33f2424a99dbb1d
+  MobileWorkflow: eb68eada630270ab88c501fc49647f15202b200f
 
-PODFILE CHECKSUM: 17ff9b6fdafd8eadb4a6176d58f7ab80bfda28fe
+PODFILE CHECKSUM: ba06e3f541ac089327d1661ad36a1f3cbbfb9083
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

@@ -76,6 +76,10 @@ extension String {
 
 extension MWNetworkDashboardStep: BuildableStep {
     
+    public static var mandatoryCodingPaths: [CodingKey] {
+        ["url"] // see 'loadContent'
+    }
+    
     public static func build(stepInfo: StepInfo, services: StepServices) throws -> Step {
         
         let url = stepInfo.data.content["url"] as? String
