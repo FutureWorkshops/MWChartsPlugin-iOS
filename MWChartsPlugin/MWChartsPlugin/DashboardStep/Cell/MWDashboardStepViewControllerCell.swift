@@ -128,7 +128,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 // Height is 0.6 times the width
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
                 
-                let entries = item.chartValues?.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: $0.element) }
+                let entries = item.chartValues?.enumerated().map { BarChartDataEntry(x: Double($0.offset), y: $0.element) } ?? []
                 
                 let dataSet = BarChartDataSet(entries: entries)
                 dataSet.drawValuesEnabled = false
@@ -157,7 +157,7 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 // Height is 0.6 times the width
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.6).isActive = true
                 
-                let entries = item.chartValues?.enumerated().map { ChartDataEntry(x: Double($0.offset), y: $0.element) }
+                let entries = item.chartValues?.enumerated().map { ChartDataEntry(x: Double($0.offset), y: $0.element) } ?? []
                 
                 let dataSet = LineChartDataSet(entries: entries)
                 dataSet.drawValuesEnabled = false
@@ -191,16 +191,16 @@ class MWDashboardStepViewControllerCell: UICollectionViewCell {
                 // Square
                 self.graphContainerView?.heightAnchor.constraint(equalTo: self.stackView.widthAnchor).isActive = true
                 
-                let entries = item.chartValues?.map { PieChartDataEntry(value: $0) }
+                let entries = item.chartValues?.map { PieChartDataEntry(value: $0) } ?? []
                 
-                let dataSet = PieChartDataSet(entries: entries, label: nil)
+                let dataSet = PieChartDataSet(entries: entries, label: "")
                 dataSet.drawValuesEnabled = false
                 dataSet.colors = item.colors ?? theme.primaryTintColor.colorScheme(ofType: .analagous) as? [UIColor] ?? dataSet.colors
                 
                 let pieChartView = PieChartView()
                 pieChartView.translatesAutoresizingMaskIntoConstraints = false
                 pieChartView.isUserInteractionEnabled = false
-                pieChartView.chartDescription?.text = nil
+                pieChartView.chartDescription.text = ""
                 pieChartView.drawHoleEnabled = false
                 pieChartView.legend.enabled = false
                 pieChartView.rotationEnabled = false
