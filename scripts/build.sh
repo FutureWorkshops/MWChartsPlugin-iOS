@@ -1,4 +1,6 @@
 #!/bin/bash
+exit 0 #For now, disabling build script because the Charts pod does not compiles into XCFramework
+
 set -e
 
 SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"

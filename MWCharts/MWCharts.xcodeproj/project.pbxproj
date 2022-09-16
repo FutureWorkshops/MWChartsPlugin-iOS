@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		01CDD8504654996498B8D3D6 /* Pods_MWCharts_MWCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE222A69B8BF5558BD83EB7 /* Pods_MWCharts_MWCharts.framework */; };
 		3645CB4F27D2513B00C0BFC3 /* MWChartsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789D597227B1A75C00EEE959 /* MWChartsTests.swift */; };
-		369BE91E2566B77F00627518 /* MWChartsPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369BE9032566B68300627518 /* MWChartsPlugin.framework */; };
-		369BE91F2566B77F00627518 /* MWChartsPlugin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 369BE9032566B68300627518 /* MWChartsPlugin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		40DF755357CB3153C215C7E9 /* Pods_MWChartsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3FEFE4D0FA563F0B1D3B491 /* Pods_MWChartsTests.framework */; };
 		789D596A27B1A75400EEE959 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 789D595F27B1A75400EEE959 /* Assets.xcassets */; };
 		789D596B27B1A75400EEE959 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 789D596027B1A75400EEE959 /* LaunchScreen.storyboard */; };
@@ -29,20 +27,6 @@
 			remoteInfo = MobileWorkflowCharts;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		369BE9202566B77F00627518 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				369BE91F2566B77F00627518 /* MWChartsPlugin.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		22D40A173069C1B33339A710 /* Pods-MWCharts-MWCharts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWCharts-MWCharts.release.xcconfig"; path = "Target Support Files/Pods-MWCharts-MWCharts/Pods-MWCharts-MWCharts.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,7 +62,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				369BE91E2566B77F00627518 /* MWChartsPlugin.framework in Frameworks */,
 				01CDD8504654996498B8D3D6 /* Pods_MWCharts_MWCharts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,7 +194,6 @@
 				B75028AE1C5A3F94000EB3CF /* Frameworks */,
 				B75028AF1C5A3F94000EB3CF /* Resources */,
 				C0458DA9DE612CAD156A3317 /* [CP] Embed Pods Frameworks */,
-				369BE9202566B77F00627518 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -364,12 +346,16 @@
 				"${PODS_ROOT}/Target Support Files/Pods-MWCharts-MWCharts/Pods-MWCharts-MWCharts-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/Colours/Colours.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftAlgorithms/Algorithms.framework",
+				"${BUILT_PRODUCTS_DIR}/MWChartsPlugin/MWChartsPlugin.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MobileWorkflow/Core/MobileWorkflowCore.framework/MobileWorkflowCore",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Colours.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Algorithms.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWChartsPlugin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MobileWorkflowCore.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

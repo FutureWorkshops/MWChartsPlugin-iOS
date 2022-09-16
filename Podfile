@@ -12,12 +12,13 @@ project 'MWChartsPlugin/MWChartsPlugin.xcodeproj'
 
 abstract_target 'MWCharts' do
   pod 'MobileWorkflow'
-  pod 'Charts', '~> 3.6.0'
-  pod 'Colours', '~> 5.13.0'
+  pod 'Charts'
+  pod 'Colours'
 
   target 'MWCharts' do
     project 'MWCharts/MWCharts.xcodeproj'
-
+    pod 'MWChartsPlugin', path: './MWChartsPlugin.podspec'
+    
     target 'MWChartsTests' do
       inherit! :search_paths
     end
