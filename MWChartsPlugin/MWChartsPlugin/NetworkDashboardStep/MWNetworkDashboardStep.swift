@@ -89,3 +89,58 @@ extension MWNetworkDashboardStep: BuildableStep {
         return MWNetworkDashboardStep(identifier: stepInfo.data.identifier, stepContext: stepInfo.context, session: stepInfo.session, services: services, url: url, emptyText: emptyText, numberOfColumns: numberOfColumns)
     }
 }
+
+public class ChartsNetworkDashboardMetadata: StepMetadata {
+    enum CodingKeys: String, CodingKey {
+        case url
+        case emptyText
+        case navigationItems = "_navigationItems"
+        case numberOfColumns
+    }
+    
+    let url: String
+    let emptyText: String?
+    let navigationItems: [NavigationItemMetadata]?
+    let numberOfColumns: String?
+    
+    init(id: String, title: String, url: String, emptyText: String?, navigationItems: [NavigationItemMetadata]?, numberOfColumns: String?, next: PushLinkMetadata?, links: [LinkMetadata]) {
+        self.url = url
+        self.emptyText = emptyText
+        self.navigationItems = navigationItems
+        self.numberOfColumns = numberOfColumns
+        super.init(id: id, type: "io.app-rail.charts.network-dashboard", title: title, next: next, links: links)
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.url = try container.decode(String.self, forKey: .url)
+        self.emptyText = try container.decodeIfPresent(String.self, forKey: .emptyText)
+        self.navigationItems = try container.decodeIfPresent([NavigationItemMetadata].self, forKey: .navigationItems)
+        self.numberOfColumns = try container.decodeIfPresent(String.self, forKey: .numberOfColumns)
+        try super.init(from: decoder)
+    }
+    
+    public override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.url, forKey: .url)
+        try container.encodeIfPresent(self.emptyText, forKey: .emptyText)
+        try container.encodeIfPresent(self.navigationItems, forKey: .navigationItems)
+        try container.encodeIfPresent(self.numberOfColumns, forKey: .numberOfColumns)
+        try super.encode(to: encoder)
+    }
+}
+
+public extension StepMetadata {
+    static func chartsNetworkDashboard(
+        id: String,
+        title: String,
+        url: String,
+        emptyText: String? = nil,
+        navigationItems: [NavigationItemMetadata]? = nil,
+        numberOfColumns: String? = nil,
+        next: PushLinkMetadata? = nil,
+        links: [LinkMetadata] = []
+    ) -> ChartsNetworkDashboardMetadata {
+        ChartsNetworkDashboardMetadata(id: id, title: title, url: url, emptyText: emptyText, navigationItems: navigationItems, numberOfColumns: numberOfColumns, next: next, links: links)
+    }
+}
