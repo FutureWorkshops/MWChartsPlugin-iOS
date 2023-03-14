@@ -93,3 +93,76 @@ extension MWDashboardStep: BuildableStep {
         return MWDashboardStep(identifier: stepInfo.data.identifier, stepContext: stepInfo.context, numberOfColumns: numberOfColumns, items: items)
     }
 }
+
+public struct ChartsDashboardItem: Codable {
+    let chartType: String
+    let listItemId: Float
+    let title: String
+    let chartColors: String?
+    let chartColorsDark: String?
+    let chartValues: String?
+    let footer: String?
+    let text: String?
+    
+    public static func chartsDashboardItem(
+        chartType: String,
+        listItemId: Float,
+        title: String,
+        chartColors: String? = nil,
+        chartColorsDark: String? = nil,
+        chartValues: String? = nil,
+        footer: String? = nil,
+        text: String? = nil
+    ) -> ChartsDashboardItem {
+        return ChartsDashboardItem(chartType: chartType, listItemId: listItemId, title: title, chartColors: chartColors, chartColorsDark: chartColorsDark, chartValues: chartValues, footer: footer, text: text)
+    }
+}
+
+public class ChartsDashboardMetadata: StepMetadata {
+    enum CodingKeys: CodingKey {
+        case items
+        case navigationItems
+        case numberOfColumns
+    }
+    
+    let items: [ChartsDashboardItem]
+    let navigationItems: [NavigationItemMetadata]?
+    let numberOfColumns: String?
+    
+    init(id: String, title: String, items: [ChartsDashboardItem], navigationItems: [NavigationItemMetadata]?, numberOfColumns: String?, next: PushLinkMetadata?, links: [PushLinkMetadata]) {
+        self.items = items
+        self.navigationItems = navigationItems
+        self.numberOfColumns = numberOfColumns
+        super.init(id: id, type: "io.mobileworkflow.Dashboard", title: title, next: next, links: links)
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.items = try container.decode([ChartsDashboardItem].self, forKey: .items)
+        self.navigationItems = try container.decodeIfPresent([NavigationItemMetadata].self, forKey: .navigationItems)
+        self.numberOfColumns = try container.decodeIfPresent(String.self, forKey: .numberOfColumns)
+        try super.init(from: decoder)
+    }
+    
+    public override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.items, forKey: .items)
+        try container.encodeIfPresent(self.navigationItems, forKey: .navigationItems)
+        try container.encodeIfPresent(self.numberOfColumns, forKey: .numberOfColumns)
+        try super.encode(to: encoder)
+    }
+}
+
+public extension StepMetadata {
+    static func chartsDashboard(
+        id: String,
+        title: String,
+        items: [ChartsDashboardItem],
+        navigationItems: [NavigationItemMetadata]? = nil,
+        numberOfColumns: String? = nil,
+        next: PushLinkMetadata? = nil,
+        links: [PushLinkMetadata] = []
+    ) -> ChartsDashboardMetadata {
+        ChartsDashboardMetadata(id: id, title: title, items: items, navigationItems: navigationItems, numberOfColumns: numberOfColumns, next: next, links: links)
+    }
+}
