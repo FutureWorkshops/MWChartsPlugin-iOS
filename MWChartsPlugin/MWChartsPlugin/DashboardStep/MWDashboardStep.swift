@@ -119,9 +119,9 @@ public struct ChartsDashboardItem: Codable {
 }
 
 public class ChartsDashboardMetadata: StepMetadata {
-    enum CodingKeys: CodingKey {
+    enum CodingKeys: String, CodingKey {
         case items
-        case navigationItems
+        case navigationItems = "_navigationItems"
         case numberOfColumns
     }
     
