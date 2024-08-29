@@ -1,0 +1,47 @@
+PODS:
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
+    - SwiftAlgorithms (~> 1.0)
+  - Colours (5.13.0):
+    - Colours/ObjC (= 5.13.0)
+  - Colours/ObjC (5.13.0)
+  - MobileWorkflow (2.1.28):
+    - MobileWorkflow/Core (= 2.1.28)
+  - MobileWorkflow/Core (2.1.28)
+  - MWChartsPlugin (1.1.2):
+    - MWChartsPlugin/Core (= 1.1.2)
+  - MWChartsPlugin/Core (1.1.2):
+    - Charts (~> 4.1.0)
+    - Colours (~> 5.13.0)
+    - MobileWorkflow (~> 2.1.12)
+  - SwiftAlgorithms (1.0.0)
+
+DEPENDENCIES:
+  - Charts
+  - Colours
+  - MobileWorkflow
+  - MWChartsPlugin (from `./MWChartsPlugin.podspec`)
+
+SPEC REPOS:
+  https://github.com/FutureWorkshops/MWPodspecs.git:
+    - MobileWorkflow
+  trunk:
+    - Charts
+    - Colours
+    - SwiftAlgorithms
+
+EXTERNAL SOURCES:
+  MWChartsPlugin:
+    :path: "./MWChartsPlugin.podspec"
+
+SPEC CHECKSUMS:
+  Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
+  Colours: f24220c38f13deac88612667e9b4a7fb96b871d4
+  MobileWorkflow: ddc8f3338c5299ec79ff5c9ce04c7630b96496d6
+  MWChartsPlugin: 2e3c5f16b9a6b66484b2deab9a7a52c7b17aa375
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
+
+PODFILE CHECKSUM: 49a18977ed7b17a4c832f50f4d34269f0311ded6
+
+COCOAPODS: 1.15.2
