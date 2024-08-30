@@ -6,15 +6,15 @@ PODS:
   - Colours (5.13.0):
     - Colours/ObjC (= 5.13.0)
   - Colours/ObjC (5.13.0)
-  - MobileWorkflow (2.1.28):
-    - MobileWorkflow/Core (= 2.1.28)
-  - MobileWorkflow/Core (2.1.28)
-  - MWChartsPlugin (1.1.3):
-    - MWChartsPlugin/Core (= 1.1.3)
-  - MWChartsPlugin/Core (1.1.3):
+  - MobileWorkflow (2.1.29):
+    - MobileWorkflow/Core (= 2.1.29)
+  - MobileWorkflow/Core (2.1.29)
+  - MWChartsPlugin (1.1.4):
+    - MWChartsPlugin/Core (= 1.1.4)
+  - MWChartsPlugin/Core (1.1.4):
     - Charts (~> 4.1.0)
     - Colours (~> 5.13.0)
-    - MobileWorkflow (~> 2.1.12)
+    - MobileWorkflow (~> 2.1.29)
   - SwiftAlgorithms (1.0.0)
 
 DEPENDENCIES:
@@ -38,8 +38,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
   Colours: f24220c38f13deac88612667e9b4a7fb96b871d4
-  MobileWorkflow: ddc8f3338c5299ec79ff5c9ce04c7630b96496d6
-  MWChartsPlugin: f10e8f772be7c2295944528066e1e834725724ca
+  MobileWorkflow: 95ae9b93675fd092a4974787948b83899844354d
+  MWChartsPlugin: 774e6aca18110eb8e2f9005194d7e606cf756d04
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
 PODFILE CHECKSUM: 6744d164844469999e79d50bf4620fd35a3ea047
