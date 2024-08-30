@@ -11,11 +11,11 @@ Pod::Spec.new do |s|
     s.source                = { :git => 'https://github.com/FutureWorkshops/MWChartsPlugin-iOS.git', :tag => "#{s.version}" }
     s.platform              = :ios
     s.swift_version         = '5'
-    s.ios.deployment_target = '15.0'
+    s.ios.deployment_target = '17.1'
     s.default_subspecs      = 'Core'
 	
     s.subspec 'Core' do |cs|
-      cs.dependency            'MobileWorkflow', '~> 2.1.12'
+        cs.dependency            'MobileWorkflow', '~> 2.1.29'
 	    cs.dependency            'Charts', '~> 4.1.0'
 	    cs.dependency            'Colours', '~> 5.13.0'
       cs.source_files          = 'MWChartsPlugin/MWChartsPlugin/**/*.swift'
